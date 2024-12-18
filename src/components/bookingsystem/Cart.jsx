@@ -31,17 +31,23 @@ export default function Cart({ cart }) {
     >
       <motion.div
         initial={false}
-        animate={{ height: isOpen ? "48vh" : "72px" }}
-        className="fixed bottom-0 left-0 right-0 z-50 bg-customBlack_5 p-4 sm:hidden rounded-t-lg overflow-hidden shadow-lg"
+        animate={{ height: isOpen ? "48vh" : "6rem" }}
+        className=" w-full z-50 bg-customBlack_5 fixed  bottom-0 left-0 p-4 sm:hidden rounded-t-lg overflow-hidden shadow-lg"
       >
         <div
-          className="flex items-center justify-between cursor-pointer"
+          className=" cursor-pointer flex items-center justify-between"
           onClick={() => setIsOpen(!isOpen)}
         >
-          <h3 className={`${ceasarDressing.className} text-3xl flex items-baseline gap-4 font-bold text-white`}> 
-            {isOpen ? <IoIosCloseCircle size={48} /> : <FaBasketShopping size={42} className="text-white" />} INDKØBSKURV
+          <h3
+            className={`${ceasarDressing.className} text-3xl flex items-baseline gap-4 font-bold text-white`}
+          >
+            {isOpen ? (
+              <IoIosCloseCircle size={48} />
+            ) : (
+              <FaBasketShopping size={42} className="text-white" />
+            )}{" "}
+            INDKØBSKURV
           </h3>
-          
         </div>
         {isOpen && (
           <motion.div
@@ -61,46 +67,50 @@ export default function Cart({ cart }) {
                   <ul className="mt-2 space-y-2">
                     {cart.tickets.single !== 0 && (
                       <li>
-                        {cart.tickets.single}x Enkelbillet{" "}
+                        {cart.tickets.single}x Enkelbillet
                         {cart.tickets.single * 799} kr
                       </li>
                     )}
                     {cart.tickets.vip !== 0 && (
                       <li>
-                        {cart.tickets.vip}x VIP Billet {cart.tickets.vip * 1299} kr
+                        {cart.tickets.vip}x VIP Billet {cart.tickets.vip * 1299}
+                        kr
                       </li>
                     )}
                   </ul>
                 </section>
                 <section>
-                {cart.campsite ? (
-                <>
-                  <h2 className="font-bold border-b">CAMPSITE</h2>
-                  <ul className="">
-                    <li className="font-bold text-lg">{cart.campsite}</li>
-                    {cart.campsite && (
-                      <li className="text-xs font-normal text-gray-300">
-                        +99kr Booking Gebyr
-                      </li>
-                    )}
-                    {cart.tents.twoPeople !== 0 && (
-                      <li>
-                        {cart.tents.twoPeople}x 2 Personers Telt{" "}
-                        {cart.tents.twoPeople * 299} kr
-                      </li>
-                    )}
-                    {cart.tents.threePeople !== 0 && (
-                      <li>
-                        {cart.tents.threePeople}x 3 Personers Telt{" "}
-                        {cart.tents.threePeople * 399} kr
-                      </li>
-                    )}
-                    {cart.greenCamping && (
-                      <li>Grøn Camping 249kr</li>
-                    )}
-                  </ul>
-                </>
-              ) : null}
+                  {cart.campsite ? (
+                    <>
+                      <h2 className="font-bold border-b">CAMPSITE</h2>
+                      <ul className="">
+                        <li className="font-bold text-lg">{cart.campsite}</li>
+                        {cart.campsite && (
+                          <li className="text-xs font-normal text-gray-300">
+                            <p>+99kr Booking Gebyr</p>
+                          </li>
+                        )}
+                        {cart.tents.twoPeople !== 0 && (
+                          <li>
+                            <p>{cart.tents.twoPeople}x 2 Personers Telt </p>
+                            <p>{cart.tents.twoPeople * 299} kr</p>
+                          </li>
+                        )}
+                        {cart.tents.threePeople !== 0 && (
+                          <li>
+                            <p>{cart.tents.threePeople * 399} kr</p>
+                            <p>{cart.tents.threePeople}x 3 Personers Telt </p>
+                          </li>
+                        )}
+                        {cart.greenCamping && (
+                          <li>
+                            <p>Grøn Camping 249kr</p>
+                          </li>
+                        )}
+                        
+                      </ul>
+                    </>
+                  ) : null}
                 </section>
                 <section>
                   <h2 className="font-bold border-b">TOTAL</h2>
@@ -125,14 +135,14 @@ export default function Cart({ cart }) {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.8, ease: "easeInOut" }}
+              transition={{ duration: 0.8, ease: "easeInOut", delay: 0.8  }}
             >
               <FaBasketShopping size={72} />
             </motion.div>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 1, ease: "easeInOut" }}
+              transition={{ duration: 0.8, ease: "easeInOut", delay: 0.8  }}
               className="text-center text-sm sm:text-base"
             >
               Høvding! Tilføj bytte i din kurv.
@@ -145,7 +155,7 @@ export default function Cart({ cart }) {
               <ul className="mt-2 space-y-2">
                 {cart.tickets.single !== 0 && (
                   <li>
-                    {cart.tickets.single}x Enkelbillet{" "}
+                    {cart.tickets.single}x Enkelbillet
                     {cart.tickets.single * 799} kr
                   </li>
                 )}
@@ -159,7 +169,7 @@ export default function Cart({ cart }) {
 
             <section className="text-sm sm:text-base">
               {cart.campsite ? (
-                <>
+                <div>
                   <h2 className="font-bold border-b">CAMPSITE</h2>
                   <ul className="">
                     <li className="font-bold text-lg">{cart.campsite}</li>
@@ -170,21 +180,19 @@ export default function Cart({ cart }) {
                     )}
                     {cart.tents.twoPeople !== 0 && (
                       <li>
-                        {cart.tents.twoPeople}x 2 Personers Telt{" "}
-                        {cart.tents.twoPeople * 299} kr
+                        <p>{cart.tents.twoPeople}x 2 Personers Telt</p>
+                        <p>{cart.tents.twoPeople * 299} kr</p>
                       </li>
                     )}
                     {cart.tents.threePeople !== 0 && (
                       <li>
-                        {cart.tents.threePeople}x 3 Personers Telt{" "}
-                        {cart.tents.threePeople * 399} kr
+                        <p>{cart.tents.threePeople}x 3 Personers Telt</p>
+                        <p>{cart.tents.threePeople * 399} kr</p>
                       </li>
                     )}
-                    {cart.greenCamping && (
-                      <li>Grøn Camping 249kr</li>
-                    )}
+                    {cart.greenCamping && <li>Grøn Camping 249kr</li>}
                   </ul>
-                </>
+                </div>
               ) : null}
             </section>
             <section className="text-sm sm:text-base">

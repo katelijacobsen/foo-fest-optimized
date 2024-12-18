@@ -115,7 +115,7 @@ export default function Campsite({ state, formAction }) {
         <h3 className="font-bold text-sm mb-4 text-gray-400">VÆLG VENLIGST EN LEDIG CAMPINGOMRÅDE</h3>
         {isLoading && (
           <div className="flex justify-center items-center">
-            <div className="loader w-12 h-12"></div>
+            <span className="w-14 h-14 loader-animation "></span>
           </div>
         )}
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1 text-white">
@@ -132,10 +132,9 @@ export default function Campsite({ state, formAction }) {
               style={{
                 borderImage:
                   spot.area === selectedCampsite
-                    ? "linear-gradient(to right, #EC2783, #D82023 , #EC4D08) 1"
+                    ? "linear-gradient(to right, #EC2783, #D82023 , #EC4D08) 3"
                     : "none",
-                borderRadius: "0.375rem",
-                borderWidth: spot.area === selectedCampsite ? "2px" : "1px",
+                borderWidth: spot.area === selectedCampsite ? "1px" : "1px",
               }}
             >
               <h2 className="text-2xl font-bold">{spot.area}</h2>
@@ -170,7 +169,7 @@ export default function Campsite({ state, formAction }) {
                 </div>
                 <CounterInput
                   name="threePeople"
-                  max={10}
+                  // max={10}
                   count={threePersonCount}
                   setCount={updateThreePersonTentCount}
                 />
@@ -232,7 +231,7 @@ export default function Campsite({ state, formAction }) {
           <button
             className={`${
               selectedCampsite
-                ? " font-bold py-2 rounded-sm px-8 my-8 ml-auto text-xl bg-gradient-to-bl from-customPink text-white to-customOrange text-transparent hover:transform"
+                ? "font-semibold py-2 rounded-sm px-8 my-8 ml-auto text-xl bg-gradient-to-bl from-customPink text-white to-customOrange text-transparent"
                 : "bg-gray-500 rounded-sm px-8 py-2 my-8 text-xl ml-auto font-bold text-gray-300 cursor-not-allowed"
             }`}
             formAction={handleNext}
