@@ -11,7 +11,7 @@ const ceasarDressing = Caesar_Dressing({
 
 
 export default function ChooseTicket({ cart, formAction }) {
-  const [count2, setCount2] = useState(0);
+  // const [count2, setCount2] = useState(0);
   const totalTickets = cart.tickets.single + cart.tickets.vip;
 
   const handleBuy = (e) => {
@@ -36,7 +36,7 @@ export default function ChooseTicket({ cart, formAction }) {
       transition={{ duration: 0.5, delay: 0.5, type: "spring", stiffness: 200 }}
     >
       <Card
-        setCount2={setCount2}
+        // setCount2={setCount2}
         ticketType="single"
         formAction={formAction}
         title="ENKEL BILLET"
@@ -52,7 +52,7 @@ export default function ChooseTicket({ cart, formAction }) {
       transition={{ duration: 0.5, delay: 0.8 }}
     >
       <Card
-        setCount2={setCount2}
+        // setCount2={setCount2}
         ticketType="vip"
         formAction={formAction}
         title="VIP BILLET"

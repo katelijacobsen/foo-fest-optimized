@@ -31,7 +31,7 @@ export default function Card({
       return { ...prev, tickets: { single, vip } };
     });
     setCount(count);
-    setCount2(count);
+    // setCount2(count);
   };
 
   return (
