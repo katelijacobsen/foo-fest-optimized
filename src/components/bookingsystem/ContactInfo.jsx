@@ -12,8 +12,15 @@ const ceasarDressing = Caesar_Dressing({
 export default function ContactInfo({ tickets, formAction }) {
   const [isFormValid, setIsFormValid] = useState(false);
 
+  // Det var lidt svært at forstå regex, så her blevet der brugt AI
+  // På mdn er checkValidity() en metode der returnere en boolean værdi, valid /invalid.
+  // Når jeg så tilføjer min funktion ned til min form ville det kigge efter som den bruger gyldige tegn (contraint validation).
   const handleInputChange = (e) => {
+    // inputfelt, der  blev ændret med closest metoden, som skulle finde form (input er den del af form)
+    // henter bare alle inputfelterne i formularen
     const inputs = e.target.closest("form").querySelectorAll("input");
+    // laver en input array som går igennem hvert enkelte. checkValidity metoden checker om inputfelterne er godkendt.
+    // allValid bliver sat til false fordi den ikke er valid.
     const allValid = Array.from(inputs).every((input) => input.checkValidity());
     setIsFormValid(allValid);
   };
@@ -36,7 +43,7 @@ export default function ContactInfo({ tickets, formAction }) {
         <span className="absolute inset-[-1000%] animate-[spin_7s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#EC2783_0%,#141415_50%,#EC2783_100%)]" />
       )}
           <div className="relative bg-gradient-to-tl from-customBlack_2 to-customBlack z-0 rounded-xl">
-            <div className="rounded-xl overflow-hidden">
+            <div className="overflow-hidden rounded-xl ">
               {Array.from({ length: tickets.vip }, (_, i) => (
                 <ContactForm key={i} i={i} ticketType="vip" />
               ))}
@@ -48,7 +55,7 @@ export default function ContactInfo({ tickets, formAction }) {
         <button
           className={`${
             isFormValid
-              ? "font-bold px-8 py-2 my-8 ml-auto text-xl bg-gradient-to-bl from-customPink text-white to-customOrange text-transparent hover:transform"
+              ? "font-bold px-8 py-2 my-8 ml-auto text-xl bg-gradient-to-bl from-customPink text-white to-customOrange text-transparent"
               : "bg-gray-500 px-8 py-2 my-8 ml-auto text-xl font-bold text-gray-300 cursor-not-allowed"
           }`}
           formAction={formAction}
