@@ -12,13 +12,17 @@ const ceasarDressing = Caesar_Dressing({
 export default function ContactInfo({ tickets, formAction }) {
   const [isFormValid, setIsFormValid] = useState(false);
 
-// kilde fra stackoverflow : https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
-  const validateEmail = (email) => {
-    return String(email)
-      .toLowerCase() //gør alle bogstaver små
-      .match( // Matcher en streng eller et objekt, der kan matches imod, og returnerer et array med resultaterne af søgningen, eller null, hvis der ikke findes nogen match.
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
+  // Det var lidt svært at forstå regex, så her blevet der brugt AI
+  // På mdn er checkValidity() en metode der returnere en boolean værdi, valid /invalid.
+  // Når jeg så tilføjer min funktion ned til min form ville det kigge efter som den bruger gyldige tegn (contraint validation).
+  const handleInputChange = (e) => {
+    // inputfelt, der  blev ændret med closest metoden, som skulle finde form (input er den del af form)
+    // henter bare alle inputfelterne i formularen
+    const inputs = e.target.closest("form").querySelectorAll("input");
+    // laver en input array som går igennem hvert enkelte. checkValidity metoden checker om inputfelterne er godkendt.
+    // allValid bliver sat til false fordi den ikke er
+    const allValid = Array.from(inputs).every((input) => input.checkValidity());
+    setIsFormValid(allValid);
   };
 
   return (
@@ -27,7 +31,7 @@ export default function ContactInfo({ tickets, formAction }) {
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.3 }}
       className="text-white rounded-lg bg-gradient-to-tl border border-gray-500 from-customBlack_2 to-customBlack p-4 relative z-0"
-      onChange={validateEmail}
+      onChange={handleInputChange}
     >
       <fieldset className="grid gap-6 mb-6 md:grid-cols-2">
         <legend className={`${ceasarDressing.className} block mb-2 text-3xl`}>PERSONLIG INFORMATION</legend>
