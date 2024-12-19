@@ -181,7 +181,7 @@ const PaymentForm = ({ formAction, router }) => {
                   onFocus={handleInputFocus}
                   required
                   placeholder="CVC"
-                  type="number"
+                  type="password"
                 />
               </div>
             </div>
