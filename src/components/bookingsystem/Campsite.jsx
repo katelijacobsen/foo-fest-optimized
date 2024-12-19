@@ -98,8 +98,6 @@ export default function Campsite({ state, formAction, setReservedId }) {
 
   const handleNext = (formData) => {
     console.log(selectedCampsite, "camp yes");
-    console.log("mannn pls", aktiverPut);
-    setAktiverPut(numPeople);
 
     if (!selectedCampsite) {
       setHandleError("Vælg venligst et campingområde, før du fortsætter.");
