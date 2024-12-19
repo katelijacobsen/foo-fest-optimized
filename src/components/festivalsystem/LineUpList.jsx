@@ -6,12 +6,16 @@ import Headline from "@/components/global/Headline";
 import LineUpRune from "@/img/svg/lineup_rune.svg";
 
 const LineUpList = ({ mergedData }) => {
+  //statevariabel med væriden mergedData (fra props) - setBands bruges til at opdatere state
   const [bands, setBands] = useState(mergedData);
 
   // Sortér bands alfabetisk efter navn
   useEffect(() => {
+    //variabel for mergedData bliver kopieret [...mergedData] og sorteres alfabetisk efter name
     const sortedBandsAlphabetic = [...mergedData].sort((a, b) => a.name.localeCompare(b.name));
+    //statevariablen bliver opdateret med den alfabitisk sorterede liste af bands
     setBands(sortedBandsAlphabetic);
+    //useEffect hooket vil køre når mergedData ændrer sig - så i tilfælde af, at datasættet opdateres vil hooket sortere bands igen
   }, [mergedData]);
 
   return (

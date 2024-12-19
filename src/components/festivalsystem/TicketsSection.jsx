@@ -7,6 +7,7 @@ const TicketsSection = () => {
   return (
     <section className="py-[10vh] grid place-content-center max-w-screen-xl mx-auto px-4">
       <div className="grid gap-4 ">
+        {/* https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images */}
         <Image className="justify-self-center" srcSet={`${Tickets} 320w, ${Tickets} 680w, ${Tickets} 960w, ${Tickets} 1980w`} src={Tickets} alt="billetter" />
         <div>
           <p className="text-center text-xl md:text-2xl md:max-w-[45rem]">På Foo Fest kan du vælge mellem en almindelig billet eller opgradere til en VIP-oplevelse, der giver dig den ultimative luksus og komfort under festivalen. Forkæl dig selv med noget ekstra og gør din festival uforglemmelig!</p>

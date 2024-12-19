@@ -15,9 +15,8 @@ const Camping = () => {
           </div>
           <div className="py-6 md:py-11 w-full mx-auto">
             <h2 className="font-bold text-xl md:text-3xl ">Ofte stillede spørgsmål</h2>
-            <Accordion questionOne="Hvor rene er camping pladserne?" textOne="De reneste campingpladser du har set. Vi går meget op i at stille skraldespnade til rådighed og der er frivillige, som løbende rydder op på pladserne." questionTwo="Hvor tæt på ligger toilletterne?" textTwo="Der er mange toiletfaciliteter på festivalen, så du skal ikke være nervøs for, at der ligger toiletter i dit område." questionThree="Hvor mange telte kan der være på én plads?" textThree="Det er meget forskelligt i forhold til, hvor stor pladsen er." questionFour="Bliver der ryddet op efter mig?" textFour="Vi opfordrer til, at du selv står for din oprydning." MobileTextSize="text-lg" DesktoptextSize="text-2xl" />
+            <Accordion questionOne="Hvor rene er camping pladserne?" answerOne="De reneste campingpladser du har set. Vi går meget op i at stille skraldespnade til rådighed og der er frivillige, som løbende rydder op på pladserne." questionTwo="Hvor tæt på ligger toilletterne?" answerTwo="Der er mange toiletfaciliteter på festivalen, så du skal ikke være nervøs for, at der ligger toiletter i dit område." questionThree="Hvor mange telte kan der være på én plads?" answerThree="Det er meget forskelligt i forhold til, hvor stor pladsen er." questionFour="Bliver der ryddet op efter mig?" answerFour="Vi opfordrer til, at du selv står for din oprydning." MobileTextSize="text-lg" DesktoptextSize="text-2xl" />
           </div>
-          {/* <Image className="place-self-center" src={CampingMap} alt="billede af camping områder" width={500} height={500} /> */}
         </div>
       </section>
     </motion.section>

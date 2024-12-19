@@ -1,4 +1,3 @@
-import Header from "@/components/global/Header";
 import LineupListReadMore from "@/components/festivalsystem/LineupListReadMore";
 import Camping from "@/components/festivalsystem/CampingSection";
 import Volunteer from "@/components/festivalsystem/VolunteerSection";
@@ -8,7 +7,7 @@ import dynamic from "next/dynamic";
 import TextAnimationSection from "@/components/festivalsystem/TextAnimationSection";
 
 //lazyloading af herosection og dagens program
-const HeroSection = dynamic(() => import("@/components/festivalsystem/ThirdHero"));
+const HeroSection = dynamic(() => import("@/components/festivalsystem/HeroSection"));
 const ProgramForCurrentDay = dynamic(() => import("@/components/festivalsystem/ProgramForCurrentDay"));
 
 export default async function Home() {
@@ -66,8 +65,6 @@ export default async function Home() {
 
   return (
     <div>
-      <Header />
-      {/* <HeroSection /> */}
       <HeroSection text="FOOFEST" />
       <TicketsSection />
       <LineupListReadMore initialLineup={bands} />

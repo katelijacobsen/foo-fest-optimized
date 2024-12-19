@@ -5,20 +5,25 @@ import { motion } from "framer-motion";
 import Headline from "@/components/global/Headline";
 import MusicRune from "@/img/svg/music_rune.svg";
 
-function ProgramList({ mergedArray, days }) {
+function ProgramList({ mergedData, days }) {
+  //statevariabel selectedDay, som holder styr på den dag, der er valgt (default: tom streng). setSelectedDay er funktionen, der bruges til at opdatere selectedDay.
   const [selectedDay, setSelectedDay] = useState("");
+  //statevariabel isLoading med default værdi true. Bruges til at angive, om data stadig er ved at blive loadet. setIsLoading bruges til at opdatere state.
   const [isLoading, setIsLoading] = useState(true);
 
   // useEffect bruges her, så hver gang siden indlæses, så vises de artister der spiller idag
   useEffect(() => {
+    //variabel der henter dagens ugedag. Forkorter formatet på engelsk ved hjælp af .toLocaleDateString() og gør det til lowercase ved .toLowerCase(), så det stemmer overens med datasættet
     const today = new Date().toLocaleDateString("en", { weekday: "short" }).toLowerCase();
+    //opdaterer state selectedDay med den aktuelle ugedag (today)
     setSelectedDay(today);
 
     // Loading Animation
-    if (mergedArray) {
+    if (mergedData) {
       setIsLoading(false);
     }
-  }, [mergedArray]);
+    //useEffect hook bliver kørt i tilfælde af, at mergedArray ændres
+  }, [mergedData]);
 
   // Opdaterer den valgte dag
   const filterBandsByDay = (day) => {
@@ -29,7 +34,7 @@ function ProgramList({ mergedArray, days }) {
   // Funktionen starter med at filtrerer ud fra scene og dag
   // Sorterer herefter "bands" ud fra sammenlignign af starttidspunkterne
   const sortedByTime = (scene) => {
-    return mergedArray
+    return mergedData
       .filter((band) => band.scene === scene && band.day === selectedDay)
       .sort((a, b) => {
         const aTime = new Date(`1970-01-01T${a.eventInfo.start}`);
@@ -58,18 +63,18 @@ function ProgramList({ mergedArray, days }) {
             </div>
             <section className="p-2 md:px-6 md:py-12 z-0">
               <div className="grid md:grid-cols-[.5fr_1fr] mb-20">
-                <div className="sticky top-[120px] md:top-28 self-start z-10 bg-gradient-to-bl from-customBlack to-transparent w-fit px-2 py-2">
+                <div className="sticky top-[112px] md:top-28 self-start z-10 bg-gradient-to-bl from-customBlack to-transparent w-fit px-2 py-2">
                   <h2 className="text-3xl md:text-4xl">Midgard</h2>
                 </div>
                 <div className="grid grid-cols-2 gap-4 ">
-                  {/* Vi mapper med sortedByTime istedet for newArray (filtreringen sker i sortedByTime istedt for her) */}
+                  {/* Vi mapper med sortedByTime istedet for mergedData (filtreringen sker i sortedByTime istedet for her) */}
                   {sortedByTime("Midgard").map((band) => (
                     <BandCard slug={band.slug} logo={band.logo} key={band.name} name={band.name} genre={band.genre} start={band.eventInfo.start} end={band.eventInfo.end} day={band.day} />
                   ))}
                 </div>
               </div>
               <div className="grid md:grid-cols-[.5fr_1fr] mb-20">
-                <div className="sticky top-[120px] md:top-28 self-start z-10 bg-gradient-to-bl from-customBlack to-transparent w-fit px-2 py-2">
+                <div className="sticky top-[112px] md:top-28 self-start z-10 bg-gradient-to-bl from-customBlack to-transparent w-fit px-2 py-2">
                   <h2 className="text-3xl md:text-4xl">Vanaheim</h2>
                 </div>
                 <div className="grid grid-cols-2 gap-4 ">
@@ -79,7 +84,7 @@ function ProgramList({ mergedArray, days }) {
                 </div>
               </div>
               <div className="grid md:grid-cols-[.5fr_1fr] mb-20">
-                <div className="sticky top-[120px] md:top-28 self-start z-10 bg-gradient-to-bl from-customBlack to-transparent w-fit px-2 py-2">
+                <div className="sticky top-[112px] md:top-28 self-start z-10 bg-gradient-to-bl from-customBlack to-transparent w-fit px-2 py-2">
                   <h2 className="text-3xl md:text-4xl">Jotunheim</h2>
                 </div>
                 <div className="grid grid-cols-2 gap-4 ">

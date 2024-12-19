@@ -20,7 +20,7 @@ const Volunteer = () => {
         </div>
         <div className="mt-14">
           <h2 className="font-bold text-xl md:text-3xl ">Ofte stillede spørgsmål</h2>
-          <Accordion questionOne="Hvordan bliver jeg frivillig?" textOne="Ansøg alene eller med dine venner ved at skrive en mail til kontaktpersonen, som er knyttet til den specifikke frivillig rolle" questionTwo="Hvem kan blive frivillig på FooFest?" textTwo="Alle, der har lyst til at tage på festival, kan blive frivillige! Man skal blot være fyldt 15 år ved festivalens start." questionThree="Hvilke formål støtter jeg ved at være frivillig?" textThree="Din indsats som frivillig går udelukkende til at støtte gode formål." questionFour="Hvor mange timer skal jeg være frivillig?" textFour="Som frivillig skal du lægge en indsats på 32 timer fordelt over hele festivalperioden." MobileTextSize="text-lg" DesktoptextSize="text-2xl" />
+          <Accordion questionOne="Hvordan bliver jeg frivillig?" answerOne="Ansøg alene eller med dine venner ved at skrive en mail til kontaktpersonen, som er knyttet til den specifikke frivillig rolle" questionTwo="Hvem kan blive frivillig på FooFest?" answerTwo="Alle, der har lyst til at tage på festival, kan blive frivillige! Man skal blot være fyldt 15 år ved festivalens start." questionThree="Hvilke formål støtter jeg ved at være frivillig?" answerThree="Din indsats som frivillig går udelukkende til at støtte gode formål." questionFour="Hvor mange timer skal jeg være frivillig?" answerFour="Som frivillig skal du lægge en indsats på 32 timer fordelt over hele festivalperioden." MobileTextSize="text-lg" DesktoptextSize="text-2xl" />
         </div>
       </section>
     </motion.section>
