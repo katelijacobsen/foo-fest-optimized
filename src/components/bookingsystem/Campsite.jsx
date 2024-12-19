@@ -19,7 +19,7 @@ export default function Campsite({ state, formAction, setReservedId, setTimeOut 
   const [twoPersonCount, setTwoPersonCount] = useState(0);
   const [threePersonCount, setThreePersonCount] = useState(0);
 
-  const [selectedCampsite, setSelectedCampsite] = useState("undefined");
+  const [selectedCampsite, setSelectedCampsite] = useState(undefined);
   const [antalBilletter, setAntalBilletter] = useState(0);
   const [greenCamping, setGreenCamping] = useState(false);
   const [countError, setCountError] = useState("");
