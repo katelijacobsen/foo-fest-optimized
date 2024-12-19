@@ -40,8 +40,9 @@ const ProgramForCurrentDay = ({ mergedArray }) => {
     }
   }, [mergedArray]);
 
+  //Fået hjælp af tutorer til at tilpasse filtrering
   // Funktionen starter med at filtrerer ud fra scene og dag
-  // Sorterer herefter "acts" ud fra sammenlignign af starttidspunkterne
+  //Sorterer herefter "bands" ud fra sammenlignign af starttidspunkterne
   const sortedByTime = (scene) => {
     return mergedArray
       .filter((band) => band.scene === scene && band.day === currentDay)

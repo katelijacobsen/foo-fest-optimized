@@ -19,8 +19,7 @@ async function Page() {
     let data = await response.json();
     return data;
   };
-
-  // Ved hjælp af await bliver alle tre API'er kaldt, og resultaterne gemmes i variablerne bands, schedule og events.
+  // Ved hjælp af await bliver de to API'er kaldt, og resultaterne gemmes i variablerne bands og schedule
   // Dette gør data tilgængelig til videre behandling i koden.
   const bands = await fetchBands();
   const schedule = await fetchSchedule();
