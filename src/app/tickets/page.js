@@ -49,7 +49,9 @@ export const CartContext = createContext(null);
 
 export default function Page() {
   const [data, setData] = useState([]);
+
   const [reservedId, setReservedId] = useState(undefined);
+
   const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impna3Ntb3VoYWxzeGV6aXl0eWdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQyOTU1NjEsImV4cCI6MjA0OTg3MTU2MX0.WPZoRN3URqEILGHGLXl1kdWFJCj40mQWEdPfULA1Gto";
   const url = "https://jgksmouhalsxeziytygd.supabase.co/rest/v1/personer";
   const handleStep = (prev, formData) => {
@@ -171,7 +173,24 @@ export default function Page() {
   // F.eks. har vi givet state vider til campsite. Ligesom en filmappe struktur prøver den at finde antal af billetter vi tidliger har
   // valgt, og bruger det samme antal telte-billetter brugern må bruge.
   const [state, formAction] = useActionState(handleStep, defaultState);
+  const [timeLeft, setTimeLeft] = useState(60 * 5 * 1000); // Her bliver der holdt øje med tiden (5min)
+  const [timeOut, setTimeOut] = useState(0);
   console.log(state);
+  useEffect(() => {
+    if (timeOut <= 0) {
+      alert("Tiden er udløbet. du bliver stillet tilbage til billetsiden.");
+      formAction(null);
+      return;
+    }
+    const timer = setInterval(() => {
+      setTimeOut((prevTime) => prevTime - 1000);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [timeOut]);
+
+  const mins = Math.floor(timeOut / 1000 / 60);
+  const secs = Math.floor((timeOut / 1000) % 60);
   return (
     <main className="pt-24">
       <MyMarquee />
@@ -180,12 +199,18 @@ export default function Page() {
       indkøbskurven. */}
       <CartContext.Provider value={[cart, setCart]}>
         <main>
+          {timeOut > 0 && (
+            <p className="bg-gradient-to-bl rounded-sm from-customPink text-white to-customOrange w-full text-center text-xl sm:text-2xl font-bold">
+              {mins} : {String(secs).padStart(2, "0")}
+            </p>
+          )}
+
           {/* Vi giver hver children komponenter en conditional rendering og sender vores cart & formAction vider. Cart bliver ikke vist ved 4. step med !== */}
           <h1 className={`${ceasarDressing.className} mx-5 mt-10 text-6xl sm:text-6xl lg:text-6xl md:text-6xl text-white`}>BILLETTER</h1>
           <div className="flex flex-col md:flex-row justify-center">
             <section>
               {state.step === 0 && <ChooseTicket cart={cart} formAction={formAction} />}
-              {state.step === 1 && <Campsite setReservedId={setReservedId} state={state} formAction={formAction} />}
+              {state.step === 1 && <Campsite setTimeOut={setTimeOut} setReservedId={setReservedId} state={state} formAction={formAction} />}
               {state.step === 2 && <ContactInfo state={state} tickets={state.tickets} formAction={formAction} />}
               {state.step === 3 && <PaymentFlow reservedId={reservedId} formAction={formAction} />}
               {state.step === 4 && <PaymentComfirmed state={state} startDraw={true} />}

@@ -9,8 +9,7 @@ const ceasarDressing = Caesar_Dressing({
   display: "swap",
 });
 
-const PaymentForm = ({ formAction, router, reservedId }) => {
-  const [timeLeft, setTimeLeft] = useState(60 * 5 * 1000); // Her bliver der holdt øje med tiden (5min)
+const PaymentForm = ({ formAction, reservedId }) => {
   // objekter med empty strings der bliver holdt øje med i kortbetalingen.
   const [state, setState] = useState({
     number: "",
@@ -19,23 +18,6 @@ const PaymentForm = ({ formAction, router, reservedId }) => {
     name: "",
     focus: "",
   });
-  // useEffect hook. Hvis tiden ender på 0 vil den vise en alert for brugeren.
-  // med formAction med en null bliver brugeren navigerede tilbage til starten af flowet.
-  useEffect(() => {
-    if (timeLeft <= 0) {
-      alert("Tiden er udløbet. du bliver stillet tilbage til billetsiden.");
-      formAction(null);
-      return;
-    }
-    const timer = setInterval(() => {
-      setTimeLeft((prevTime) => prevTime - 1000);
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [timeLeft, router]);
-
-  const mins = Math.floor(timeLeft / 1000 / 60);
-  const secs = Math.floor((timeLeft / 1000) % 60);
 
   // // kilde: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch
   // const validateInput = (name, value) => {
@@ -122,9 +104,6 @@ const PaymentForm = ({ formAction, router, reservedId }) => {
   return (
     <>
       <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }} className=" border border-gray-600 p-4 sm:p-8 rounded-lg bg-gradient-to-tl from-customBlack_2 to-customBlack m-4">
-        <p className="bg-gradient-to-bl rounded-sm from-customPink text-white to-customOrange w-full text-center text-xl sm:text-2xl font-bold">
-          {mins} : {String(secs).padStart(2, "0")}
-        </p>
         <h2 className={`${ceasarDressing.className} text-2xl sm:text-3xl my-4 text-left`}>BETALINGSKORT</h2>
 
         <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center p-4 sm:p-8 gap-4">
