@@ -13,7 +13,7 @@ const ceasarDressing = Caesar_Dressing({
   display: "swap",
 });
 
-export default function Campsite({ state, formAction, setReservedId }) {
+export default function Campsite({ state, formAction, setReservedId, setTimeOut }) {
   const [spots, setSpots] = useState([]);
   const [cart, setCart] = useContext(CartContext);
   const [twoPersonCount, setTwoPersonCount] = useState(0);
@@ -130,7 +130,9 @@ export default function Campsite({ state, formAction, setReservedId }) {
       })
       .then((data) => {
         setReservedId(data.id); // Save the ID in state
+        setTimeOut(data.timeout);
         console.log("Reserved Spot ID:", data.id);
+        console.log("Time start", data.timeout);
       });
   }, [selectedCampsite]);
 
