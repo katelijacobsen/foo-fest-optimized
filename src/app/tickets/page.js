@@ -52,7 +52,8 @@ export default function Page() {
 
   const [reservedId, setReservedId] = useState(undefined);
 
-  const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impna3Ntb3VoYWxzeGV6aXl0eWdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQyOTU1NjEsImV4cCI6MjA0OTg3MTU2MX0.WPZoRN3URqEILGHGLXl1kdWFJCj40mQWEdPfULA1Gto";
+  const apikey =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impna3Ntb3VoYWxzeGV6aXl0eWdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQyOTU1NjEsImV4cCI6MjA0OTg3MTU2MX0.WPZoRN3URqEILGHGLXl1kdWFJCj40mQWEdPfULA1Gto";
   const url = "https://jgksmouhalsxeziytygd.supabase.co/rest/v1/personer";
   const handleStep = (prev, formData) => {
     if (formData === null) {
@@ -84,12 +85,15 @@ export default function Page() {
     }
 
     if (prev.step === 2) {
-      const singleGuests = Array.from({ length: prev.tickets.single }, (_, i) => ({
-        firstName: formData.get(`single_firstName_${i}`),
-        lastName: formData.get(`single_lastName_${i}`),
-        email: formData.get(`single_email_${i}`),
-        phonenumber: formData.get(`single_phonenumber_${i}`),
-      }));
+      const singleGuests = Array.from(
+        { length: prev.tickets.single },
+        (_, i) => ({
+          firstName: formData.get(`single_firstName_${i}`),
+          lastName: formData.get(`single_lastName_${i}`),
+          email: formData.get(`single_email_${i}`),
+          phonenumber: formData.get(`single_phonenumber_${i}`),
+        })
+      );
       const vipGuests = Array.from({ length: prev.tickets.vip }, (_, i) => ({
         firstName: formData.get(`vip_firstName_${i}`),
         lastName: formData.get(`vip_lastName_${i}`),
@@ -174,14 +178,29 @@ export default function Page() {
   // valgt, og bruger det samme antal telte-billetter brugern må bruge.
   const [state, formAction] = useActionState(handleStep, defaultState);
   const [timeLeft, setTimeLeft] = useState(60 * 5 * 1000); // Her bliver der holdt øje med tiden (5min)
-  const [timeOut, setTimeOut] = useState(0);
+  const [timeOut, setTimeOut] = useState(30);
   console.log(state);
+
+ useEffect(() => {
+   if (state.step === 1 && timeOut <= 0) {
+    setTimeOut()
+ 
+ }})
+ 
+  
+  
   useEffect(() => {
     if (timeOut <= 0) {
-      alert("Tiden er udløbet. du bliver stillet tilbage til billetsiden.");
-      formAction(null);
+      if(state.step > 0){
+        alert('Tiden er udløbet. Du bliver aldrig rigtig en viking :(')
+        formAction(null);
+      }
+      
       return;
     }
+
+
+
     const timer = setInterval(() => {
       setTimeOut((prevTime) => prevTime - 1000);
     }, 1000);
@@ -206,14 +225,37 @@ export default function Page() {
           )}
 
           {/* Vi giver hver children komponenter en conditional rendering og sender vores cart & formAction vider. Cart bliver ikke vist ved 4. step med !== */}
-          <h1 className={`${ceasarDressing.className} mx-5 mt-10 text-6xl sm:text-6xl lg:text-6xl md:text-6xl text-white`}>BILLETTER</h1>
+          <h1
+            className={`${ceasarDressing.className} mx-5 mt-10 text-6xl sm:text-6xl lg:text-6xl md:text-6xl text-white`}
+          >
+            BILLETTER
+          </h1>
           <div className="flex flex-col md:flex-row justify-center">
             <section>
-              {state.step === 0 && <ChooseTicket cart={cart} formAction={formAction} />}
-              {state.step === 1 && <Campsite setTimeOut={setTimeOut} setReservedId={setReservedId} state={state} formAction={formAction} />}
-              {state.step === 2 && <ContactInfo state={state} tickets={state.tickets} formAction={formAction} />}
-              {state.step === 3 && <PaymentFlow reservedId={reservedId} formAction={formAction} />}
-              {state.step === 4 && <PaymentComfirmed state={state} startDraw={true} />}
+              {state.step === 0 && (
+                <ChooseTicket cart={cart} formAction={formAction} />
+              )}
+              {state.step === 1 && (
+                <Campsite
+                  setTimeOut={setTimeOut}
+                  setReservedId={setReservedId}
+                  state={state}
+                  formAction={formAction}
+                />
+              )}
+              {state.step === 2 && (
+                <ContactInfo
+                  state={state}
+                  tickets={state.tickets}
+                  formAction={formAction}
+                />
+              )}
+              {state.step === 3 && (
+                <PaymentFlow reservedId={reservedId} formAction={formAction} />
+              )}
+              {state.step === 4 && (
+                <PaymentComfirmed state={state} startDraw={true} />
+              )}
             </section>
             {state.step !== 4 && <Cart cart={cart} />}
           </div>
