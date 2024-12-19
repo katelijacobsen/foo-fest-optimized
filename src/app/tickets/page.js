@@ -181,25 +181,21 @@ export default function Page() {
   const [timeOut, setTimeOut] = useState(30);
   console.log(state);
 
- useEffect(() => {
-   if (state.step === 1 && timeOut <= 0) {
-    setTimeOut()
- 
- }})
- 
-  
-  
+  useEffect(() => {
+    if (state.step === 1 && timeOut <= 0) {
+      setTimeOut();
+    }
+  });
+
   useEffect(() => {
     if (timeOut <= 0) {
-      if(state.step > 0){
-        alert('Tiden er udløbet. Du bliver aldrig rigtig en viking :(')
+      if (state.step > 0) {
+        alert("Tiden er udløbet. Du bliver aldrig rigtig en viking :(");
         formAction(null);
       }
-      
+
       return;
     }
-
-
 
     const timer = setInterval(() => {
       setTimeOut((prevTime) => prevTime - 1000);
