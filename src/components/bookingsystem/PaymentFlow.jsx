@@ -10,7 +10,8 @@ const ceasarDressing = Caesar_Dressing({
 });
 
 const PaymentForm = ({ formAction, router }) => {
-  const [timeLeft, setTimeLeft] = useState(60 * 5 * 1000); // math is mathing
+  const [timeLeft, setTimeLeft] = useState(60 * 5 * 1000); // Her bliver der holdt øje med tiden (5min)
+ // objekter med empty strings der bliver holdt øje med i kortbetalingen.
   const [state, setState] = useState({
     number: "",
     expiry: "",
@@ -18,7 +19,8 @@ const PaymentForm = ({ formAction, router }) => {
     name: "",
     focus: "",
   });
-
+// useEffect hook. Hvis tiden ender på 0 vil den vise en alert for brugeren. 
+// med formAction med en null bliver brugeren navigerede tilbage til starten af flowet. 
   useEffect(() => {
     if (timeLeft <= 0) {
       alert("Tiden er udløbet. du bliver stillet tilbage til billetsiden.");
