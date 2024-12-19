@@ -55,7 +55,7 @@ export default function Card({
           <div className="flex flex-col items-center justify-center mt-2">
             <div className="flex flex-row items-baseline">
               <div>
-                <p className="text-5xl sm:text-6xl md:text-7xl font-bold bg-clip-text text-transparent animate-shine">
+                <p className="text-5xl sm:text-6xl md:text-7xl font-bold bg-clip-text text-white">
                   {price}
                 </p>
                 <div className="flex items-baseline gap-2 justify-center">

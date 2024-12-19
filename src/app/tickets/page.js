@@ -49,6 +49,7 @@ export const CartContext = createContext(null);
 
 export default function Page() {
   const [data, setData] = useState([]);
+  const [reservedId, setReservedId] = useState(undefined);
   const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impna3Ntb3VoYWxzeGV6aXl0eWdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQyOTU1NjEsImV4cCI6MjA0OTg3MTU2MX0.WPZoRN3URqEILGHGLXl1kdWFJCj40mQWEdPfULA1Gto";
   const url = "https://jgksmouhalsxeziytygd.supabase.co/rest/v1/personer";
   const handleStep = (prev, formData) => {
@@ -173,7 +174,7 @@ export default function Page() {
   console.log(state);
   return (
     <main className="pt-24">
-      <MyMarquee/>
+      <MyMarquee />
       <Header />
       {/* wrapper komponenter ind med useContext så det kan opdatere
       indkøbskurven. */}
@@ -184,9 +185,9 @@ export default function Page() {
           <div className="flex flex-col md:flex-row justify-center">
             <section>
               {state.step === 0 && <ChooseTicket cart={cart} formAction={formAction} />}
-              {state.step === 1 && <Campsite state={state} formAction={formAction} />}
+              {state.step === 1 && <Campsite setReservedId={setReservedId} state={state} formAction={formAction} />}
               {state.step === 2 && <ContactInfo state={state} tickets={state.tickets} formAction={formAction} />}
-              {state.step === 3 && <PaymentFlow formAction={formAction} />}
+              {state.step === 3 && <PaymentFlow reservedId={reservedId} formAction={formAction} />}
               {state.step === 4 && <PaymentComfirmed state={state} startDraw={true} />}
             </section>
             {state.step !== 4 && <Cart cart={cart} />}

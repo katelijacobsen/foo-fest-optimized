@@ -20,22 +20,6 @@ module.exports = {
         customBlack_5: "#262628",
         customBlack_6: "#383838",
       },
-      borderImage: {
-        "gradient-custom": "linear-gradient(to right, #D82023 ,#EC2783, #EC4D08)",
-      },
-      animation: {
-        shine: "shine 8s infinite linear",
-      },
-      keyframes: {
-        shine: {
-          "0%": {
-            backgroundPosition: "-200% 0",
-          },
-          "100%": {
-            backgroundPosition: "200% 0",
-          },
-        },
-      },
     },
   },
   plugins: [],
