@@ -1,3 +1,4 @@
+import Header from "@/components/global/Header";
 import SingleBand from "@/components/festivalsystem/SingleBand";
 import Footer from "@/components/global/Footer";
 
@@ -9,6 +10,7 @@ const Band = async ({ params }) => {
 
   return (
     <>
+      <Header />
       <main>
         <SingleBand band={data} />
       </main>
