@@ -187,7 +187,7 @@ const PaymentForm = ({ formAction, router }) => {
             </div>
             <button
               formAction={formAction}
-              className="font-bold px-8 py-2 my-8 text-xl rounded-sm bg-gradient-to-bl from-customPink text-white to-customOrange w-full sm:w-auto"
+              className="font-bold self-end px-8 py-2 my-8 text-xl rounded-sm bg-gradient-to-bl from-customPink text-white to-customOrange w-full sm:w-auto"
             >
               Afslut & Betal
             </button>
