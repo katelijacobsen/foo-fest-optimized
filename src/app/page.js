@@ -14,14 +14,12 @@ const ProgramForCurrentDay = dynamic(() => import("@/components/festivalsystem/P
 export default async function Home() {
   const fetchBands = async () => {
     let response = await fetch("https://spring-awesome-stream.glitch.me/bands");
-    // let response = await fetch("http://localhost:8080/bands");
     let data = await response.json();
     return data;
   };
 
   // fetch datasæt med endpoint /schedule
   const fetchSchedule = async () => {
-    // let response = await fetch("http://localhost:8080/schedule");
     let response = await fetch("https://spring-awesome-stream.glitch.me/schedule");
     let data = await response.json();
     return data;

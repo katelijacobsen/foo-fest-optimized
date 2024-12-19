@@ -14,7 +14,6 @@ const SingleBand = ({ band }) => {
   const { name, genre, bio, logo } = band;
 
   //fået hjælp af chatGPT til få stillet betingelse op for billede url, ud fra instruktioner givet i opgavebeskrivelsen
-  // const imageUrl = logo.startsWith("https://") || logo.startsWith("http://") ? logo : `http://localhost:8080/logos/${logo}`;
   const imageUrl = logo && (logo.startsWith("https://") || logo.startsWith("http://")) ? logo : `https://spring-awesome-stream.glitch.me/logos/${logo}`;
 
   return (
