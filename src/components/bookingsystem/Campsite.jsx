@@ -19,11 +19,11 @@ export default function Campsite({ state, formAction }) {
   const [twoPersonCount, setTwoPersonCount] = useState(0);
   const [threePersonCount, setThreePersonCount] = useState(0);
 
-  const [selectedCampsite, setSelectedCampsite] = useState([]);
+  const [selectedCampsite, setSelectedCampsite] = useState(undefined);
+  const [spotsLeft, setSpotsLeft] = useState(0);
   const [greenCamping, setGreenCamping] = useState(false);
   const [countError, setCountError] = useState("");
   const [handleError, setHandleError] = useState("");
-  const [spotHandler, setSpotHandler] = useState(0);
 
   const [data, setData] = useState([]);
 
@@ -38,7 +38,7 @@ export default function Campsite({ state, formAction }) {
         setData(data);
         setLoading(false);
       });
-  }, []);
+  }, [spotsLeft]);
 
   const numPeople = state.tickets.single + state.tickets.vip;
   const allowUpdate = (delta) => {
@@ -75,13 +75,15 @@ export default function Campsite({ state, formAction }) {
   };
 
   const updateCampsite = (campsite, availableSpots) => {
+    console.log("campsite", campsite, "availablSpots", availableSpots);
     setCart((prev) => {
       return {
         ...prev,
         campsite,
       };
     });
-    setSelectedCampsite(campsite, availableSpots);
+    setSelectedCampsite(campsite);
+    setSpotsLeft(availableSpots);
   };
 
   const updateGreenCamping = (e) => {
@@ -95,32 +97,36 @@ export default function Campsite({ state, formAction }) {
   };
 
   const handleNext = (formData) => {
+    console.log(selectedCampsite, "camp yes");
+    console.log(spotsLeft, "spots yes");
+    console.log(spotsLeft - numPeople, "spots tilbage efter køb");
     if (!selectedCampsite) {
       setHandleError("Vælg venligst et campingområde, før du fortsætter.");
       return;
     }
 
-    console.log("do it know! pls", availableSpots);
-    console.log("do it know! pls plsss", availableSpots - numPeople);
     formData.set("campsite", selectedCampsite);
     formAction(formData);
   };
 
   useEffect(() => {
-    if (spotHandler === 0) return;
-    fetch(url, {
+    if (spotsLeft === 0) return console.log("virker ikke");
+    fetch("https://spring-awesome-stream.glitch.me/reserve-spot", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        // apikey: apikey,
-        Prefer: "return=representation",
       },
-      body: JSON.stringify({
-        area: selectedCampsite[0],
-        available: spotHandler,
-      }),
-    });
-  }, [spotHandler]);
+      body: {
+        area: selectedCampsite,
+        amount: spotsLeft,
+      },
+    })
+      .then((response) => console.log(response))
+      .catch((err) => console.error(err));
+    console.log("fetch kommer igennem");
+    console.log("area choose", selectedCampsite);
+    console.log("amount choose", spotsLeft);
+  }, [spotsLeft]);
 
   return (
     <div className="flex justify-center mx-4">
