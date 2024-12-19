@@ -13,7 +13,7 @@ const ceasarDressing = Caesar_Dressing({
   display: "swap",
 });
 
-export default function Campsite({ state, formAction }) {
+export default function Campsite({ state, formAction, setReservedId }) {
   const [spots, setSpots] = useState([]);
   const [cart, setCart] = useContext(CartContext);
   const [twoPersonCount, setTwoPersonCount] = useState(0);
@@ -98,6 +98,8 @@ export default function Campsite({ state, formAction }) {
 
   const handleNext = (formData) => {
     console.log(selectedCampsite, "camp yes");
+    console.log("mannn pls", aktiverPut);
+    setAktiverPut(numPeople);
 
     if (!selectedCampsite) {
       setHandleError("Vælg venligst et campingområde, før du fortsætter.");
@@ -105,6 +107,7 @@ export default function Campsite({ state, formAction }) {
     }
 
     formData.set("campsite", selectedCampsite);
+
     formAction(formData);
   };
 
@@ -121,9 +124,17 @@ export default function Campsite({ state, formAction }) {
         amount: antalBilletter,
       }),
     })
-      .then((response) => console.log(response))
-      .catch((err) => console.error(err));
-  }, [antalBilletter]);
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to reserve spot");
+        }
+        return response.json(); // Parse the JSON response
+      })
+      .then((data) => {
+        setReservedId(data.id); // Save the ID in state
+        console.log("Reserved Spot ID:", data.id);
+      });
+  }, [selectedCampsite]);
 
   return (
     <div className="flex justify-center mx-4">
