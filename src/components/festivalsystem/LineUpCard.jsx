@@ -5,9 +5,11 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 function LineUpCard({ name, logo, scene, day, start, end, logoCredits }) {
+  //states til at sætte state til om kortet er flipped eller ikke flipped
   const [isFlipped, setIsFlipped] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
+  //funktion som bliver kaldt ved eventet onClick
   function handleFlip() {
     if (!isAnimating) {
       setIsFlipped(!isFlipped);

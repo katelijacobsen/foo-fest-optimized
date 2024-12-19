@@ -1,6 +1,5 @@
-import React from "react";
+// import React from "react";
 import ProgramList from "@/components/festivalsystem/ProgramList";
-import Header from "@/components/global/Header";
 import Footer from "@/components/global/Footer";
 
 async function Page() {
@@ -58,10 +57,9 @@ async function Page() {
 
   return (
     <>
-      <Header />
       <main>
         <section className="max-w-screen-xl mx-auto py-[10vh]">
-          <ProgramList mergedArray={mergedData} days={days} />
+          <ProgramList mergedData={mergedData} days={days} />
         </section>
       </main>
       <Footer />

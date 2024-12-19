@@ -13,7 +13,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={` bg-background  ${inter.className} ${inter.className} antialiased`}>{children}</body>
+      <body className={` bg-background  ${inter.className} ${inter.className} antialiased`}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

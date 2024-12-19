@@ -1,5 +1,5 @@
 import LineUpList from "@/components/festivalsystem/LineUpList";
-import Header from "@/components/global/Header";
+
 import Footer from "@/components/global/Footer";
 
 export default async function Page() {
@@ -58,7 +58,6 @@ export default async function Page() {
 
   return (
     <>
-      <Header />
       <main className="my-24">
         <LineUpList mergedData={mergedData} />
       </main>

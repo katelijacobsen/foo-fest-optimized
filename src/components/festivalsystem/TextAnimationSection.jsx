@@ -1,8 +1,11 @@
 "use client";
+//useScroll tracker hvordan bruger scroller gennem sektionen
+//useTransform transformerer værdier baseret på input-værdier angivet const translateX variabler
+//motion gør at man kan animere html-elementer
 import { useScroll, useTransform, motion } from "framer-motion";
-
 const TestSection = () => {
   //https://motion.dev/docs/react-use-scroll
+  //useScrollProgress er en værdi som repræsenterer, hvor langt brugeren har scrollet i sektion. Værdi som angives mellem værdierne 0 og 1 - 0 = toppen af sektionen; 1 = bunden af sektionen
   const { scrollYProgress } = useScroll();
 
   //https://motion.dev/docs/react-use-transform

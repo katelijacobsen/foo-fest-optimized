@@ -15,13 +15,18 @@ const ceasarDressing = Caesar_Dressing({
 });
 
 const Header = () => {
+  //statevariabel isOpen er pr. default sat til false. Funktionen setIsOpen bruges til at opdatere stateværdien
   const [isOpen, setIsOpen] = useState(false);
+  //https://nextjs.org/docs/app/api-reference/functions/use-pathname
   const pathname = usePathname();
 
+  //funktion som kaldes ved event onClick. Ændrer isOpen state til true
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
 
+  //funktion isActivePage, som tager argumentet page og returnerer en boolean værdi. Den sammenligner den nuværende URL-sti (repræsenteret ved pathname) med den sti, der bliver sendt som argument (page).
+  //bruges til at style link. Viser hvilken side, man aktivt er inde på
   const isActivePage = (page) => pathname === page;
 
   return (

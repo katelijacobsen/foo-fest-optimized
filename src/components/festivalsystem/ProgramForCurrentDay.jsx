@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+
 //komponenter
 import BandCard from "./BandCard";
 import Headline from "../global/Headline";
@@ -30,7 +31,7 @@ const ProgramForCurrentDay = ({ mergedArray }) => {
   const scrollContainerRef2 = useRef(null);
   const scrollContainerRef3 = useRef(null);
 
-  // useEffect bruges her, så hver gang siden indlæses, så vises de artister der spiller idag, så der ikke bare er en blank side
+  // useEffect bruges her, så hver gang siden indlæses, så vises de artister der spiller den pågældende ugedag, så der ikke bare er en blank side
   useEffect(() => {
     const today = new Date().toLocaleDateString("en", { weekday: "short" }).toLowerCase();
     setCurrentDay(today);

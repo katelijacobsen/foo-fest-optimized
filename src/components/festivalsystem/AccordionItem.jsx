@@ -1,7 +1,7 @@
 import { GoPlus } from "react-icons/go";
 import { FiMinus } from "react-icons/fi";
 
-const Accordionitem = ({ DesktoptextSize, MobileTextSize, isOpen, setIsOpen, questionOne, questionTwo, questionThree, questionFour, item, textOne, textTwo, textThree, textFour }) => {
+const Accordionitem = ({ DesktoptextSize, MobileTextSize, isOpen, setIsOpen, questionOne, questionTwo, questionThree, questionFour, item, answerOne, answerTwo, answerThree, answerFour }) => {
   return (
     <li className="w-full my-3">
       <button
@@ -22,10 +22,10 @@ const Accordionitem = ({ DesktoptextSize, MobileTextSize, isOpen, setIsOpen, que
       </button>
       {isOpen == item && (
         <div className="pt-1">
-          <p className="text-base md:text-lg text-customWhite"> {textOne}</p>
-          <p className="text-base md:text-lg text-customWhite"> {textTwo}</p>
-          <p className="text-base md:text-lg text-customWhite"> {textThree}</p>
-          <p className="text-base md:text-lg text-customWhite"> {textFour}</p>
+          <p className="text-base md:text-lg text-customWhite"> {answerOne}</p>
+          <p className="text-base md:text-lg text-customWhite"> {answerTwo}</p>
+          <p className="text-base md:text-lg text-customWhite"> {answerThree}</p>
+          <p className="text-base md:text-lg text-customWhite"> {answerFour}</p>
         </div>
       )}
     </li>
