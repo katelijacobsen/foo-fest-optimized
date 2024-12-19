@@ -37,10 +37,42 @@ const PaymentForm = ({ formAction, router }) => {
   const mins = Math.floor(timeLeft / 1000 / 60);
   const secs = Math.floor((timeLeft / 1000) % 60);
 
+  // // kilde: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch
+  // const validateInput = (name, value) => {
+  //   switch (name) {
+  //     case "number":
+  //       return /^\d{0,16}$/.test(value) ? "" : "Kortnummer skal være maks 16 cifre.";
+  //     case "expiry":
+  //       return /^\d{0,4}$/.test(value) ? "" : "Mangler udløbsdato: MMYY.";
+  //     case "cvc":
+  //       return /^\d{0,3}$/.test(value) ? "" : "CVC skal være maks 3 cifre.";
+  //     case "name":
+  //       return value.trim() !== "" ? "" : "Indtast venligst kortholders navn.";
+  //     default:
+  //       return "";
+  //   }
+  // };
+  
+  // const handleInputChange = (evt) => {
+  //   const { name, value } = evt.target;
+  //   const error = validateInput(name, value);
+  
+  //   setState((prev) => ({
+  //     ...prev,
+  //     [name]: value,
+  //     errors: { ...prev.errors, [name]: error },
+  //   }));
+  // };
+  
+
+// Noget som AI har anbefalet jeg skulle bruge, men det virkede ikke til at være best practice.
+//Funktionen kigger om den lever op til krav for betalingsfeltet. 
   const handleInputChange = (evt) => {
     const { name, value } = evt.target;
-
-    // Kortnummer må maks indeholde 16 tal, osv.
+    // Her bliver der tilføjet betingelser for at opdatere vores state i vores Cards, som vi også har sat up som useState hook. 
+    // Så f.eks denne betingelse fortæller at hvis name er ens med number skal længden være maks 16.
+    // setState((prev) => ({ ...prev, [name]: value })); fortæller så at det ikke må overskrives. Den opdatere så kun feltet, der bliver ændret fra brugerens input. 
+    // Så fordi vi har med forskellige værdier at arbejde med opdatere vi det én af gangen.
     if (name === "number" && value.length <= 16) {
       setState((prev) => ({ ...prev, [name]: value }));
     }
