@@ -17,13 +17,22 @@ export default function ContactInfo({ tickets, formAction }) {
   // Når jeg så tilføjer min funktion ned til min form ville det kigge efter som den bruger gyldige tegn (contraint validation).
   const handleInputChange = (e) => {
     // inputfelt, der  blev ændret med closest metoden, som skulle finde form (input er den del af form)
-    // henter bare alle inputfelterne i formularen
+    // henter alle inputfelterne i formularen
     const inputs = e.target.closest("form").querySelectorAll("input");
     // laver en input array som går igennem hvert enkelte. checkValidity metoden checker om inputfelterne er godkendt.
     // allValid bliver sat til false fordi den ikke er
     const allValid = Array.from(inputs).every((input) => input.checkValidity());
     setIsFormValid(allValid);
   };
+
+  //Funktionen, der ikke virkede med regex tegn : 
+  // kilde fra stackoverflow : https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
+  // const validateEmail = (email) => {
+  //   return String(email)
+  //     .toLowerCase() //gør alle bogstaver små
+  //     .match( // Matcher en streng eller et objekt, der kan matches imod, og returnerer et array med resultaterne af søgningen, eller null, hvis der ikke findes nogen match.
+  //       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  //     );
 
   return (
     <motion.form
