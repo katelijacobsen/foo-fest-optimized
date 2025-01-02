@@ -1,6 +1,6 @@
 // import React from "react";
 import Header from "@/components/global/Header";
-import ProgramList from "@/components/festivalsystem/ProgramList";
+import ProgramList from "@/components/festivalsystem/program/ProgramList";
 import Footer from "@/components/global/Footer";
 
 async function Page() {

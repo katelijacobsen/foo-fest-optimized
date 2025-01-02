@@ -1,5 +1,5 @@
 import Header from "@/components/global/Header";
-import SingleBand from "@/components/festivalsystem/SingleBand";
+import SingleBand from "@/components/festivalsystem/program/band/SingleBand";
 import Footer from "@/components/global/Footer";
 
 const Band = async ({ params }) => {

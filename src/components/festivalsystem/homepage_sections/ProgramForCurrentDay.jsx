@@ -4,8 +4,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 //komponenter
-import BandCard from "./BandCard";
-import Headline from "../global/Headline";
+import BandCard from "../program/band/BandCard";
+import Headline from "../../global/Headline";
 import PrimaryButton from "@/components/global/buttonFolder/PrimaryButton";
 
 //ikoner

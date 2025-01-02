@@ -151,9 +151,7 @@ export default function Campsite({ state, formAction, setReservedId, setTimeOut 
             <li
               onClick={() => updateCampsite(spot.area, spot.available)}
               key={i}
-              className={`${spot.available < numPeople && "bg-gray-300 text-gray-500 cursor-not-allowed hidden disabled"}${
-                spot.area === selectedCampsite && "border-4"
-              } bg-gradient-to-tl border border-gray-900 from-customBlack_2 to-customBlack p-2 rounded-md select-none cursor-pointer`}
+              className={`${spot.available < numPeople && "bg-gray-300 text-gray-500 cursor-not-allowed hidden disabled"}${spot.area === selectedCampsite && "border-4"} bg-gradient-to-tl border border-gray-900 from-customBlack_2 to-customBlack p-2 rounded-md select-none cursor-pointer`}
               style={{
                 borderImage: spot.area === selectedCampsite ? "linear-gradient(to right, #EC2783, #D82023 , #EC4D08) 1" : "none",
                 borderRadius: "0.375rem",
@@ -196,15 +194,7 @@ export default function Campsite({ state, formAction, setReservedId, setTimeOut 
 
             <div className="flex items-center p-4 rounded-md bg-gradient-to-tl border border-green-800 from-black to-green-900">
               <div className="flex h-5">
-                <input
-                  id="helper-checkbox"
-                  aria-describedby="helper-checkbox-text"
-                  name="greenCamping"
-                  type="checkbox"
-                  checked={greenCamping}
-                  className="w-6 h-6 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500 dark:ring-offset-gray-800 focus:ring-2 checked:bg-green-600 checked:border-green-600"
-                  onChange={updateGreenCamping}
-                />
+                <input id="helper-checkbox" aria-describedby="helper-checkbox-text" name="greenCamping" type="checkbox" checked={greenCamping} className="w-6 h-6 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500 dark:ring-offset-gray-800 focus:ring-2 checked:bg-green-600 checked:border-green-600" onChange={updateGreenCamping} />
               </div>
               <div className="ms-2 text-sm">
                 <label htmlFor="helper-checkbox" className="font-bold inline-flex gap-2 items-baseline text-xl text-white">
@@ -225,15 +215,7 @@ export default function Campsite({ state, formAction, setReservedId, setTimeOut 
               {handleError}
             </p>
           )}
-          <button
-            className={`${
-              selectedCampsite
-                ? "font-semibold py-2 rounded-sm px-8 my-8 ml-auto text-xl bg-gradient-to-bl from-customPink text-white to-customOrange text-transparent w-full sm:w-auto"
-                : "bg-gray-500 rounded-sm px-8 py-2 my-8 text-xl ml-auto font-bold text-gray-300 cursor-not-allowed"
-            }`}
-            formAction={handleNext}
-            type="submit"
-          >
+          <button className={`${selectedCampsite ? "font-semibold py-2 rounded-sm px-8 my-8 ml-auto text-xl bg-gradient-to-bl from-customPink text-white to-customOrange text-transparent w-full sm:w-auto" : "bg-gray-500 rounded-sm px-8 py-2 my-8 text-xl ml-auto font-bold text-gray-300 cursor-not-allowed"}`} formAction={handleNext} type="submit">
             Næste
           </button>
         </div>

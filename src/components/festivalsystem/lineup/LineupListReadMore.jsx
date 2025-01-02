@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import Headline from "../global/Headline";
+import Headline from "@/components/global/Headline";
 import LineupRune from "@/img/svg/lineup_rune.svg";
 import PrimaryButton from "@/components/global/buttonFolder/PrimaryButton";
 

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import CampingMap from "@/img/svg/camping_map.svg";
-import Headline from "../global/Headline";
+import Headline from "@/components/global/Headline";
 import CampingRune from "@/img/svg/camping_rune.svg";
 import Link from "next/link";
 import PrimaryButton from "@/components/global/buttonFolder/PrimaryButton";
