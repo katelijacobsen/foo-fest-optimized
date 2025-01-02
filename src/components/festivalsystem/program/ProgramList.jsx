@@ -48,7 +48,9 @@ function ProgramList({ mergedData, days }) {
     <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1, delay: 0.5 }} animate={{ y: -40 }}>
       <>
         {isLoading ? (
-          <p className="text-center text-[2vw]">Hente program...</p>
+          <div className="flex justify-center items-center">
+            <span className="w-14 h-14 loader-animation "></span>
+          </div>
         ) : (
           <div>
             <div className="mt-24 mb-10 pl-4 ">

@@ -54,13 +54,15 @@ export default async function Home() {
   return (
     <div>
       <Header />
-      <HeroSection text="FOOFEST" />
-      <TicketsSection />
-      <LineupListReadMore initialLineup={bands} />
-      <ProgramForCurrentDay mergedArray={mergedData} days={days} />
-      <TextAnimationSection />
-      <Camping text="Campingdelen bliver meget mere end bare en praktisk løsning – det bliver en del af den samlede oplevelse. Her kan du bygge din egen lejr, inspireret af vikingernes livsstil. Måske pynte dit telt med vimpler, skjolde eller runer? Fællesbålene bliver samlingspunktet for historier og fællessang, hvor du kan møde andre festivalgæster og dele legender om fortidens helte." />
-      <Volunteer />
+      <main>
+        <HeroSection text="FOOFEST" />
+        <TicketsSection />
+        <LineupListReadMore initialLineup={bands} />
+        <ProgramForCurrentDay mergedArray={mergedData} days={days} />
+        <TextAnimationSection />
+        <Camping text="Campingdelen bliver meget mere end bare en praktisk løsning – det bliver en del af den samlede oplevelse. Her kan du bygge din egen lejr, inspireret af vikingernes livsstil. Måske pynte dit telt med vimpler, skjolde eller runer? Fællesbålene bliver samlingspunktet for historier og fællessang, hvor du kan møde andre festivalgæster og dele legender om fortidens helte." />
+        <Volunteer />
+      </main>
       <Footer />
     </div>
   );
