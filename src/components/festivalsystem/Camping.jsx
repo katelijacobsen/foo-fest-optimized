@@ -1,5 +1,5 @@
 "use client";
-import Accordion from "@/components/festivalsystem/accordion/Accordion";
+import Accordion from "@/components/festivalsystem/Accordion";
 import Headline from "@/components/global/Headline";
 import CampingRune from "@/img/svg/camping_rune.svg";
 import { motion } from "framer-motion";
