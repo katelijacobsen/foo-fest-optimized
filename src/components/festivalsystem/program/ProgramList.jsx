@@ -49,7 +49,7 @@ function ProgramList({ mergedData, days }) {
       <>
         {isLoading ? (
           <div className="flex justify-center items-center">
-            <span className="w-14 h-14 loader-animation "></span>
+            <span>Henter program</span>
           </div>
         ) : (
           <div>
