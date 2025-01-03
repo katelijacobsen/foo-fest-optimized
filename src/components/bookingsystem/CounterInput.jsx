@@ -41,7 +41,7 @@ const CounterInput = ({ count, setCount, max, name }) => {
        Vi har inde i vores Card givet en property 'name' der kan adskille om det så er en vip eller single billet */}
       <div className="flex item-center max-w-[8rem]" role="group" aria-labelledby={`counter-${name}-label`}>
         <button
-          aria-label="Fomindsk Antal Billetter"
+          aria-label="Minsk Antal Billetter"
           onClick={subtractQuantity}
           type="button"
           className="appearance-textfield bg-gray-950 hover:bg-gray-900 border border-gray-800 p-3 h-11 rounded-s-lg"
@@ -49,6 +49,7 @@ const CounterInput = ({ count, setCount, max, name }) => {
           <FiMinus />
         </button>
         <input
+        aria-labelledby={`counter-${name}-label`}
           name={name}
           value={count}
           onChange={() => {}}
