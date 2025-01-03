@@ -34,7 +34,7 @@ const Header = () => {
       <nav className="fixed z-30 top-0 w-full">
         <div className="flex py-2 px-4 justify-between items-center w-full list-none backdrop-blur-[2px] bg-gradient-to-b from-customBlack to-transparent">
           <Link href="/">
-            <Image src={Logo} width={70} height={70} alt="foofest logo" priority={false} loading="lazy" />
+            <Image quality={75} src={Logo} width={70} height={70} alt="foofest logo" priority={false} loading="lazy" />
           </Link>
 
           <ul className="hidden md:flex md:gap-6 space-x-4 justify-between items-center">
