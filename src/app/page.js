@@ -6,14 +6,25 @@ import Footer from "@/components/global/Footer";
 import TicketsSection from "@/components/festivalsystem/homepage_sections/TicketsSection";
 import dynamic from "next/dynamic";
 import TextAnimationSection from "@/components/festivalsystem/homepage_sections/TextAnimationSection";
-import { fetchBands } from "@/lib/supabase";
-import { fetchSchedule } from "@/lib/supabase";
 
 //lazyloading af herosection og dagens program
 const HeroSection = dynamic(() => import("@/components/festivalsystem/homepage_sections/HeroSection"));
 const ProgramForCurrentDay = dynamic(() => import("@/components/festivalsystem/homepage_sections/ProgramForCurrentDay"));
 
 export default async function Home() {
+  const fetchBands = async () => {
+    let response = await fetch("https://spring-awesome-stream.glitch.me/bands");
+    let data = await response.json();
+    return data;
+  };
+
+  // fetch datasæt med endpoint /schedule
+  const fetchSchedule = async () => {
+    let response = await fetch("https://spring-awesome-stream.glitch.me/schedule");
+    let data = await response.json();
+    return data;
+  };
+
   // Ved hjælp af await bliver de to API'er kaldt, og resultaterne gemmes i variablerne bands og schedule
   // Dette gør data tilgængelig til videre behandling i koden.
   const bands = await fetchBands();

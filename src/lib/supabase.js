@@ -23,21 +23,3 @@ export async function postSub(postData) {
     body: JSON.stringify(postData),
   });
 }
-
-export async function fetchBands() {
-  let response = await fetch("https://spring-awesome-stream.glitch.me/bands", {});
-  let data = await response.json();
-  return data;
-}
-
-export async function fetchSchedule() {
-  let response = await fetch("https://spring-awesome-stream.glitch.me/schedule", {});
-  let data = await response.json();
-  return data;
-}
-
-export async function getBandBySlug(slug) {
-  let response = await fetch(`https://spring-awesome-stream.glitch.me/bands/${slug}`, {});
-  let data = await response.json();
-  return data;
-}

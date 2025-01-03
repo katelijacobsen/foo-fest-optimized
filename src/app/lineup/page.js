@@ -1,10 +1,21 @@
 import Header from "@/components/global/Header";
 import LineUpList from "@/components/festivalsystem/lineup/LineUpList";
 import Footer from "@/components/global/Footer";
-import { fetchBands } from "@/lib/supabase";
-import { fetchSchedule } from "@/lib/supabase";
 
 export default async function Page() {
+  // fetch datasæt med endpoint /bands
+  const fetchBands = async () => {
+    let response = await fetch("https://spring-awesome-stream.glitch.me/bands");
+    let data = await response.json();
+    return data;
+  };
+
+  // fetch datasæt med endpoint /schedule
+  const fetchSchedule = async () => {
+    let response = await fetch("https://spring-awesome-stream.glitch.me/schedule");
+    let data = await response.json();
+    return data;
+  };
   // Ved hjælp af await bliver alle tre API'er kaldt, og resultaterne gemmes i variablerne bands, schedule og events.
   // Dette gør data tilgængelig til videre behandling i koden.
   const bands = await fetchBands();

@@ -1,11 +1,11 @@
 import Header from "@/components/global/Header";
 import SingleBand from "@/components/festivalsystem/program/band/SingleBand";
-import { getBandBySlug } from "@/lib/supabase";
 import Footer from "@/components/global/Footer";
 
 const Band = async ({ params }) => {
-  const { slug } = await params;
-  const data = await getBandBySlug(slug);
+  const slug = (await params).slug;
+  let response = await fetch(`https://spring-awesome-stream.glitch.me/bands/${slug}`);
+  let data = await response.json();
 
   return (
     <>
