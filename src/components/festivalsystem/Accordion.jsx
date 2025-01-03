@@ -1,5 +1,5 @@
 "use client";
-import Accordionitem from "./AccordionItem";
+import Accordionitem from "@/components/festivalsystem/AccordionItem";
 import { useState } from "react";
 
 const Accordion = ({ questionOne, questionTwo, questionThree, questionFour, answerOne, answerTwo, answerThree, answerFour, DesktoptextSize, MobileTextSize }) => {
