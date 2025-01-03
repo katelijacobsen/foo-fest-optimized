@@ -1,5 +1,5 @@
 import Header from "@/components/global/Header";
-import LineUpList from "@/components/festivalsystem/lineup/LineUpList";
+import LineUpList from "@/components/festivalsystem/LineUpList";
 import Footer from "@/components/global/Footer";
 
 export default async function Page() {

@@ -1,15 +1,15 @@
 import Header from "@/components/global/Header";
-import LineupListReadMore from "@/components/festivalsystem/lineup/LineupListReadMore";
-import Camping from "@/components/festivalsystem/homepage_sections/CampingSection";
-import Volunteer from "@/components/festivalsystem/homepage_sections/VolunteerSection";
+import LineupListReadMore from "@/components/festivalsystem/LineupListReadMore";
+import Camping from "@/components/festivalsystem/CampingSection";
+import Volunteer from "@/components/festivalsystem/VolunteerSection";
 import Footer from "@/components/global/Footer";
-import TicketsSection from "@/components/festivalsystem/homepage_sections/TicketsSection";
+import TicketsSection from "@/components/festivalsystem/TicketsSection";
 import dynamic from "next/dynamic";
-import TextAnimationSection from "@/components/festivalsystem/homepage_sections/TextAnimationSection";
+import TextAnimationSection from "@/components/festivalsystem/TextAnimationSection";
 
 //lazyloading af herosection og dagens program
-const HeroSection = dynamic(() => import("@/components/festivalsystem/homepage_sections/HeroSection"));
-const ProgramForCurrentDay = dynamic(() => import("@/components/festivalsystem/homepage_sections/ProgramForCurrentDay"));
+const HeroSection = dynamic(() => import("@/components/festivalsystem/HeroSection"));
+const ProgramForCurrentDay = dynamic(() => import("@/components/festivalsystem/ProgramForCurrentDay"));
 
 export default async function Home() {
   const fetchBands = async () => {

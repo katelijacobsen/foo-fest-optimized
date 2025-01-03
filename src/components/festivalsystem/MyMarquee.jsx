@@ -1,5 +1,5 @@
 import Marquee from "react-fast-marquee";
-import MyMarqueeComponent from "@/components/festivalsystem/marquee/MyMarqueeComponent";
+import MyMarqueeComponent from "@/components/festivalsystem/MyMarqueeComponent";
 
 const MyMarquee = () => {
   return (

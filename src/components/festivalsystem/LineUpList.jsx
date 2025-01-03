@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import LineUpCard from "@/components/festivalsystem/lineup/LineUpCard";
+import LineUpCard from "@/components/festivalsystem/LineUpCard";
 import { motion } from "framer-motion";
 import Headline from "@/components/global/Headline";
 import LineUpRune from "@/img/svg/lineup_rune.svg";

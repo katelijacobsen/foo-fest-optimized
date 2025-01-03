@@ -9,7 +9,7 @@ import Header from "@/components/global/Header";
 import { createContext, useActionState } from "react";
 import { Caesar_Dressing } from "next/font/google";
 import { useState, useEffect } from "react";
-import MyMarquee from "@/components/festivalsystem/marquee/MyMarquee";
+import MyMarquee from "@/components/festivalsystem/MyMarquee";
 
 const ceasarDressing = Caesar_Dressing({
   subsets: ["latin"],
