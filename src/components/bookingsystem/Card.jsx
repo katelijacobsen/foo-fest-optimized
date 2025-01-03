@@ -44,8 +44,9 @@ export default function Card({
       <div className="relative h-80 bg-gradient-to-tl from-customBlack to-customBlack_2 z-0 rounded-xl flex items-center justify-center">
         <div
           className={`${className} flex flex-col items-center rounded-xl p-4 text-center`}
-        >
+         aria-live="polite">
           <h2
+            aria-labelledby="card-header"
             className={`${ceasarDressing.className} ${
               header
             } text-2xl sm:text-3xl font-bold bg-gradient-to-r from-customPink via-customRed to-customOrange bg-clip-text text-transparent animate-gradient`}
