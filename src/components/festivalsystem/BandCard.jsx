@@ -12,7 +12,7 @@ function BandCard({ name, genre, start, end, slug, day, logo, width, logoCredits
       <div className="relative w-full h-64">
         {imageUrl ? (
           <>
-            <Image className="hover:brightness-50 transition ease-in-out duration-75 w-full h-full object-cover" quality={75} src={imageUrl} width={199} height={128} alt={`${name} logo - ${logoCredits}`} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" priority={true} />
+            <Image className="hover:brightness-50 transition ease-in-out duration-75 w-full h-full object-cover" quality={75} src={imageUrl} width={199} height={128} alt={`${name} logo - ${logoCredits}`} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" priority={false} loading="lazy" />
             <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 flex items-center justify-center transition-all duration-300">
               <p className="text-white text-center text-3xl font-bold">{name}</p>
             </div>
