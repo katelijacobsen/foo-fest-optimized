@@ -1,9 +1,12 @@
+"use client";
 import Image from "next/image";
 import Logo from "@/img/svg/Logo.svg";
 import Facebook from "@/img/svg/facebook_icon.svg";
 import Instagram from "@/img/svg/instagram_Icon.svg";
-import Newsletter from "./Newsletter";
+// import Newsletter from "./Newsletter";
 import Link from "next/link";
+import Container from "./Container";
+
 const Footer = () => {
   return (
     <div className="w-screen bg-customBlack_5 p-2 ">
@@ -18,7 +21,8 @@ const Footer = () => {
           <h2 className="text-4xl mb-2">Nyhedsbrev</h2>
           <p>Tilmeld dig vores nyhedsbrev</p>
         </div>
-        <Newsletter />
+        {/* <Newsletter /> */}
+        <Container />
       </div>
       <div className="flex gap-5 flex-row-reverse p-4 md:pt-0 ">
         <a href="#">

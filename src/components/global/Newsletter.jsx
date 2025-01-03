@@ -1,10 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import { postSub } from "@/lib/supabase";
-import { revalidatePath } from "next/cache";
+
 import Button from "./buttonFolder/PrimaryButton";
 
-const Newsletter = () => {
+const Newsletter = ({ setValidation, validation, setCounter }) => {
   const [data, setData] = useState([]);
   function postingSub(formData) {
     //   "use server";
@@ -17,7 +16,8 @@ const Newsletter = () => {
     //   revalidatePath("/");
   }
   useEffect(() => {
-    if (data === null) {
+    if (data.length <= 0) {
+      console.log("ik i dag ");
       return;
     }
 
@@ -35,6 +35,8 @@ const Newsletter = () => {
       .then((data) => {
         return () => console.log("date kommer vel?", data);
       });
+    setCounter(3);
+    setValidation(!validation);
   }, [data]);
   return (
     <form className="flex flex-col gap-5 items-center " action={postingSub}>
