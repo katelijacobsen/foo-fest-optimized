@@ -134,7 +134,6 @@ function ContactForm({ i, ticketType }) {
         </label>
         <input
           minlength="2"
-          min="2"
           id={`${ticketType}_firstName_${i}`}
           name={`${ticketType}_firstName_${i}`}
           type="text"
@@ -154,7 +153,6 @@ function ContactForm({ i, ticketType }) {
         </label>
         <input
           minlength="2"
-          min="2"
           id={`${ticketType}_lastName_${i}`}
           name={`${ticketType}_lastName_${i}`}
           type="text"
