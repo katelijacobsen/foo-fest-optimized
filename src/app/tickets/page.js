@@ -206,7 +206,7 @@ export default function Page() {
     <main className="pt-24">
       <MyMarquee />
       <Header />
-      {/* wrapper komponenter ind med useContext så det kan opdatere
+      {/* wrapper komponenter ind med createContext så det kan opdatere
       indkøbskurven. */}
       <CartContext.Provider value={[cart, setCart]}>
         <main>
