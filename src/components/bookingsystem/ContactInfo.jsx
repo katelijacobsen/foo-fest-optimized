@@ -15,15 +15,15 @@ export default function ContactInfo({ tickets, formAction }) {
   // Det var lidt svært at forstå regex, så her blevet der brugt AI
   // På mdn er checkValidity() en metode der returnere en boolean værdi, valid /invalid.
   // Når jeg så tilføjer min funktion ned til min form ville det kigge efter som den bruger gyldige tegn (contraint validation).
-  const handleInputChange = (e) => {
-    // inputfelt, der  blev ændret med closest metoden, som skulle finde form (input er den del af form)
-    // henter alle inputfelterne i formularen
-    const inputs = e.target.closest("form").querySelectorAll("input");
-    // laver en input array som går igennem hvert enkelte. checkValidity metoden checker om inputfelterne er godkendt.
-    // allValid bliver sat til false fordi den ikke er
-    const allValid = Array.from(inputs).every((input) => input.checkValidity());
-    setIsFormValid(allValid);
-  };
+  // const handleInputChange = (e) => {
+  //   // inputfelt, der  blev ændret med closest metoden, som skulle finde form (input er den del af form)
+  //   // henter alle inputfelterne i formularen
+  //   const inputs = e.target.closest("form").querySelectorAll("input");
+  //   // laver en input array som går igennem hvert enkelte. checkValidity metoden checker om inputfelterne er godkendt.
+  //   // allValid bliver sat til false fordi den ikke er
+  //   const allValid = Array.from(inputs).every((input) => input.checkValidity());
+  //   setIsFormValid(allValid);
+  // };
 
   //Funktionen, der ikke virkede med regex tegn :
   // kilde fra stackoverflow : https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
@@ -40,7 +40,7 @@ export default function ContactInfo({ tickets, formAction }) {
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.3 }}
       className="text-white rounded-lg bg-gradient-to-tl border border-gray-500 from-customBlack_2 to-customBlack p-4 relative z-0"
-      onChange={handleInputChange}
+      // onChange={handleInputChange}
     >
       <fieldset className="grid gap-6 mb-6 md:grid-cols-2 grid-cols-1">
         <legend className={`${ceasarDressing.className} block mb-2 text-3xl`}>
@@ -141,14 +141,14 @@ function ContactForm({ i, ticketType }) {
           autoComplete="given-name"
           required
           className="bg-gray-100 border border-gray-200 text-gray-900 text-sm rounded-md w-full p-2.5 focus:outline-none focus:ring-2 valid:[&:not(:placeholder-shown):not(:focus)]:bg-green-50 valid:[&:not(:placeholder-shown):not(:focus)]:border-green-500 valid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-green-500 invalid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red-50 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-400"
-          />
+        />
       </motion.div>
 
       <motion.div className="mb-2.5" variants={inputSpring}>
         <label
           htmlFor={`${ticketType}_lastName_${i}`}
           className="block text-sm font-medium text-white"
-          >
+        >
           Efternavn
         </label>
         <input
@@ -171,7 +171,7 @@ function ContactForm({ i, ticketType }) {
           name={`${ticketType}_email_${i}`}
           type="email"
           placeholder="joedoe@example.com"
-          pattern=".+@example\.com"
+          pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;"
           autoComplete="email"
           required
         />
