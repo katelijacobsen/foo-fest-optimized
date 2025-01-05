@@ -130,7 +130,7 @@ export default function PaymentConfirmed({ state }) {
           </div>
         </div>
         <div className="flex items-baseline gap-2">
-          <p className="flex mt-6 text-xl text-end font-bold text-white">Total: {sumCart} DKK</p>
+          <h3 className="flex mt-6 text-xl text-end font-bold text-white">Total: {sumCart} DKK</h3>
           <p className="flex mt-6 text-xs text-end text-gray-300">inkl. 99DKK bookinggebyr</p>
         </div>
 
