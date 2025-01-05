@@ -133,6 +133,7 @@ function ContactForm({ i, ticketType }) {
           Fornavn
         </label>
         <input
+          min="2"
           id={`${ticketType}_firstName_${i}`}
           name={`${ticketType}_firstName_${i}`}
           type="text"
@@ -140,17 +141,18 @@ function ContactForm({ i, ticketType }) {
           autoComplete="given-name"
           required
           className="bg-gray-100 border border-gray-200 text-gray-900 text-sm rounded-md w-full p-2.5 focus:outline-none focus:ring-2 valid:[&:not(:placeholder-shown):not(:focus)]:bg-green-50 valid:[&:not(:placeholder-shown):not(:focus)]:border-green-500 valid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-green-500 invalid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red-50 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-400"
-        />
+          />
       </motion.div>
 
       <motion.div className="mb-2.5" variants={inputSpring}>
         <label
           htmlFor={`${ticketType}_lastName_${i}`}
           className="block text-sm font-medium text-white"
-        >
+          >
           Efternavn
         </label>
         <input
+          min="2"
           id={`${ticketType}_lastName_${i}`}
           name={`${ticketType}_lastName_${i}`}
           type="text"
