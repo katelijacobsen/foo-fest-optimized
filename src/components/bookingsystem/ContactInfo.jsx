@@ -49,15 +49,15 @@ export default function ContactInfo({ tickets, formAction }) {
         {Array.from({ length: tickets.single }, (_, i) => (
           <ContactForm key={i} i={i} ticketType="single" />
         ))}
-          <div className="relative z-10 group rounded-xl grid md:col-span-2 p-[2px] overflow-hidden">
-            {tickets.vip > 0 && (
-              <span className="absolute inset-[-1000%] animate-[spin_7s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#EC2783_0%,#141415_50%,#EC2783_100%)]" />
-            )}
-            <div className="relative bg-gradient-to-tl from-customBlack_2 to-customBlack z-0 rounded-xl ">
-              <div className="overflow-hidden rounded-xl grid md:grid-cols-2 grid-col-1">
-                {Array.from({ length: tickets.vip }, (_, i) => (
-                  <ContactForm key={i} i={i} ticketType="vip" />
-                ))}
+        <div className="relative z-10 group rounded-xl grid md:col-span-2 p-[2px] overflow-hidden">
+          {tickets.vip > 0 && (
+            <span className="absolute inset-[-1000%] animate-[spin_7s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#EC2783_0%,#141415_50%,#EC2783_100%)]" />
+          )}
+          <div className="relative bg-gradient-to-tl from-customBlack_2 to-customBlack z-0 rounded-xl ">
+            <div className="overflow-hidden rounded-xl grid md:grid-cols-2 grid-col-1">
+              {Array.from({ length: tickets.vip }, (_, i) => (
+                <ContactForm key={i} i={i} ticketType="vip" />
+              ))}
             </div>
           </div>
         </div>
@@ -133,6 +133,7 @@ function ContactForm({ i, ticketType }) {
           Fornavn
         </label>
         <input
+          id={`${ticketType}_firstName_${i}`}
           name={`${ticketType}_firstName_${i}`}
           type="text"
           placeholder="Joe"
@@ -150,6 +151,7 @@ function ContactForm({ i, ticketType }) {
           Efternavn
         </label>
         <input
+          id={`${ticketType}_lastName_${i}`}
           name={`${ticketType}_lastName_${i}`}
           type="text"
           placeholder="Doe"
@@ -163,6 +165,7 @@ function ContactForm({ i, ticketType }) {
         <label htmlFor={`${ticketType}_email_${i}`}>Email</label>
         <input
           className="bg-gray-100 border border-gray-200 text-gray-900 text-sm rounded-md w-full p-2.5 focus:outline-none focus:ring-2 valid:[&:not(:placeholder-shown):not(:focus)]:bg-green-50 valid:[&:not(:placeholder-shown):not(:focus)]:border-green-500 valid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-green-500 invalid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red-50 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-400"
+          id={`${ticketType}_email_${i}`}
           name={`${ticketType}_email_${i}`}
           type="email"
           placeholder="joedoe@example.com"
@@ -174,6 +177,7 @@ function ContactForm({ i, ticketType }) {
       <motion.div className="mb-2.5" variants={inputSpring}>
         <label htmlFor={`${ticketType}_phonenumber_${i}`}>Mobilnummer</label>
         <input
+          id={`${ticketType}_phonenumber_${i}`}
           name={`${ticketType}_phonenumber_${i}`}
           type="tel"
           placeholder="12 34 56 78"
