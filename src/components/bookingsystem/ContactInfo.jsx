@@ -133,6 +133,7 @@ function ContactForm({ i, ticketType }) {
           Fornavn
         </label>
         <input
+        aria-describedby="fornavn-felt"
           minlength="2"
           id={`${ticketType}_firstName_${i}`}
           name={`${ticketType}_firstName_${i}`}
@@ -152,6 +153,7 @@ function ContactForm({ i, ticketType }) {
           Efternavn
         </label>
         <input
+        aria-describedby="efternavn-felt"
           minlength="2"
           id={`${ticketType}_lastName_${i}`}
           name={`${ticketType}_lastName_${i}`}
@@ -173,6 +175,7 @@ function ContactForm({ i, ticketType }) {
           placeholder="joedoe@example.com"
           pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;"
           autoComplete="email"
+          aria-describedby="email-description"
           required
         />
       </motion.div>
@@ -180,6 +183,7 @@ function ContactForm({ i, ticketType }) {
       <motion.div className="mb-2.5" variants={inputSpring}>
         <label htmlFor={`${ticketType}_phonenumber_${i}`}>Mobilnummer</label>
         <input
+        aria-describedby="telefonnummer-felt"
           id={`${ticketType}_phonenumber_${i}`}
           name={`${ticketType}_phonenumber_${i}`}
           type="tel"
