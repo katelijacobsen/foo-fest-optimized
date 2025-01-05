@@ -171,6 +171,7 @@ function ContactForm({ i, ticketType }) {
           name={`${ticketType}_email_${i}`}
           type="email"
           placeholder="joedoe@example.com"
+          pattern=".+@example\.com"
           autoComplete="email"
           required
         />
