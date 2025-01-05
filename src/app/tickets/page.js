@@ -22,7 +22,7 @@ const ceasarDressing = Caesar_Dressing({
 // Multistep-form (f.eks. hvis brugeren er gået over de 5min i PaymentFlow).
 //=================//
 const defaultState = {
-  step: 3,
+  step: 4,
   tickets: {
     single: 2,
     vip: 2,
