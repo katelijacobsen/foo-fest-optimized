@@ -149,7 +149,7 @@ const PaymentForm = ({ formAction, reservedId }) => {
                 Kortholder
               </label>
               <input
-                id="kortholder"
+                id="kortHolder"
                 aria-label="kortHolder navn"
                 className="p-2 rounded-md w-full text-black border-2 focus:ring focus:ring-customRed"
                 name="name"
@@ -167,7 +167,7 @@ const PaymentForm = ({ formAction, reservedId }) => {
                   Udløbsdato
                 </label>
                 <input
-                  id="udloebsdato"
+                  id="udløbsdato-mm/åå"
                   aria-label="udløbsdato-mm/åå"
                   className="p-2 rounded-md w-full text-black border-2 focus:ring focus:ring-customRed"
                   name="expiry"
