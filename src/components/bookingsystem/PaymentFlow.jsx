@@ -135,7 +135,7 @@ const PaymentForm = ({ formAction, reservedId }) => {
               </label>
               <input
                 id="kortnummer"
-                aria-label="Kortnummer"
+                aria-label="kortnummer"
                 className="p-2 rounded-md w-full text-black border-2 focus:ring focus:ring-customRed"
                 name="number"
                 value={state.number}
@@ -150,7 +150,7 @@ const PaymentForm = ({ formAction, reservedId }) => {
               </label>
               <input
                 id="kortholder"
-                aria-label="Kortholder navn"
+                aria-label="kortHolder navn"
                 className="p-2 rounded-md w-full text-black border-2 focus:ring focus:ring-customRed"
                 name="name"
                 value={state.name}
@@ -163,12 +163,12 @@ const PaymentForm = ({ formAction, reservedId }) => {
             </div>
             <div className="flex flex-col gap-2 w-full sm:flex-row sm:gap-4">
               <div className="flex flex-col w-full">
-                <label htmlFor="udløbsdato" className="font-bold text-md">
+                <label htmlFor="udløbsdato-mm/åå" className="font-bold text-md">
                   Udløbsdato
                 </label>
                 <input
                   id="udloebsdato"
-                  aria-label="Udløbsdato MM/ÅÅ"
+                  aria-label="udløbsdato-mm/åå"
                   className="p-2 rounded-md w-full text-black border-2 focus:ring focus:ring-customRed"
                   name="expiry"
                   value={state.expiry}
@@ -180,12 +180,12 @@ const PaymentForm = ({ formAction, reservedId }) => {
                 />
               </div>
               <div className="flex flex-col w-full">
-                <label htmlFor="Kontrolcifre" className="font-bold text-md">
+                <label htmlFor="kontrolcifre" className="font-bold text-md">
                   CVC
                 </label>
                 <input
                 id="kontrolcifre"
-                aria-label="Kontrolcifre"
+                aria-label="kontrolcifre"
                   className="p-2 rounded-md w-full text-black border-2 focus:ring focus:ring-customRed"
                   name="cvc"
                   value={state.cvc}
