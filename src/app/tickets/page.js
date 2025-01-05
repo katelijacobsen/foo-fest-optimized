@@ -22,15 +22,15 @@ const ceasarDressing = Caesar_Dressing({
 // Multistep-form (f.eks. hvis brugeren er gået over de 5min i PaymentFlow).
 //=================//
 const defaultState = {
-  step: 4,
+  step: 0,
   tickets: {
-    single: 2,
-    vip: 2,
+    single: 0,
+    vip: 0,
   },
   campsite: undefined,
   tents: {
-    twoPeople: 2,
-    threePeople: 2,
+    twoPeople: 0,
+    threePeople: 0,
     greenCamping: false,
   },
   guests: {
