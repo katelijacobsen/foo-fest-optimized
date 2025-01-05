@@ -129,6 +129,7 @@ function ContactForm({ i, ticketType }) {
         <label
           htmlFor={`${ticketType}_firstName_${i}`}
           className="block text-sm font-medium text-white"
+          id="fornavn-felt"
         >
           Fornavn
         </label>
@@ -149,6 +150,7 @@ function ContactForm({ i, ticketType }) {
         <label
           htmlFor={`${ticketType}_lastName_${i}`}
           className="block text-sm font-medium text-white"
+          id="efternavn-felt"
         >
           Efternavn
         </label>
@@ -165,8 +167,9 @@ function ContactForm({ i, ticketType }) {
         />
       </motion.div>
 
-      <motion.div className="mb-2.5" variants={inputSpring}>
+      <motion.div className="mb-2.5 flex flex-col" variants={inputSpring}>
         <label htmlFor={`${ticketType}_email_${i}`}>Email</label>
+        <span id="email-felt" className="text-xs text-gray-400">Dette felt kræver mindst et @-tegn.</span>
         <input
           className="bg-gray-100 border border-gray-200 text-gray-900 text-sm rounded-md w-full p-2.5 focus:outline-none focus:ring-2 valid:[&:not(:placeholder-shown):not(:focus)]:bg-green-50 valid:[&:not(:placeholder-shown):not(:focus)]:border-green-500 valid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-green-500 invalid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red-50 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-400"
           id={`${ticketType}_email_${i}`}
@@ -175,13 +178,13 @@ function ContactForm({ i, ticketType }) {
           placeholder="joedoe@example.com"
           pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;"
           autoComplete="email"
-          aria-describedby="email-description"
+          aria-describedby="email-felt"
           required
         />
       </motion.div>
 
       <motion.div className="mb-2.5" variants={inputSpring}>
-        <label htmlFor={`${ticketType}_phonenumber_${i}`}>Mobilnummer</label>
+        <label htmlFor={`${ticketType}_phonenumber_${i}`} id="telefonnummer-felt">Mobilnummer</label>
         <input
         aria-describedby="telefonnummer-felt"
           id={`${ticketType}_phonenumber_${i}`}
