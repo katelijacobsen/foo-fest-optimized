@@ -33,11 +33,15 @@ const CounterInput = ({ count, setCount, max, name }) => {
   // Link til source: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/group_role
 
   return (
-    <div role="group" aria-labelledby={`counter-${name}-label`}>
-      <label htmlFor="numberInput">
+    <>
+      <label htmlFor="numberInput" aria-labelledby={`counter-${name}-label`}>
         {/* Fortæller her at vi gerne vil gruppere vores elementer som samlet input.
        Vi har inde i vores Card givet en property 'name' der kan adskille om det så er en vip eller single billet */}
-        <div className="flex item-center max-w-[8rem]">
+        <div
+          className="flex item-center max-w-[8rem]"
+          role="group"
+          
+        >
           <button
             aria-label="Minsk Antal Billetter"
             onClick={subtractQuantity}
@@ -70,7 +74,7 @@ const CounterInput = ({ count, setCount, max, name }) => {
           Du kan maks købe {max} billetter.
         </p>
       </label>
-    </div>
+    </>
   );
 };
 
