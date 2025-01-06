@@ -11,7 +11,7 @@ const ceasarDressing = Caesar_Dressing({
   display: "swap",
 });
 
-const ThirdHero = ({ text }) => {
+const HeroSection = ({ text }) => {
   //https://ui.indie-starter.dev/docs/text-animation
   const splittedText = text.split("");
 
@@ -56,4 +56,4 @@ const ThirdHero = ({ text }) => {
   );
 };
 
-export default ThirdHero;
+export default HeroSection;
