@@ -45,7 +45,7 @@ const Header = () => {
               <Link href="/program">Program</Link>
             </li>
             <li className={` ${isActivePage("/lineup") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"}`}>
-              <Link href="/lineup">Line-Up</Link>
+              <Link href="/lineup">Lineup</Link>
             </li>
             <li className={`${isActivePage("/camping") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"}`}>
               <Link href="/camping">Camping</Link>
@@ -85,7 +85,7 @@ const Header = () => {
               </li>
               <li>
                 <Link className={` ${ceasarDressing.className} text-4xl  ${isActivePage("/lineup") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white"}`} href="/lineup">
-                  LINE-UP
+                  LINEUP
                 </Link>
               </li>
               <li>

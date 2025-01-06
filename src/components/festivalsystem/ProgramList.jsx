@@ -66,6 +66,7 @@ function ProgramList({ mergedData, days }) {
             <section className="p-2 md:px-6 md:py-12 z-0">
               <div className="grid md:grid-cols-[.5fr_1fr] mb-20">
                 <div className="sticky top-[112px] md:top-28 self-start z-10 bg-gradient-to-bl from-customBlack to-transparent w-fit px-2 py-2">
+                  <p className=" text-lg md:text-2xl text-customWhite_4">Scene</p>
                   <h2 className="text-3xl md:text-4xl">Midgard</h2>
                 </div>
                 <div className="grid grid-cols-2 gap-4 ">
@@ -77,6 +78,7 @@ function ProgramList({ mergedData, days }) {
               </div>
               <div className="grid md:grid-cols-[.5fr_1fr] mb-20">
                 <div className="sticky top-[112px] md:top-28 self-start z-10 bg-gradient-to-bl from-customBlack to-transparent w-fit px-2 py-2">
+                  <p className=" text-lg md:text-2xl text-customWhite_4">Scene</p>
                   <h2 className="text-3xl md:text-4xl">Vanaheim</h2>
                 </div>
                 <div className="grid grid-cols-2 gap-4 ">
@@ -87,6 +89,7 @@ function ProgramList({ mergedData, days }) {
               </div>
               <div className="grid md:grid-cols-[.5fr_1fr] mb-20">
                 <div className="sticky top-[112px] md:top-28 self-start z-10 bg-gradient-to-bl from-customBlack to-transparent w-fit px-2 py-2">
+                  <p className=" text-lg md:text-2xl text-customWhite_4">Scene</p>
                   <h2 className="text-3xl md:text-4xl">Jotunheim</h2>
                 </div>
                 <div className="grid grid-cols-2 gap-4 ">
