@@ -1,3 +1,4 @@
+import PopupContainer from "@/components/global/PopupContainer";
 import "./globals.css";
 
 import { Inter } from "next/font/google";
@@ -12,7 +13,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={` bg-background  ${inter.className} ${inter.className} antialiased`}>{children}</body>
+      <body className={` bg-background  ${inter.className} ${inter.className} antialiased`}>
+        <PopupContainer></PopupContainer>
+        {children}
+      </body>
     </html>
   );
 }
