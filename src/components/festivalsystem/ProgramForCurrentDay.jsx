@@ -63,7 +63,8 @@ const ProgramForCurrentDay = ({ mergedArray }) => {
         </div>
         <div>
           <div className="py-6">
-            <h1 className={`pb-4 text-3xl md:text-5xl`}>Midgard</h1>
+            <p className=" text-lg md:text-2xl text-customWhite_4">Scene</p>
+            <h1 className=" pb-4 text-3xl md:text-5xl">Midgard</h1>
             <div className="overflow-x-auto" ref={scrollContainerRef1}>
               <div className="flex gap-4">
                 {sortedByTime("Midgard").map((band) => (
@@ -81,6 +82,7 @@ const ProgramForCurrentDay = ({ mergedArray }) => {
             </div>
           </div>
           <div className="py-6">
+            <p className=" text-lg md:text-2xl text-customWhite_4">Scene</p>
             <h1 className={` pb-4 text-3xl md:text-5xl`}>Vanaheim</h1>
             <div className="overflow-x-auto" ref={scrollContainerRef2}>
               <div className="flex gap-4">
@@ -99,6 +101,7 @@ const ProgramForCurrentDay = ({ mergedArray }) => {
             </div>
           </div>
           <div className="py-6">
+            <p className=" text-lg md:text-2xl text-customWhite_4">Scene</p>
             <h1 className={` pb-4 text-3xl md:text-5xl`}>Jotunheim</h1>
             <div className="overflow-x-auto" ref={scrollContainerRef3}>
               <div className="flex gap-4">

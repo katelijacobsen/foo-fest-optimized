@@ -33,21 +33,24 @@ const Header = () => {
     <header>
       <nav className="fixed z-30 top-0 w-full">
         <div className="flex py-2 px-4 justify-between items-center w-full list-none backdrop-blur-[2px] bg-gradient-to-b from-customBlack to-transparent">
-          <Link href="/">
-            <Image quality={75} src={Logo} width={70} height={70} alt="foofest logo" priority={false} loading="lazy" />
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link href="/">
+              <Image quality={75} src={Logo} width={70} height={70} alt="foofest logo" priority={false} loading="lazy" />
+            </Link>
+            <p className="">12/7-19/7 2025</p>
+          </div>
 
-          <ul className="hidden md:flex md:gap-6 space-x-4 justify-between items-center">
-            <li className={` ${isActivePage("/program") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white"}`}>
+          <ul className="hidden md:flex md:gap-6 justify-between items-center">
+            <li className={` ${isActivePage("/program") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"}`}>
               <Link href="/program">Program</Link>
             </li>
-            <li className={` ${isActivePage("/lineup") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white"}`}>
-              <Link href="/lineup">Line-Up</Link>
+            <li className={` ${isActivePage("/lineup") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"}`}>
+              <Link href="/lineup">Lineup</Link>
             </li>
-            <li className={`${isActivePage("/camping") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white"}`}>
+            <li className={`${isActivePage("/camping") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"}`}>
               <Link href="/camping">Camping</Link>
             </li>
-            <li className={` ${isActivePage("/volunteer") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white"}`}>
+            <li className={` ${isActivePage("/volunteer") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"}`}>
               <Link href="/volunteer">Bliv Frivillig</Link>
             </li>
             <li>
@@ -82,7 +85,7 @@ const Header = () => {
               </li>
               <li>
                 <Link className={` ${ceasarDressing.className} text-4xl  ${isActivePage("/lineup") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white"}`} href="/lineup">
-                  LINE-UP
+                  LINEUP
                 </Link>
               </li>
               <li>
