@@ -1,6 +1,5 @@
 //importere vores packagejson: emailjs & pdfjs:
 import emailjs from "@emailjs/browser";
-import { jsPdf } from  "jspdf";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -13,52 +12,21 @@ const ceasarDressing = Caesar_Dressing({
   display: "swap",
 });
 
-export async function POST(ask) {
-  try {
-    //laver vores konstanter vi sener skal bruge
-    const { state } = await ask.json(); 
-    const pdf = new jsPdf();
+export async function sendOrderConfirmation(recepient, state) {
+  const response = await emailjs.send(
+    "service_hht5308",
+    "template_8o2l2mj",
+    {
+      email: recepient.email,
+      orderID: "100000",
+      customerName: recepient.firstName,
+    },
+    //publicKey
+    "Z76vT5PvRI9HWFbB1"
+  );
 
-    //Vi vil gerne fortælle at vi med POST gerne vil lave en PDF med jspdf dependency: 
-    // Hence, formatet er på A4 på default. Link til source: https://raw.githack.com/MrRio/jsPDF/master/docs/index.html
-    pdf.text("Tak for dit køb");
-    //Henter data fra state
-    pdf.text("`Total: ${state.total}` DKK inkl 99DKK bookinggebyr")
-
-    //Det samme kan næsten gøre med gæsterne, men fordi vi kan have flere gæster, kan vi lave en forEach, så funktionen køre hver for sig:
-    pdf.text("Vikinger:");
-    state.guests.single.forEach((guest, i) => {
-      pdf.text(`${i}. ${guest.single} ${guest.firstName} ${guest.lastName} - Enkel Billet`)
-      pdf.text(`${i}. ${guest.vip} ${guest.firstName} ${guest.lastName} - VIP Billet`)
-    });email
-    // Campsite 
-    pdf.text("Campsite:");
-    pdf.text(`${state.campsite}`);
-    //Green Camping
-    pdf.text("Green Camping:");
-    pdf.text(`${state.tents.greenCamping}`)
-
-
-    const pdfBase64 = btoa(pdf.output());
-
-    
-    // Nu kan vi med vores genererede PDF konfigurer emailjs server
-    // indsætter vores serviceID & templateID in i vores emailjs.send 
-    // Link til source: https://www.emailjs.com/docs/sdk/send/
-    emailjs.send("service_hht5308", "template_m0viyr7",
-      {
-        pdf: pdfBase64,
-        total: state.total
-      },
-      //publicKey
-      "Z76vT5PvRI9HWFbB1"
-    )
-
-  
-  } catch (error){
-    console.log("Kan ikke sende e-mail", error)
-  }
-  }
+  console.log(response);
+}
 
 export default function PaymentConfirmed({ state }) {
   // sætter vores svg til false så den er skjult i starten.
@@ -70,23 +38,20 @@ export default function PaymentConfirmed({ state }) {
   }, []);
 
   // 1. Kald en server action (state). Vi sender så en server action med en input-parametre.
-  // Basically den tager data fra state og sender den vider til serveren som input: 
+  // Basically den tager data fra state og sender den vider til serveren som input:
 
   // 2. I den server action, lav pdf/html udfra staten og send emailen
   useEffect(() => {
-    async function sendOrder() {
-      const response = await fetch("https://jgksmouhalsxeziytygd.supabase.co/rest/v1/personer", {
-        method: "POST",
-        headers: { "Content-Type" : application/json},
-        body: JSON.stringify({state})
-      })
-      if(!response){
-        Error("E-mail kunne ikke sendes")
-      }
+    async function send() {
+      //Tag den aller første single fra vores contactInfo Form
+      const recepient =
+        state.guests.single.length > 0
+          ? state.guests.single[0]
+          : state.guests.vip[0];
+      sendOrderConfirmation(recepient, state);
     }
-    sendOrder();
-
-  }, [state]);
+    send();
+  }, []);
 
   // Animationens properties: hvordan den skal skjules og blive vist.
   // laver en funktion der hedder visibel og definere derfra vores properties (måden den skal animeres på)
