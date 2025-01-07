@@ -74,7 +74,6 @@ export default function Campsite({ state, formAction, setReservedId, setTimeOut 
   };
 
   const updateCampsite = (campsite, availableSpots) => {
-    console.log("campsite", campsite, "availablSpots", availableSpots);
     setCart((prev) => {
       return {
         ...prev,
@@ -107,7 +106,7 @@ export default function Campsite({ state, formAction, setReservedId, setTimeOut 
   };
 
   useEffect(() => {
-    if (antalBilletter === 0) return console.log("virker ikke");
+    if (antalBilletter === 0) return;
 
     fetch("https://spring-awesome-stream.glitch.me/reserve-spot", {
       method: "PUT",
@@ -128,8 +127,6 @@ export default function Campsite({ state, formAction, setReservedId, setTimeOut 
       .then((data) => {
         setReservedId(data.id); // Save the ID in state
         setTimeOut(data.timeout);
-        console.log("Reserved Spot ID:", data.id);
-        console.log("Time start", data.timeout);
       });
   }, [selectedCampsite]);
 

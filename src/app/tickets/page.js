@@ -68,8 +68,6 @@ export default function Page() {
       };
     }
     if (prev.step === 1) {
-      console.log(formData.get("campsite"));
-
       return {
         ...prev,
         step: prev.step + 1,
@@ -95,10 +93,9 @@ export default function Page() {
         email: formData.get(`vip_email_${i}`),
         phonenumber: formData.get(`vip_phonenumber_${i}`),
       }));
-      console.log("singleG", singleGuests);
-      console.log("vipG", vipGuests);
+
       const combined = [...singleGuests, ...vipGuests];
-      console.log("sammen", combined);
+
       setData(combined);
 
       return {
@@ -128,7 +125,6 @@ export default function Page() {
     }
   };
   useEffect(() => {
-    console.log("useEffect bliver brugt", data);
     fetch(url, {
       method: "POST",
       headers: {
@@ -140,7 +136,7 @@ export default function Page() {
     })
       .then((res) => res.json())
       .then((data) => {
-        return () => console.log("date kommer vel?", data);
+        return () => console.log("date", data);
       });
   }, [data]);
 
@@ -172,18 +168,17 @@ export default function Page() {
   // F.eks. har vi givet state vider til campsite. Ligesom en filmappe struktur prøver den at finde antal af billetter vi tidliger har
   // valgt, og bruger det samme antal telte-billetter brugern må bruge.
   const [state, formAction] = useActionState(handleStep, defaultState);
-  const [timeLeft, setTimeLeft] = useState(60 * 5 * 1000); // Her bliver der holdt øje med tiden (5min)
+
   const [timeOut, setTimeOut] = useState(30);
-  console.log(state);
 
   useEffect(() => {
-    if (state.step === 1 && timeOut <= 0) {
+    if (state.step >= 4 && timeOut <= 0) {
       setTimeOut();
     }
-  });
+  }, [timeOut]);
 
   useEffect(() => {
-    if (timeOut <= 0) {
+    if (state.step < 3 && timeOut <= 0) {
       if (state.step > 0) {
         alert("Tiden er udløbet. Du bliver aldrig rigtig en viking :(");
         formAction(null);
@@ -221,7 +216,7 @@ export default function Page() {
               {state.step === 0 && <ChooseTicket cart={cart} formAction={formAction} />}
               {state.step === 1 && <Campsite setTimeOut={setTimeOut} setReservedId={setReservedId} state={state} formAction={formAction} />}
               {state.step === 2 && <ContactInfo state={state} tickets={state.tickets} formAction={formAction} />}
-              {state.step === 3 && <PaymentFlow reservedId={reservedId} formAction={formAction} />}
+              {state.step === 3 && <PaymentFlow setTimeOut={setTimeOut} reservedId={reservedId} formAction={formAction} />}
               {state.step === 4 && <PaymentComfirmed state={state} startDraw={true} />}
             </section>
             {state.step !== 4 && <Cart cart={cart} />}

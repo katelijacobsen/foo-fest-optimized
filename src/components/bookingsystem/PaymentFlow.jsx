@@ -9,7 +9,7 @@ const ceasarDressing = Caesar_Dressing({
   display: "swap",
 });
 
-const PaymentForm = ({ formAction, reservedId }) => {
+const PaymentForm = ({ formAction, reservedId, setTimeOut }) => {
   // objekter med empty strings der bliver holdt øje med i kortbetalingen.
   const [state, setState] = useState({
     number: "",
@@ -73,13 +73,14 @@ const PaymentForm = ({ formAction, reservedId }) => {
       setState((prev) => ({ ...prev, [name]: value }));
     }
   };
+  const [paymentConfirmed, setPaymentConfirmed] = useState(0);
 
   const handleInputFocus = (evt) => {
     setState((prev) => ({ ...prev, focus: evt.target.name }));
   };
 
   useEffect(() => {
-    if (reservedId === undefined) return;
+    if (paymentConfirmed === 0) return;
 
     fetch("https://spring-awesome-stream.glitch.me/fullfill-reservation", {
       method: "POST",
@@ -90,17 +91,9 @@ const PaymentForm = ({ formAction, reservedId }) => {
         id: reservedId,
       }),
     });
-    // .then((response) => {
-    //   if (!response.ok) {
-    //     throw new Error("Failed to reserve spot");
-    //   }
-    //   return response.json(); // Parse the JSON response
-    // })
-    // .then((data) => {
-    //   setReservedId(data.id); // Save the ID in state
-    //   console.log("Reserved Spot ID:", data.id);
-    // });
-  }, [reservedId]);
+
+    setTimeOut(0);
+  }, [paymentConfirmed]);
   return (
     <>
       <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }} className=" border border-gray-600 p-4 sm:p-8 rounded-lg bg-gradient-to-tl from-customBlack_2 to-customBlack m-4">
@@ -179,7 +172,12 @@ const PaymentForm = ({ formAction, reservedId }) => {
                 />
               </div>
             </div>
-            <button aria-label="Afslut og Betal" formAction={formAction} className="font-bold self-end px-8 py-2 my-8 text-xl rounded-sm bg-gradient-to-bl from-customPink text-white to-customOrange w-full sm:w-auto">
+            <button
+              onClick={() => setPaymentConfirmed((prev) => prev + 1)}
+              aria-label="Afslut og Betal"
+              formAction={formAction}
+              className="font-bold self-end px-8 py-2 my-8 text-xl rounded-sm bg-gradient-to-bl from-customPink text-white to-customOrange w-full sm:w-auto"
+            >
               Afslut & Betal
             </button>
           </form>
