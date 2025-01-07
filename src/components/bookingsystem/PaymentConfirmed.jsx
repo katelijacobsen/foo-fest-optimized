@@ -1,5 +1,5 @@
 //importere vores packagejson: emailjs & pdfjs:
-import { emailjs } from "emailjs";
+import emailjs from "@emailjs/browser";
 import { jsPdf } from  "jspdf";
 
 import { motion } from "framer-motion";
