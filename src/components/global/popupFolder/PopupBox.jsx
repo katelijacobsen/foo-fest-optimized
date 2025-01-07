@@ -39,6 +39,7 @@ const PopupNewsletter = ({ modalOpen, setModalOpen }) => {
         "
         // giver de forskellige varianter af din animation
         variants={dropIn}
+        drag
         // Her siger du hvilke her giver du de forskllige animation state deres opgave
         initial="visible"
         animate="visible"
