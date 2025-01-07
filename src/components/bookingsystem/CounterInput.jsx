@@ -6,8 +6,6 @@ const CounterInput = ({ count, setCount, max, name }) => {
       return;
     }
     setCount(count + 1);
-
-    console.log("get Count", count);
   };
 
   const subtractQuantity = () => {
@@ -33,26 +31,13 @@ const CounterInput = ({ count, setCount, max, name }) => {
   // Link til source: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/group_role
 
   return (
-    <div
-      aria-labelledby={`counter-${name}-label`}
-      className="flex item-center max-w-[8rem]"
-      role="group"
-    >
-      <label
-        htmlFor="numberInput"
-        id={`counter-${name}-label`}
-        className="sr-only"
-      >
+    <div aria-labelledby={`counter-${name}-label`} className="flex item-center max-w-[8rem]" role="group">
+      <label htmlFor="numberInput" id={`counter-${name}-label`} className="sr-only">
         Det kun muligt at købe maks {max}.
       </label>
       {/* Fortæller her at vi gerne vil gruppere vores elementer som samlet input.
        Vi har inde i vores Card givet en property 'name' der kan adskille om det så er en vip eller single billet */}
-      <button
-        aria-label="Minsk Antal Billetter"
-        onClick={subtractQuantity}
-        type="button"
-        className="appearance-textfield bg-gray-950 hover:bg-gray-900 border border-gray-800 p-3 h-11 rounded-s-lg"
-      >
+      <button aria-label="Minsk Antal Billetter" onClick={subtractQuantity} type="button" className="appearance-textfield bg-gray-950 hover:bg-gray-900 border border-gray-800 p-3 h-11 rounded-s-lg">
         <FiMinus />
       </button>
       <input
@@ -66,12 +51,7 @@ const CounterInput = ({ count, setCount, max, name }) => {
         aria-live="polite"
         className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none appearance-textfield disabled-none text-white text-center bg-gray-950 border-y border-gray-800 h-11 py-2.5 w-full"
       />
-      <button
-        aria-label="Øg Antal Billetter"
-        onClick={addQuantity}
-        type="button"
-        className=" appearance-textfield bg-gray-950 hover:bg-gray-900 border border-gray-800 p-3 h-11 rounded-e-lg"
-      >
+      <button aria-label="Øg Antal Billetter" onClick={addQuantity} type="button" className=" appearance-textfield bg-gray-950 hover:bg-gray-900 border border-gray-800 p-3 h-11 rounded-e-lg">
         <FiPlus />
       </button>
     </div>

@@ -14,48 +14,19 @@ export default function Cart({ cart }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const emptyCart = cart.tickets.single === 0 && cart.tickets.vip === 0;
-  const sumCart =
-    cart.tickets.single * 799 +
-    cart.tickets.vip * 1299 +
-    cart.tents.twoPeople * 299 +
-    cart.tents.threePeople * 399 +
-    (cart.tents.greenCamping ? 249 : 0) +
-    (cart.campsite ? 99 : 0);
+  const sumCart = cart.tickets.single * 799 + cart.tickets.vip * 1299 + cart.tents.twoPeople * 299 + cart.tents.threePeople * 399 + (cart.tents.greenCamping ? 249 : 0) + (cart.campsite ? 99 : 0);
 
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-      className="p-4 sm:px-6"
-    >
-      <motion.div
-        initial={false}
-        animate={{ height: isOpen ? "48vh" : "6rem" }}
-        className=" w-full z-50 bg-customBlack_5 fixed  bottom-0 left-0 p-4 sm:hidden rounded-t-lg overflow-hidden shadow-lg"
-      >
-        <div
-          className=" cursor-pointer flex items-center justify-between"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <h3
-            className={`${ceasarDressing.className} text-3xl flex items-baseline gap-4 font-bold text-white`}
-          >
-            {isOpen ? (
-              <IoIosCloseCircle size={48} />
-            ) : (
-              <FaBasketShopping size={42} className="text-white" />
-            )}{" "}
+    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} className="p-4 sm:px-6">
+      <motion.div initial={false} animate={{ height: isOpen ? "48vh" : "6rem" }} className=" w-full z-50 bg-customBlack_5 fixed  bottom-0 left-0 p-4 sm:hidden rounded-t-lg overflow-hidden shadow-lg">
+        <div className=" cursor-pointer flex items-center justify-between" onClick={() => setIsOpen(!isOpen)}>
+          <h3 className={`${ceasarDressing.className} text-3xl flex items-baseline gap-4 font-bold text-white`}>
+            {isOpen ? <IoIosCloseCircle size={48} /> : <FaBasketShopping size={42} className="text-white" />}
             INDKØBSKURV
           </h3>
         </div>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="mt-4"
-          >
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="mt-4">
             {emptyCart ? (
               <div className="text-gray-200 text-center">
                 <p>Høvding! Tilføj bytte i din kurv.</p>
@@ -107,7 +78,6 @@ export default function Cart({ cart }) {
                             <p>Grøn Camping 249kr</p>
                           </li>
                         )}
-                        
                       </ul>
                     </>
                   ) : null}
@@ -121,30 +91,14 @@ export default function Cart({ cart }) {
           </motion.div>
         )}
       </motion.div>
-      <motion.aside
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-        className="hidden sm:flex flex-col gap-4 rounded-lg bg-customBlack_5 p-6 sm:p-8 w-72"
-      >
-        <h3 className={`${ceasarDressing.className} text-xl sm:text-2xl`}>
-          Indkøbskurv
-        </h3>
+      <motion.aside initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, ease: "easeInOut" }} className="hidden sm:flex flex-col gap-4 rounded-lg bg-customBlack_5 p-6 sm:p-8 w-72">
+        <h3 className={`${ceasarDressing.className} text-xl sm:text-2xl`}>Indkøbskurv</h3>
         {emptyCart ? (
           <div className="flex flex-col items-center justify-center gap-2 text-gray-200">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, ease: "easeInOut", delay: 0.8  }}
-            >
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, ease: "easeInOut", delay: 0.8 }}>
               <FaBasketShopping size={72} />
             </motion.div>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, ease: "easeInOut", delay: 0.8  }}
-              className="text-center text-sm sm:text-base"
-            >
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, ease: "easeInOut", delay: 0.8 }} className="text-center text-sm sm:text-base">
               Høvding! Tilføj bytte i din kurv.
             </motion.p>
           </div>
@@ -173,11 +127,7 @@ export default function Cart({ cart }) {
                   <h2 className="font-bold border-b">CAMPSITE</h2>
                   <ul className="">
                     <li className="font-bold text-lg">{cart.campsite}</li>
-                    {cart.campsite && (
-                      <li className="text-xs font-normal text-gray-300">
-                        +99kr Booking Gebyr
-                      </li>
-                    )}
+                    {cart.campsite && <li className="text-xs font-normal text-gray-300">+99kr Booking Gebyr</li>}
                     {cart.tents.twoPeople !== 0 && (
                       <li>
                         <p>{cart.tents.twoPeople}x 2 Personers Telt</p>

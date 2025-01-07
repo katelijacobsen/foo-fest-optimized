@@ -17,7 +17,7 @@ export default function Card({
   className,
   border,
   header,
-  setCount2,
+
   onlyVip,
 }) {
   const [cart, setCart] = useContext(CartContext);
@@ -31,20 +31,13 @@ export default function Card({
       return { ...prev, tickets: { single, vip } };
     });
     setCount(count);
-    // setCount2(count);
   };
 
   return (
     <div className="relative z-10 group rounded-xl inline-block p-[2px] overflow-hidden w-60 sm:w-64 md:w-72 m-4 transition-transform hover:scale-105 shadow-lg">
-      <span
-        className={`${border} absolute  inset-[-1000%] animate-[spin_7s_linear_infinite]`}
-      />
+      <span className={`${border} absolute  inset-[-1000%] animate-[spin_7s_linear_infinite]`} />
       <div className="relative h-80 bg-gradient-to-tl from-customBlack to-customBlack_2 z-0 rounded-xl flex items-center justify-center">
-        <div
-          className={`${className} flex flex-col items-center rounded-xl p-4 text-center`}
-          aria-live="polite"
-          role="region"
-        >
+        <div className={`${className} flex flex-col items-center rounded-xl p-4 text-center`} aria-live="polite" role="region">
           <h2
             id="card-header"
             aria-labelledby="card-header"
@@ -55,9 +48,7 @@ export default function Card({
           <div className="flex flex-col items-center justify-center mt-2">
             <div className="flex flex-row items-baseline">
               <div>
-                <h3 className="text-5xl sm:text-6xl md:text-7xl font-bold bg-clip-text text-white">
-                  {price}
-                </h3>
+                <h3 className="text-5xl sm:text-6xl md:text-7xl font-bold bg-clip-text text-white">{price}</h3>
                 <div className="flex items-baseline gap-2 justify-center">
                   <p className="text-gray-300">{valuta}</p>
                   <p className="text-gray-300 text-xs">+ Gebyr</p>
@@ -77,12 +68,7 @@ export default function Card({
                 </li>
               )}
             </ul>
-            <CounterInput
-              name={ticketType === "single" ? "singleTickets" : "vipTickets"}
-              max={10}
-              count={count}
-              setCount={updateCount}
-            />
+            <CounterInput name={ticketType === "single" ? "singleTickets" : "vipTickets"} max={10} count={count} setCount={updateCount} />
           </div>
         </div>
       </div>
