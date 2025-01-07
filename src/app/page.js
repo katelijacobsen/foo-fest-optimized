@@ -1,4 +1,3 @@
-import Header from "@/components/global/Header";
 import LineupListReadMore from "@/components/festivalsystem/lineup/LineupListReadMore";
 import Camping from "@/components/festivalsystem/camping/CampingSection";
 import Volunteer from "@/components/festivalsystem/volunteer/VolunteerSection";
@@ -53,7 +52,6 @@ export default async function Home() {
 
   return (
     <div>
-      <Header />
       <main>
         <HeroSection text="FOOFEST" />
         <TicketsSection />

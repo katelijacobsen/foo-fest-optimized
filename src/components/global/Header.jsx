@@ -65,40 +65,16 @@ const Header = () => {
           </div>
 
           <ul className="hidden md:flex md:gap-6 justify-between items-center">
-            <li
-              className={` ${
-                isActivePage("/program")
-                  ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text"
-                  : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"
-              }`}
-            >
+            <li className={` ${isActivePage("/program") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"}`}>
               <Link href="/program">Program</Link>
             </li>
-            <li
-              className={` ${
-                isActivePage("/lineup")
-                  ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text"
-                  : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"
-              }`}
-            >
+            <li className={` ${isActivePage("/lineup") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"}`}>
               <Link href="/lineup">Lineup</Link>
             </li>
-            <li
-              className={`${
-                isActivePage("/camping")
-                  ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text"
-                  : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"
-              }`}
-            >
+            <li className={`${isActivePage("/camping") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"}`}>
               <Link href="/camping">Camping</Link>
             </li>
-            <li
-              className={` ${
-                isActivePage("/volunteer")
-                  ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text"
-                  : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"
-              }`}
-            >
+            <li className={` ${isActivePage("/volunteer") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"}`}>
               <Link href="/volunteer">Bliv Frivillig</Link>
             </li>
             <li>

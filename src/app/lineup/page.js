@@ -1,4 +1,3 @@
-import Header from "@/components/global/Header";
 import LineUpList from "@/components/festivalsystem/lineup/LineUpList";
 import Footer from "@/components/global/Footer";
 import { fetchBands } from "@/lib/supabase";
@@ -44,7 +43,6 @@ export default async function Page() {
 
   return (
     <>
-      <Header />
       <main className="my-24">
         <LineUpList mergedData={mergedData} />
       </main>

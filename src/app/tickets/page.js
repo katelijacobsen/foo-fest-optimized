@@ -5,7 +5,6 @@ import ContactInfo from "@/components/bookingsystem/ContactInfo";
 import PaymentFlow from "@/components/bookingsystem/PaymentFlow";
 import PaymentComfirmed from "@/components/bookingsystem/PaymentConfirmed";
 import Cart from "@/components/bookingsystem/Cart";
-import Header from "@/components/global/Header";
 import { createContext, useActionState } from "react";
 import { Caesar_Dressing } from "next/font/google";
 import { useState, useEffect } from "react";
@@ -205,7 +204,6 @@ export default function Page() {
   return (
     <main className="pt-24">
       <MyMarquee />
-      <Header />
       {/* wrapper komponenter ind med createContext så det kan opdatere
       indkøbskurven. */}
       <CartContext.Provider value={[cart, setCart]}>

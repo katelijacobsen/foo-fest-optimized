@@ -1,4 +1,3 @@
-import Header from "@/components/global/Header";
 import ProgramList from "@/components/festivalsystem/program/ProgramList";
 import Footer from "@/components/global/Footer";
 import { fetchBands } from "@/lib/supabase";
@@ -44,9 +43,8 @@ async function Page() {
 
   return (
     <>
-      <Header />
       <main>
-        <section className="max-w-screen-xl mx-auto py-[10vh]">
+        <section className="max-w-screen-xl mx-auto py-[5vh]">
           <ProgramList mergedData={mergedData} days={days} />
         </section>
       </main>
