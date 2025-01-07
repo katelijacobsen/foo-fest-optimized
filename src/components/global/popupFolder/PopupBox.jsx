@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "motion/react";
 
-import NewsletterCopy from "./NewsletterCopy";
+import NewsletterCopy from "../newsletterFolder/NewsletterCopy";
 import { IoClose } from "react-icons/io5";
 
 const PopupNewsletter = ({ modalOpen, setModalOpen }) => {

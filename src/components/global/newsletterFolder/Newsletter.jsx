@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import Button from "./buttonFolder/PrimaryButton";
+import Button from "../buttonFolder/PrimaryButton";
 
 const Newsletter = ({ setValidation, validation, setCounter }) => {
   const [data, setData] = useState([]);

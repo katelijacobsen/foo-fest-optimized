@@ -1,5 +1,5 @@
 "use client";
-import PopButton from "./PopButton";
+import PopButton from "./PopupButton";
 
 const PopupContainer = () => {
   return (

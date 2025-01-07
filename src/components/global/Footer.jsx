@@ -5,7 +5,7 @@ import Facebook from "@/img/svg/facebook_icon.svg";
 import Instagram from "@/img/svg/instagram_Icon.svg";
 // import Newsletter from "./Newsletter";
 import Link from "next/link";
-import Container from "./Container";
+import Container from "./newsletterFolder/Timer";
 
 const Footer = () => {
   return (
