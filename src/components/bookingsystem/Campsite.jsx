@@ -105,8 +105,9 @@ export default function Campsite({ state, formAction, setReservedId, setTimeOut 
     formAction(formData);
   };
 
+  const [startTimer, setStartTimer] = useState(0);
   useEffect(() => {
-    if (antalBilletter === 0) return;
+    if (startTimer === 0) return;
 
     fetch("https://spring-awesome-stream.glitch.me/reserve-spot", {
       method: "PUT",
@@ -128,7 +129,7 @@ export default function Campsite({ state, formAction, setReservedId, setTimeOut 
         setReservedId(data.id); // Save the ID in state
         setTimeOut(data.timeout);
       });
-  }, [selectedCampsite]);
+  }, [startTimer]);
 
   return (
     <div className="flex justify-center mx-4">
@@ -220,6 +221,7 @@ export default function Campsite({ state, formAction, setReservedId, setTimeOut 
             </p>
           )}
           <button
+            onClick={() => setStartTimer((prev) => prev + 1)}
             className={`${
               selectedCampsite
                 ? "font-semibold py-2 rounded-sm px-8 my-8 ml-auto text-xl bg-gradient-to-bl from-customPink text-white to-customOrange text-transparent w-full sm:w-auto"
