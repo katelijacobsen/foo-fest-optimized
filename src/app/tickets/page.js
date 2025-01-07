@@ -186,8 +186,8 @@ export default function Page() {
   useEffect(() => {
     if (timeOut <= 0) {
       if (state.step > 0) {
-        alert("Tiden er udløbet. Du bliver aldrig rigtig en viking :(");
-        formAction(null);
+        // alert("Tiden er udløbet. Du bliver aldrig rigtig en viking :(");
+        // formAction(null);
       }
 
       return;
