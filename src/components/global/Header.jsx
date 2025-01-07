@@ -4,7 +4,8 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { Caesar_Dressing } from "next/font/google";
 import Image from "next/image";
-
+import { motion } from "motion/react";
+import { AnimatePresence } from "motion/react";
 import Logo from "@/img/svg/Logo.svg";
 import PrimaryButton from "@/components/global/buttonFolder/PrimaryButton";
 
@@ -28,6 +29,29 @@ const Header = () => {
   //funktion isActivePage, som tager argumentet page og returnerer en boolean værdi. Den sammenligner den nuværende URL-sti (repræsenteret ved pathname) med den sti, der bliver sendt som argument (page).
   //bruges til at style link. Viser hvilken side, man aktivt er inde på
   const isActivePage = (page) => pathname === page;
+  const burgerAnimation = {
+    // lave forskellige animations states som bruges ved animation
+    // du kan også bruge dette til at lave animation som påvirkes efter hvordan man interegere med indholdet
+    hidden: {
+      x: "100vw",
+      opacity: 0,
+    },
+    visible: {
+      x: "0",
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        type: "spring",
+        damping: 25,
+        stiffness: 500,
+      },
+    },
+    exit: {
+      x: "100vw",
+      opacity: 0,
+      transition: { duration: 0.3 },
+    },
+  };
 
   return (
     <header>
@@ -41,16 +65,40 @@ const Header = () => {
           </div>
 
           <ul className="hidden md:flex md:gap-6 justify-between items-center">
-            <li className={` ${isActivePage("/program") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"}`}>
+            <li
+              className={` ${
+                isActivePage("/program")
+                  ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text"
+                  : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"
+              }`}
+            >
               <Link href="/program">Program</Link>
             </li>
-            <li className={` ${isActivePage("/lineup") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"}`}>
+            <li
+              className={` ${
+                isActivePage("/lineup")
+                  ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text"
+                  : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"
+              }`}
+            >
               <Link href="/lineup">Lineup</Link>
             </li>
-            <li className={`${isActivePage("/camping") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"}`}>
+            <li
+              className={`${
+                isActivePage("/camping")
+                  ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text"
+                  : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"
+              }`}
+            >
               <Link href="/camping">Camping</Link>
             </li>
-            <li className={` ${isActivePage("/volunteer") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"}`}>
+            <li
+              className={` ${
+                isActivePage("/volunteer")
+                  ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text"
+                  : "text-white hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:text-transparent hover:bg-clip-text"
+              }`}
+            >
               <Link href="/volunteer">Bliv Frivillig</Link>
             </li>
             <li>
@@ -67,44 +115,55 @@ const Header = () => {
         </button>
 
         {/* Vis tekst: "Luk menu", når burgermenu er åben */}
+
         {isOpen && (
-          <div className="md:hidden fixed top-0 right-0 bottom-0 left-0 z-40 bg-customBlack">
-            <button onClick={handleClick} className={`${ceasarDressing.className} absolute top-4 right-4 bg-gradient-to-bl from-customPink to-customOrange bg-clip-text text-transparent text-2xl`}>
-              Luk menu
-            </button>
-            <ul className="grid place-content-center text-center h-[60vh] gap-6 mt-[8rem] ">
-              <li>
-                <Link className={` ${ceasarDressing.className} text-4xl  ${isActivePage("/") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white"}`} href="/">
-                  FORSIDE
-                </Link>
-              </li>
-              <li>
-                <Link className={` ${ceasarDressing.className} text-4xl ${isActivePage("/program") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white"}`} href="/program">
-                  PROGRAM
-                </Link>
-              </li>
-              <li>
-                <Link className={` ${ceasarDressing.className} text-4xl  ${isActivePage("/lineup") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white"}`} href="/lineup">
-                  LINEUP
-                </Link>
-              </li>
-              <li>
-                <Link className={` ${ceasarDressing.className} text-4xl ${isActivePage("/camping") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white"}`} href="/camping">
-                  CAMPING
-                </Link>
-              </li>
-              <li>
-                <Link className={` ${ceasarDressing.className} text-4xl  ${isActivePage("/volunteer") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white"}`} href="/volunteer">
-                  BLIV FRIVILLIG
-                </Link>
-              </li>
-              <button>
-                <Link href="/tickets" className={` ${ceasarDressing.className} text-4xl ${isActivePage("/tickets") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white"}`}>
-                  Køb billetter
-                </Link>
+          <AnimatePresence>
+            <motion.div
+              variants={burgerAnimation}
+              // Her siger du hvilke her giver du de forskllige animation state deres opgave
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              key="menu"
+              className="md:hidden fixed top-0 right-0 bottom-0 left-0 z-[60] bg-customBlack"
+            >
+              <button onClick={handleClick} className={`${ceasarDressing.className} absolute top-4 right-4 bg-gradient-to-bl from-customPink to-customOrange bg-clip-text text-transparent text-2xl`}>
+                Luk menu
               </button>
-            </ul>
-          </div>
+              <ul className="grid place-content-center text-center h-[60vh] gap-6 mt-[8rem] ">
+                <li>
+                  <Link className={` ${ceasarDressing.className} text-4xl  ${isActivePage("/") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white"}`} href="/">
+                    FORSIDE
+                  </Link>
+                </li>
+                <li>
+                  <Link className={` ${ceasarDressing.className} text-4xl ${isActivePage("/program") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white"}`} href="/program">
+                    PROGRAM
+                  </Link>
+                </li>
+                <li>
+                  <Link className={` ${ceasarDressing.className} text-4xl  ${isActivePage("/lineup") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white"}`} href="/lineup">
+                    LINEUP
+                  </Link>
+                </li>
+                <li>
+                  <Link className={` ${ceasarDressing.className} text-4xl ${isActivePage("/camping") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white"}`} href="/camping">
+                    CAMPING
+                  </Link>
+                </li>
+                <li>
+                  <Link className={` ${ceasarDressing.className} text-4xl  ${isActivePage("/volunteer") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white"}`} href="/volunteer">
+                    BLIV FRIVILLIG
+                  </Link>
+                </li>
+                <button>
+                  <Link href="/tickets" className={` ${ceasarDressing.className} text-4xl ${isActivePage("/tickets") ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-transparent bg-clip-text" : "text-white"}`}>
+                    Køb billetter
+                  </Link>
+                </button>
+              </ul>
+            </motion.div>
+          </AnimatePresence>
         )}
       </nav>
     </header>
