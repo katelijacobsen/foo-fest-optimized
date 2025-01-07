@@ -1,9 +1,9 @@
 import Header from "@/components/global/Header";
-import LineupListReadMore from "@/components/festivalsystem/LineupListReadMore";
-import Camping from "@/components/festivalsystem/CampingSection";
-import Volunteer from "@/components/festivalsystem/VolunteerSection";
+import LineupListReadMore from "@/components/festivalsystem/lineup/LineupListReadMore";
+import Camping from "@/components/festivalsystem/camping/CampingSection";
+import Volunteer from "@/components/festivalsystem/volunteer/VolunteerSection";
 import Footer from "@/components/global/Footer";
-import TicketsSection from "@/components/festivalsystem/TicketsSection";
+import TicketsSection from "@/components/festivalsystem/tickets/TicketsSection";
 import dynamic from "next/dynamic";
 import TextAnimationSection from "@/components/festivalsystem/TextAnimationSection";
 import { fetchBands } from "@/lib/supabase";
@@ -11,7 +11,7 @@ import { fetchSchedule } from "@/lib/supabase";
 
 //lazyloading af herosection og dagens program
 const HeroSection = dynamic(() => import("@/components/festivalsystem/HeroSection"));
-const ProgramForCurrentDay = dynamic(() => import("@/components/festivalsystem/ProgramForCurrentDay"));
+const ProgramForCurrentDay = dynamic(() => import("@/components/festivalsystem/program/ProgramForCurrentDay"));
 
 export default async function Home() {
   // Ved hjælp af await bliver de to API'er kaldt, og resultaterne gemmes i variablerne bands og schedule

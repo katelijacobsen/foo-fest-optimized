@@ -1,7 +1,7 @@
 "use client";
 import Headline from "@/components/global/Headline";
 import VolunteerRune from "@/img/svg/volunteer_rune.svg";
-import Accordion from "@/components/festivalsystem/Accordion";
+import Accordion from "@/components/festivalsystem/accordion/Accordion";
 import { motion } from "framer-motion";
 
 import Image from "next/image";

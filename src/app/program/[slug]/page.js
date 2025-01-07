@@ -1,5 +1,5 @@
 import Header from "@/components/global/Header";
-import SingleBand from "@/components/festivalsystem/SingleBand";
+import SingleBand from "@/components/festivalsystem/singleband/SingleBand";
 import Footer from "@/components/global/Footer";
 import { getBandBySlug } from "@/lib/supabase";
 

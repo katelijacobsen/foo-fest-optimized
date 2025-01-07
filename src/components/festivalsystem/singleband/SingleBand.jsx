@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Caesar_Dressing } from "next/font/google";
-import BackButton from "@/components/festivalsystem/BackButton";
+import BackButton from "@/components/festivalsystem/singleband/button/BackButton";
 import { motion } from "framer-motion";
 
 const ceasarDressing = Caesar_Dressing({

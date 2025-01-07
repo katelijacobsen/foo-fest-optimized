@@ -1,5 +1,5 @@
 import Header from "@/components/global/Header";
-import Camping from "@/components/festivalsystem/Camping";
+import Camping from "@/components/festivalsystem/camping/Camping";
 import Footer from "@/components/global/Footer";
 
 export default async function Page() {

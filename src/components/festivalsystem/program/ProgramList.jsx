@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import BandCard from "@/components/festivalsystem/BandCard";
+import BandCard from "@/components/festivalsystem/program/BandCard";
 import { motion } from "framer-motion";
 import Headline from "@/components/global/Headline";
 import MusicRune from "@/img/svg/music_rune.svg";

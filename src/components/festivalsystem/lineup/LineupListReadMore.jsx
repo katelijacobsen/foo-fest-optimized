@@ -21,7 +21,7 @@ const LineupListReadMore = ({ initialLineup }) => {
         <ul className="flex flex-wrap justify-center items-center gap-4 pt-6">
           {/* Bruger metoden .slice(), da vi kun vil vise de første 15 navne af datasættet */}
           {bands.slice(0, 15).map((band, index) => (
-            <li key={band.slug} className={index < 20 ? "text-2xl lg:text-5xl transition ease-in-out hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:bg-clip-text hover:text-transparent hover:scale-105" : index < 30 ? "text-2xl lg:text-3xl transition ease-in-out hover:bg-gradient-to-r hover:from-customPink hover:to-customOrange hover:bg-clip-text hover:text-transparent hover:scale-105" : "text-lg lg:text-xl transition ease-in-out hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:bg-clip-text hover:text-transparent hover:scale-105"}>
+            <li key={band.slug} className={index < 20 ? "text-2xl lg:text-5xl lg:leading-[3.5rem] transition ease-in-out hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:bg-clip-text hover:text-transparent hover:scale-105" : index < 30 ? "text-2xl lg:text-3xl transition ease-in-out hover:bg-gradient-to-r hover:from-customPink hover:to-customOrange hover:bg-clip-text hover:text-transparent hover:scale-105" : "text-lg lg:text-xl transition ease-in-out hover:bg-gradient-to-r hover:from-customPink hover:via-customRed hover:to-customOrange hover:bg-clip-text hover:text-transparent hover:scale-105"}>
               <Link href={`/program/${band.slug}`} key={band.slug}>
                 {band.name}
               </Link>

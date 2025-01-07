@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 //komponenter
-import BandCard from "@/components/festivalsystem/BandCard";
+import BandCard from "@/components/festivalsystem/program/BandCard";
 import Headline from "@/components/global/Headline";
 import PrimaryButton from "@/components/global/buttonFolder/PrimaryButton";
 

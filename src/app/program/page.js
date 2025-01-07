@@ -1,5 +1,5 @@
 import Header from "@/components/global/Header";
-import ProgramList from "@/components/festivalsystem/ProgramList";
+import ProgramList from "@/components/festivalsystem/program/ProgramList";
 import Footer from "@/components/global/Footer";
 import { fetchBands } from "@/lib/supabase";
 import { fetchSchedule } from "@/lib/supabase";

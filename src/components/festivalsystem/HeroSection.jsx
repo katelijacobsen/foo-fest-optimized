@@ -2,7 +2,7 @@
 import { motion, useInView } from "framer-motion";
 import * as React from "react";
 import { Caesar_Dressing } from "next/font/google";
-import MyMarquee from "@/components/festivalsystem/MyMarquee";
+import MyMarquee from "@/components/festivalsystem/marquee/MyMarquee";
 import { FaArrowDown } from "react-icons/fa6";
 
 const ceasarDressing = Caesar_Dressing({
