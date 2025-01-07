@@ -9,20 +9,12 @@ const LineUpList = ({ mergedData }) => {
   //statevariabel med væriden mergedData (fra props) - setBands bruges til at opdatere state
   const [bands, setBands] = useState(mergedData);
   const [searchBand, setSearchBand] = useState(""); // Søgetekst
+  const [openModal, setOpenModal] = useState(null);
 
   useEffect(() => {
     const filteredBands = mergedData.sort().filter((band) => band.name.toLowerCase().includes(searchBand.toLowerCase())); // Filtrering
     setBands(filteredBands);
   }, [searchBand, mergedData]);
-
-  // // Sortér bands alfabetisk efter navn
-  // useEffect(() => {
-  //   //variabel for mergedData bliver kopieret [...mergedData] og sorteres alfabetisk efter name
-  //   const sortedBandsAlphabetic = [...mergedData].sort((a, b) => a.name.localeCompare(b.name));
-  //   //statevariablen bliver opdateret med den alfabitisk sorterede liste af bands
-  //   setBands(sortedBandsAlphabetic);
-  //   //useEffect hooket vil køre når mergedData ændrer sig - så i tilfælde af, at datasættet opdateres vil hooket sortere bands igen
-  // }, [mergedData]);
 
   return (
     <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1, delay: 0.5 }} animate={{ y: -40 }}>
@@ -46,7 +38,7 @@ const LineUpList = ({ mergedData }) => {
         <ul className="flex flex-wrap gap-8 justify-center items-center">
           {bands.map((band, index) => (
             <li key={index}>
-              <LineUpCard key={index} slug={band.slug} logo={band.logo} name={band.name} day={band.day} start={band.eventInfo.start} end={band.eventInfo.end} scene={band.scene} />
+              <LineUpCard open={openModal === index} onClose={() => setOpenModal(null)} onOpen={() => setOpenModal(index)} key={index} members={band.members} bio={band.bio} slug={band.slug} logo={band.logo} name={band.name} day={band.day} start={band.eventInfo.start} end={band.eventInfo.end} scene={band.scene} />
             </li>
           ))}
         </ul>
