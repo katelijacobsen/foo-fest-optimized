@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "motion/react";
-import { useState } from "react";
+
 import NewsletterCopy from "./NewsletterCopy";
 import { IoClose } from "react-icons/io5";
 
@@ -34,7 +34,8 @@ const PopupNewsletter = ({ modalOpen, setModalOpen }) => {
       {/* Dette er boksnen der har indholdet */}
 
       <motion.div
-        className=" bg-customBlack_2 rounded-md p-5 z-30  w-max left-[75%] absolute bottom-2
+        //    md:w-max kan bruges til at få content til at  passe  kassen
+        className=" bg-customBlack_2 rounded-md p-5 z-30   w-full md:w-max absolute md:bottom-[-6.5rem]  bottom-[-8.5rem]
         "
         // giver de forskellige varianter af din animation
         variants={dropIn}

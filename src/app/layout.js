@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={` bg-background  ${inter.className} ${inter.className} antialiased`}>
+      <body className={` bg-background  ${inter.className} ${inter.className} antialiased `}>
         <PopupContainer></PopupContainer>
         {children}
       </body>

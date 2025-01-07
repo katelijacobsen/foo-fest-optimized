@@ -4,7 +4,7 @@ import PopButton from "./PopButton";
 const PopupContainer = () => {
   return (
     <>
-      <div className=" sticky right-[90%] top-[85%] z-40 ">
+      <div className=" sticky  top-[85%] z-40  flex justify-end md:mr-11">
         <PopButton></PopButton>
       </div>
     </>
