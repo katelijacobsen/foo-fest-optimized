@@ -36,9 +36,9 @@ const LineUpList = ({ mergedData }) => {
           </form>
         </div>
         <ul className="flex flex-wrap gap-8 justify-center items-center">
-          {bands.map((band, index) => (
-            <li key={index}>
-              <LineUpCard open={openModal === index} onClose={() => setOpenModal(null)} onOpen={() => setOpenModal(index)} key={index} members={band.members} bio={band.bio} slug={band.slug} logo={band.logo} name={band.name} day={band.day} start={band.eventInfo.start} end={band.eventInfo.end} scene={band.scene} />
+          {bands.map((band) => (
+            <li key={band.slug}>
+              <LineUpCard open={openModal === band.slug} onClose={() => setOpenModal(null)} onOpen={() => setOpenModal(band.slug)} key={band.slug} members={band.members} bio={band.bio} slug={band.slug} logo={band.logo} name={band.name} day={band.day} start={band.eventInfo.start} end={band.eventInfo.end} scene={band.scene} />
             </li>
           ))}
         </ul>
