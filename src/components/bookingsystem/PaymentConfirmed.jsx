@@ -1,5 +1,5 @@
 //importere vores packagejson: emailjs & pdfjs:
-import { Email } from "emailjs";
+import { emailjs } from "emailjs";
 import { jsPdf } from  "jspdf";
 
 import { motion } from "framer-motion";
@@ -23,25 +23,42 @@ export async function POST(ask) {
     // Hence, formatet er på A4 på default. Link til source: https://raw.githack.com/MrRio/jsPDF/master/docs/index.html
     pdf.text("Tak for dit køb");
     //Henter data fra state
-    pdf.text("`Total: ${state.total}` DKK")
+    pdf.text("`Total: ${state.total}` DKK inkl 99DKK bookinggebyr")
 
     //Det samme kan næsten gøre med gæsterne, men fordi vi kan have flere gæster, kan vi lave en forEach, så funktionen køre hver for sig:
     pdf.text("Vikinger:");
     state.guests.single.forEach((guest, i) => {
       pdf.text(`${i}. ${guest.single} ${guest.firstName} ${guest.lastName} - Enkel Billet`)
       pdf.text(`${i}. ${guest.vip} ${guest.firstName} ${guest.lastName} - VIP Billet`)
-    });
+    });email
+    // Campsite 
+    pdf.text("Campsite:");
+    pdf.text(`${state.campsite}`);
+    //Green Camping
+    pdf.text("Green Camping:");
+    pdf.text(`${state.tents.greenCamping}`)
 
+
+    const pdfBase64 = btoa(pdf.output());
+
+    
     // Nu kan vi med vores genererede PDF konfigurer emailjs server
-    const server = new Email({
-      text: "Ordrebekræftelse",
-      from: "katjamaehleke98@gmail.com",
-      to: state.email,
-      subject: "Ordrebekræftelse"
-    })
+    // indsætter vores serviceID & templateID in i vores emailjs.send 
+    // Link til source: https://www.emailjs.com/docs/sdk/send/
+    emailjs.send("service_hht5308", "template_m0viyr7",
+      {
+        pdf: pdfBase64,
+        total: state.total
+      },
+      //publicKey
+      "Z76vT5PvRI9HWFbB1"
+    )
+
   
+  } catch (error){
+    console.log("Kan ikke sende e-mail", error)
   }
-}
+  }
 
 export default function PaymentConfirmed({ state }) {
   // sætter vores svg til false så den er skjult i starten.
@@ -58,10 +75,14 @@ export default function PaymentConfirmed({ state }) {
   // 2. I den server action, lav pdf/html udfra staten og send emailen
   useEffect(() => {
     async function sendOrder() {
-      const response = await fetch("", {
+      const response = await fetch("https://jgksmouhalsxeziytygd.supabase.co/rest/v1/personer", {
         method: "POST",
+        headers: { "Content-Type" : application/json},
         body: JSON.stringify({state})
       })
+      if(!response){
+        Error("E-mail kunne ikke sendes")
+      }
     }
     sendOrder();
 
