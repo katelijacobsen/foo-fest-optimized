@@ -9,7 +9,7 @@ const ceasarDressing = Caesar_Dressing({
   display: "swap",
 });
 
-const PaymentForm = ({ formAction, reservedId }) => {
+const PaymentForm = ({ formAction, reservedId, stateFirstPage }) => {
   // objekter med empty strings der bliver holdt øje med i kortbetalingen.
   const [state, setState] = useState({
     number: "",
@@ -79,7 +79,7 @@ const PaymentForm = ({ formAction, reservedId }) => {
   };
 
   useEffect(() => {
-    if (reservedId === undefined) return console.log("virker ikke");
+    if (!stateFirstPage.step == 4) return console.log("HJÆLPPPPPPPPPPPPPP");
 
     fetch("https://spring-awesome-stream.glitch.me/fullfill-reservation", {
       method: "POST",
@@ -100,35 +100,20 @@ const PaymentForm = ({ formAction, reservedId }) => {
     //   setReservedId(data.id); // Save the ID in state
     //   console.log("Reserved Spot ID:", data.id);
     // });
-  }, [reservedId]);
+    console.log("poster id", reservedId);
+    console.log("YAY!!! DU HAR KØBT DIN BILLET", reservedId);
+    console.log("step tjek", stateFirstPage.step);
+  }, [stateFirstPage.step]);
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.3 }}
-        className=" border border-gray-600 p-4 sm:p-8 rounded-lg bg-gradient-to-tl from-customBlack_2 to-customBlack m-4"
-      >
-        <h2
-          className={`${ceasarDressing.className} text-2xl sm:text-3xl my-4 text-left`}
-        >
-          BETALINGSKORT
-        </h2>
+      <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }} className=" border border-gray-600 p-4 sm:p-8 rounded-lg bg-gradient-to-tl from-customBlack_2 to-customBlack m-4">
+        <h2 className={`${ceasarDressing.className} text-2xl sm:text-3xl my-4 text-left`}>BETALINGSKORT</h2>
 
         <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center p-4 sm:p-8 gap-4">
           <div className="flex-shrink-0">
-            <Cards
-              number={state.number}
-              expiry={state.expiry}
-              cvc={state.cvc}
-              name={state.name}
-              focused={state.focus}
-            />
+            <Cards number={state.number} expiry={state.expiry} cvc={state.cvc} name={state.name} focused={state.focus} />
           </div>
-          <form
-            action="kortOplysninger"
-            className="flex flex-col items-center sm:items-start gap-4 w-full sm:w-auto"
-          >
+          <form action="kortOplysninger" className="flex flex-col items-center sm:items-start gap-4 w-full sm:w-auto">
             <div className="flex flex-col gap-2 w-full">
               <label htmlFor="kortnummer" className="font-bold text-md">
                 Kortnummer
@@ -184,8 +169,8 @@ const PaymentForm = ({ formAction, reservedId }) => {
                   CVC
                 </label>
                 <input
-                id="kontrolcifre"
-                aria-label="kontrolcifre"
+                  id="kontrolcifre"
+                  aria-label="kontrolcifre"
                   className="p-2 rounded-md w-full text-black border-2 focus:ring focus:ring-customRed"
                   name="cvc"
                   value={state.cvc}
@@ -197,11 +182,7 @@ const PaymentForm = ({ formAction, reservedId }) => {
                 />
               </div>
             </div>
-            <button
-            aria-label="Afslut og Betal"
-              formAction={formAction}
-              className="font-bold self-end px-8 py-2 my-8 text-xl rounded-sm bg-gradient-to-bl from-customPink text-white to-customOrange w-full sm:w-auto"
-            >
+            <button aria-label="Afslut og Betal" formAction={formAction} className="font-bold self-end px-8 py-2 my-8 text-xl rounded-sm bg-gradient-to-bl from-customPink text-white to-customOrange w-full sm:w-auto">
               Afslut & Betal
             </button>
           </form>

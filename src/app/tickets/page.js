@@ -223,7 +223,7 @@ export default function Page() {
               {state.step === 0 && <ChooseTicket cart={cart} formAction={formAction} />}
               {state.step === 1 && <Campsite setTimeOut={setTimeOut} setReservedId={setReservedId} state={state} formAction={formAction} />}
               {state.step === 2 && <ContactInfo state={state} tickets={state.tickets} formAction={formAction} />}
-              {state.step === 3 && <PaymentFlow reservedId={reservedId} formAction={formAction} />}
+              {state.step === 3 && <PaymentFlow stateFirstPage={state} reservedId={reservedId} formAction={formAction} />}
               {state.step === 4 && <PaymentComfirmed state={state} startDraw={true} />}
             </section>
             {state.step !== 4 && <Cart cart={cart} />}
