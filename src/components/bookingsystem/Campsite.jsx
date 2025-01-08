@@ -6,6 +6,10 @@ import { motion } from "framer-motion";
 import { FaLeaf } from "react-icons/fa6";
 import { IoIosAlert } from "react-icons/io";
 import { Caesar_Dressing } from "next/font/google";
+import Image from "next/image";
+import CampingMap from "@/img/svg/camping_map.svg";
+import { RxCross2 } from "react-icons/rx";
+import { BsFillQuestionCircleFill } from "react-icons/bs";
 
 const ceasarDressing = Caesar_Dressing({
   subsets: ["latin"],
@@ -30,6 +34,8 @@ export default function Campsite({
   const [handleError, setHandleError] = useState("");
 
   const [data, setData] = useState([]);
+
+  const [popupOpen, setPopupOpen] = useState(false)
 
   // skal bruges til når vi tilføjer loading https://nextjs.org/docs/pages/building-your-application/data-fetching/client-side
   const [isLoading, setLoading] = useState(true);
@@ -180,7 +186,28 @@ export default function Campsite({
             </li>
           ))}
         </ul>
+        <div className="my-4">
+        <button type="button" onClick={() => setPopupOpen(true)} className="flex items-center gap-[.4em] cursor-pointer text-xs text-gray-400 hover:underline "> <BsFillQuestionCircleFill className="text-lg"/> Se de forskellige Campingområder </button>
+        </div>
+        {popupOpen && (
+          <motion.div initial={{ opacity:0}} animate={{opacity:1}} exit={{opacity:0}} className="fixed inset-0 bg-opacity-50 bg-black flex justify-center items-center z-100">
+            <div className="relative max-w-lg w-full border border-gray-500 bg-customBlack_5 p-4 my-4 rounded-md m-8">
+            <button onClick={() => setPopupOpen(false)} className="absolute top-2 right-4 text-slate-600 hover:underline" aria-label="Luk Kortet">
+              <RxCross2 className="bg-customBlack_5 text-customOrange h-10 w-10 md:ml-0 md:mb-8 border-solid border-[1px] border-customOrange rounded-full p-2"/>
+            </button>
 
+            <h3 className="text-xl font-bold">Festivals Kort</h3>
+            <Image
+             src={CampingMap}
+             width={500}
+             height={500}
+             alt="Foo Fest Festivals Kort med overblik over de forskellige campingområder"
+             className="bg-black w-full h-auto"/>
+
+             </div>
+          </motion.div>
+        )}
+        
         <div className="flex flex-col justify-evenly gap-4">
           <section>
             <h3
