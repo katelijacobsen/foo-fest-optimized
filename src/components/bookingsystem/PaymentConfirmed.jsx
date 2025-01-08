@@ -11,7 +11,7 @@ const ceasarDressing = Caesar_Dressing({
   weight: "400",
   display: "swap",
 });
-
+// Link til syntax: https://www.emailjs.com/docs/sdk/send/
 export async function sendOrderConfirmation(recepient, state) {
   const response = await emailjs.send(
     "service_hht5308",
