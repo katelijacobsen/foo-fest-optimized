@@ -11,8 +11,55 @@ const ceasarDressing = Caesar_Dressing({
   weight: "400",
   display: "swap",
 });
+
+function html(state) {
+  let tableRows = "";
+
+  state.guests.single.forEach((guest) => {
+    tableRows += `
+    
+     <tr>
+        <td>${guest.firstName}</td>
+        <td>${guest.lastName}</td>
+        <td>Enkel billet</td>
+        <td>799 DKK</td>
+      </tr>
+    
+    `;
+  });
+  state.guests.vip.forEach((guest) => {
+    tableRows += `
+    
+     <tr>
+        <td>${guest.firstName}</td>
+        <td>${guest.lastName}</td>
+        <td>Enkel billet</td>
+        <td>799 DKK</td>
+      </tr>
+    
+    `;
+    return `
+    <table style="width: 100%; border-collapse: collapse; text-align: left;">
+      <thead style="background: #f7a400; color: white;">
+        <tr>
+          <th style="padding: 8px; border: 1px solid #ddd;">Fornavn</th>
+          <th style="padding: 8px; border: 1px solid #ddd;">Efternavn</th>
+          <th style="padding: 8px; border: 1px solid #ddd;">Billettype</th>
+          <th style="padding: 8px; border: 1px solid #ddd; text-align: right;">Pris</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${tableRows}
+      </tbody>
+    </table>
+  `;
+  });
+}
+
 // Link til syntax: https://www.emailjs.com/docs/sdk/send/
 export async function sendOrderConfirmation(recepient, state) {
+  const table = html(state);
+
   const response = await emailjs.send(
     "service_hht5308",
     "template_8o2l2mj",
@@ -20,6 +67,7 @@ export async function sendOrderConfirmation(recepient, state) {
       email: recepient.email,
       orderID: "100000",
       customerName: recepient.firstName,
+      tableOrder: table,
     },
     //publicKey
     "Z76vT5PvRI9HWFbB1"
@@ -33,7 +81,7 @@ export default function PaymentConfirmed({ state }) {
   const [startDraw, setStartDraw] = useState(false);
 
   //Her viser jeg ud fra UI at brugeren har fået kvittering på den mail de har tidliger udfyldt med useState hook
-  const [email, setEmail] = useState()
+  const [email, setEmail] = useState();
 
   // sætter vores false til true ( fra hidden til visible)
   useEffect(() => {
@@ -51,8 +99,8 @@ export default function PaymentConfirmed({ state }) {
         state.guests.single.length > 0
           ? state.guests.single[0]
           : state.guests.vip[0];
-          //tilføjer mail her 
-          setEmail(recepient.email)
+      //tilføjer mail her
+      setEmail(recepient.email);
       sendOrderConfirmation(recepient, state);
     }
     send();
