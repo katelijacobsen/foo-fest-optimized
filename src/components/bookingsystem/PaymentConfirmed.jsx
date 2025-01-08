@@ -21,10 +21,11 @@ function totalPrice(state) {
 }
 
 // Link til syntax: https://www.emailjs.com/docs/sdk/send/
+// Link til loope dynamisk data : https://www.emailjs.com/docs/user-guide/dynamic-variables-templates/
 export async function sendOrderConfirmation(recepient, state) {
   const guests = state.guests;
-  const price = state.totalPrice;
-  const ticketType = state.guests.single
+  const campingtent = state.tents;
+  const campingArea = state.campsite;
   const response = await emailjs.send(
     "service_hht5308",
     "template_8o2l2mj",
@@ -34,8 +35,10 @@ export async function sendOrderConfirmation(recepient, state) {
       customerName: recepient.firstName,
       singleGuests: guests.single,
       vipGuests: guests.vip,
-      price: price,
-      ticketType: ticketType,
+      campingtentTwo: campingtent.twoPeople,
+      campingtentThree: campingtent.threePeople,
+      campingArea: campingArea,
+      greenCamping: state.tents.greenCamping,
 
     },
     //publicKey
