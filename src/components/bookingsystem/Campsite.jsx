@@ -187,15 +187,20 @@ export default function Campsite({
         <button type="button" onClick={() => setPopupOpen(true)} className=" cursor-pointer text-xs text-gray-400 hover:underline ">Se de forskellige Campingområder</button>
         
         {popupOpen && (
-          <div>
-            <h3>Festivals Kort</h3>
+          <motion.div initial={{ opacity:0}} animate={{opacity:1}} exit={{opacity:0}} className="fixed inset-0 bg-opacity-[25%] bg-black flex justify-center items-center z-100">
+            <div className="relative max-w-lg w-full border border-gray-500 bg-customBlack_5 p-4 my-4 rounded-md m-8">
+            <button onClick={() => setPopupOpen(false)} className="absolute top-2 right-4 text-slate-600 hover:underline" aria-label="Luk Kortet">Luk</button>
+
+            <h3 className="text-xl font-bold">Festivals Kort</h3>
             <Image
              src={CampingMap}
              width={500}
              height={500}
-             alt="Foo Fest Festivals Kort med overblik over de forskellige campingområder"/>
-            <button onClick={() => setPopupOpen(false)}>Luk</button>
-          </div>
+             alt="Foo Fest Festivals Kort med overblik over de forskellige campingområder"
+             className="bg-black w-full h-auto"/>
+
+             </div>
+          </motion.div>
         )}
         
         <div className="flex flex-col justify-evenly gap-4">
