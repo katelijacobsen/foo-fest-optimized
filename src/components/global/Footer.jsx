@@ -9,7 +9,7 @@ import Container from "./newsletterFolder/Timer";
 
 const Footer = () => {
   return (
-    <footer className=" bg-customBlack_5 p-2 ">
+    <footer className=" bg-customBlack_5 p-2 z-50 ">
       <div className=" p-2 md:px-4 md:py-2">
         <Link href="/">
           <Image src={Logo} alt="FooFest Logo" width={100} height={100} priority />
