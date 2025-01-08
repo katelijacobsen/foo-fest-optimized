@@ -14,7 +14,6 @@ const ceasarDressing = Caesar_Dressing({
 
 // Link til syntax: https://www.emailjs.com/docs/sdk/send/
 export async function sendOrderConfirmation(recepient, state) {
-
   const response = await emailjs.send(
     "service_hht5308",
     "template_8o2l2mj",
@@ -22,6 +21,33 @@ export async function sendOrderConfirmation(recepient, state) {
       email: recepient.email,
       orderID: "100000",
       customerName: recepient.firstName,
+      email: recepient.email,
+      orderID: "100000",
+      customerName: recepient.firstName,
+      guests: state.guests.single.concat(state.guests.vip).map((guest) => ({
+        firstName: guest.firstName,
+        lastName: guest.lastName,
+        ticketType: state.guests.single.includes(guest) ? "Single" : "VIP",
+      })),
+      items: [
+        {
+          name: "Two-Person Tent",
+          count: state.tents.twoPeople,
+          price: state.tents.twoPeople * 299,
+        },
+        {
+          name: "Three-Person Tent",
+          count: state.tents.threePeople,
+          price: state.tents.threePeople * 399,
+        },
+        {
+          name: "Green Camping",
+          count: state.tents.greenCamping ? 1 : 0,
+          price: 249,
+        },
+      ],
+      tickets: state.tickets.single + state.tickets.vip,
+      totalPrice: state.tickets.single * 799 + state.tickets.vip * 1299,
     },
     //publicKey
     "Z76vT5PvRI9HWFbB1"
