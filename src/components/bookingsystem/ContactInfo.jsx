@@ -44,14 +44,14 @@ export default function ContactInfo({ tickets, formAction }) {
     >
       <fieldset className="grid gap-6 mb-6 md:grid-cols-2 grid-cols-1">
         <legend className={`${ceasarDressing.className} block mb-2 text-3xl`}>PERSONLIG INFORMATION</legend>
-        {Array.from({ length: tickets.single }, (_, i) => (
+        {tickets.single > 0 && Array.from({ length: tickets.single }, (_, i) => (
           <ContactForm key={i} i={i} ticketType="single" />
         ))}
         <div className="relative z-10 group rounded-xl grid md:col-span-2 p-[2px] overflow-hidden">
           {tickets.vip > 0 && <span className="absolute inset-[-1000%] animate-[spin_7s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#EC2783_0%,#141415_50%,#EC2783_100%)]" />}
           <div className="relative bg-gradient-to-tl from-customBlack_2 to-customBlack z-0 rounded-xl ">
             <div className="overflow-hidden rounded-xl grid md:grid-cols-2 grid-col-1">
-              {Array.from({ length: tickets.vip }, (_, i) => (
+              {tickets.vip > 0 && Array.from({ length: tickets.vip }, (_, i) => (
                 <ContactForm key={i} i={i} ticketType="vip" />
               ))}
             </div>
