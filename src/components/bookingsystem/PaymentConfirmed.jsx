@@ -1,4 +1,4 @@
-//importere vores packagejson: emailjs & pdfjs:
+//importere vores packagejson: emailjs:
 import emailjs from "@emailjs/browser";
 
 import { motion } from "framer-motion";
