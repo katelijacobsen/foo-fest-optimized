@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import { FaLeaf } from "react-icons/fa6";
 import { IoIosAlert } from "react-icons/io";
 import { Caesar_Dressing } from "next/font/google";
+import Image from "next/image";
+import CampingMap from "@/img/svg/camping_map.svg";
 
 const ceasarDressing = Caesar_Dressing({
   subsets: ["latin"],
@@ -30,6 +32,8 @@ export default function Campsite({
   const [handleError, setHandleError] = useState("");
 
   const [data, setData] = useState([]);
+
+  const [popupOpen, setPopupOpen] = useState(false)
 
   // skal bruges til når vi tilføjer loading https://nextjs.org/docs/pages/building-your-application/data-fetching/client-side
   const [isLoading, setLoading] = useState(true);
@@ -180,7 +184,20 @@ export default function Campsite({
             </li>
           ))}
         </ul>
-
+        <button type="button" onClick={() => setPopupOpen(true)} className=" cursor-pointer text-xs text-gray-400 hover:underline ">Se de forskellige Campingområder</button>
+        
+        {popupOpen && (
+          <div>
+            <h3>Festivals Kort</h3>
+            <Image
+             src={CampingMap}
+             width={500}
+             height={500}
+             alt="Foo Fest Festivals Kort med overblik over de forskellige campingområder"/>
+            <button onClick={() => setPopupOpen(false)}>Luk</button>
+          </div>
+        )}
+        
         <div className="flex flex-col justify-evenly gap-4">
           <section>
             <h3
