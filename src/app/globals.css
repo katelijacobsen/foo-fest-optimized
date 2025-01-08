@@ -6,6 +6,7 @@
   --background: #141415;
   --foreground: #ffffff;
 }
+
 /* Bliver brugt til at fjerne number-input pilene (source: stackoverflow) */
 @layer base {
   input[type="number"]::-webkit-inner-spin-button,
