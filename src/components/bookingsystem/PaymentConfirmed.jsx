@@ -24,11 +24,14 @@ export async function sendOrderConfirmation(recepient, state) {
       email: recepient.email,
       orderID: "100000",
       customerName: recepient.firstName,
-      guests: state.guests.single.concat(state.guests.vip).map((guest) => ({
-        firstName: guest.firstName,
-        lastName: guest.lastName,
-        ticketType: state.guests.single.includes(guest) ? "Single" : "VIP",
-      })),
+      guests: state.guests.single
+        .concat(state.guests.vip)
+        .map(
+          (guest) =>
+            `${guest.firstName} ${guest.lastName} (${guest.ticketType})`
+        )
+        .join(", "),
+
       items: [
         {
           name: "Two-Person Tent",
