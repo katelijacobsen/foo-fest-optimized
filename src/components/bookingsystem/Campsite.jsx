@@ -9,6 +9,7 @@ import { Caesar_Dressing } from "next/font/google";
 import Image from "next/image";
 import CampingMap from "@/img/svg/camping_map.svg";
 import { RxCross2 } from "react-icons/rx";
+import { BsFillQuestionCircleFill } from "react-icons/bs";
 
 const ceasarDressing = Caesar_Dressing({
   subsets: ["latin"],
@@ -185,8 +186,8 @@ export default function Campsite({
             </li>
           ))}
         </ul>
-        <div>
-        <button type="button" onClick={() => setPopupOpen(true)} className=" cursor-pointer text-xs text-gray-400 hover:underline ">Se de forskellige Campingområder</button>
+        <div className="my-4">
+        <button type="button" onClick={() => setPopupOpen(true)} className="flex items-center gap-[.4em] cursor-pointer text-xs text-gray-400 hover:underline "> <BsFillQuestionCircleFill className="text-lg"/> Se de forskellige Campingområder </button>
         </div>
         {popupOpen && (
           <motion.div initial={{ opacity:0}} animate={{opacity:1}} exit={{opacity:0}} className="fixed inset-0 bg-opacity-50 bg-black flex justify-center items-center z-100">
