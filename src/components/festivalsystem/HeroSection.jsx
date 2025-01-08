@@ -35,8 +35,8 @@ const HeroSection = ({ text }) => {
         <div className="flex justify-center items-center leading-0">
           {/* https://ui.indie-starter.dev/docs/text-animation */}
           {splittedText.map((current, index) => (
-            <motion.div key={index} ref={ref} variants={pullupVariant} initial="initial" animate={isInView ? "animate" : ""} custom={index} className={`${ceasarDressing.className} text-[26vw] md:text-[18vw] leading-tight`}>
-              {current === " " ? <span></span> : current}
+            <motion.div aria-label="FooFest" key={index} ref={ref} variants={pullupVariant} initial="initial" animate={isInView ? "animate" : ""} custom={index} className={`${ceasarDressing.className} text-[26vw] md:text-[18vw] leading-tight`}>
+              {current === " " ? <span aria-hidden="true"></span> : current}
             </motion.div>
           ))}
         </div>
