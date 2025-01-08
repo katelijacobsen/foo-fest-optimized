@@ -109,8 +109,8 @@ function ContactForm({ i, ticketType }) {
         <motion.h2 variants={inputSpring} className="font-bold text-xl bg-gradient-to-r from-customPink via-customRed to-customOrange bg-clip-text text-transparent">
           VIP Billet
         </motion.h2>
-      )}
-
+        )}
+        { ticketType === "single" && i === 0 && (<p className="text-gray-400 text-xs">Modtager af kvittering</p>)}
       <motion.div className="mb-2.5" variants={inputSpring}>
         <label htmlFor={`${ticketType}_firstName_${i}`} className="block text-sm font-medium text-white" id="fornavn-felt">
           Fornavn
