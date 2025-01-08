@@ -13,13 +13,7 @@ const ceasarDressing = Caesar_Dressing({
   display: "swap",
 });
 
-export default function Campsite({
-  state,
-  formAction,
-  setReservedId,
-  setTimeOut,
-}) {
-  const [spots, setSpots] = useState([]);
+export default function Campsite({ state, formAction, setReservedId, setTimeOut }) {
   const [cart, setCart] = useContext(CartContext);
   const [twoPersonCount, setTwoPersonCount] = useState(0);
   const [threePersonCount, setThreePersonCount] = useState(0);
@@ -80,7 +74,6 @@ export default function Campsite({
   };
 
   const updateCampsite = (campsite, availableSpots) => {
-    console.log("campsite", campsite, "availablSpots", availableSpots);
     setCart((prev) => {
       return {
         ...prev,
@@ -102,8 +95,6 @@ export default function Campsite({
   };
 
   const handleNext = (formData) => {
-    console.log(selectedCampsite, "camp yes");
-
     if (!selectedCampsite) {
       setHandleError("Vælg venligst et campingområde, før du fortsætter.");
       return;
@@ -114,8 +105,9 @@ export default function Campsite({
     formAction(formData);
   };
 
+  const [startTimer, setStartTimer] = useState(0);
   useEffect(() => {
-    if (antalBilletter === 0) return console.log("virker ikke");
+    if (startTimer === 0) return;
 
     fetch("https://spring-awesome-stream.glitch.me/reserve-spot", {
       method: "PUT",
@@ -136,25 +128,14 @@ export default function Campsite({
       .then((data) => {
         setReservedId(data.id); // Save the ID in state
         setTimeOut(data.timeout);
-        console.log("Reserved Spot ID:", data.id);
-        console.log("Time start", data.timeout);
       });
-  }, [selectedCampsite]);
+  }, [startTimer]);
 
   return (
     <div className="flex justify-center mx-4">
-      <motion.form
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.3 }}
-        className=" inline-flex flex-col flex-1 bg-gradient-to-tl border border-gray-500 bg-customBlack_5 p-4 my-4 rounded-md"
-      >
-        <h2 className={`${ceasarDressing.className} text-3xl text-white`}>
-          HVOR VIL DU CAMPE?
-        </h2>
-        <h3 className="font-bold text-sm mb-4 text-gray-400">
-          VÆLG VENLIGST EN LEDIG CAMPINGOMRÅDE
-        </h3>
+      <motion.form initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }} className=" inline-flex flex-col flex-1 bg-gradient-to-tl border border-gray-500 bg-customBlack_5 p-4 my-4 rounded-md">
+        <h2 className={`${ceasarDressing.className} text-3xl text-white`}>HVOR VIL DU CAMPE?</h2>
+        <h3 className="font-bold text-sm mb-4 text-gray-400">VÆLG VENLIGST EN LEDIG CAMPINGOMRÅDE</h3>
         {isLoading && (
           <div className="flex justify-center items-center">
             <span className="w-14 h-14 loader-animation "></span>
@@ -165,17 +146,11 @@ export default function Campsite({
             <li
               onClick={() => updateCampsite(spot.area, spot.available)}
               key={i}
-              className={`${
-                spot.available < numPeople &&
-                "bg-gray-300 text-gray-500 cursor-not-allowed hidden disabled"
-              }${
+              className={`${spot.available < numPeople && "bg-gray-300 text-gray-500 cursor-not-allowed hidden disabled"}${
                 spot.area === selectedCampsite && "border-4"
               } bg-gradient-to-tl border border-gray-900 from-customBlack_2 to-customBlack p-2 rounded-md select-none cursor-pointer`}
               style={{
-                borderImage:
-                  spot.area === selectedCampsite
-                    ? "linear-gradient(to right, #EC2783, #D82023 , #EC4D08) 1"
-                    : "none",
+                borderImage: spot.area === selectedCampsite ? "linear-gradient(to right, #EC2783, #D82023 , #EC4D08) 1" : "none",
                 borderRadius: "0.375rem",
                 borderWidth: spot.area === selectedCampsite ? "2px" : "1px",
               }}
@@ -188,34 +163,21 @@ export default function Campsite({
 
         <div className="flex flex-col justify-evenly gap-4">
           <section>
-            <h3
-              className={`${ceasarDressing.className} text-3xl text-white mt-8`}
-            >
-              LEJE AF TELTE
-            </h3>
+            <h3 className={`${ceasarDressing.className} text-3xl text-white mt-8`}>LEJE AF TELTE</h3>
             <ul className="my-4 inline-flex flex-col gap-6">
               <li className=" flex-row text-white flex gap-12 bg-gradient-to-tl border border-gray-900 from-customBlack_2 to-customBlack p-4 rounded-md">
                 <div>
                   <h4 className="font-bold text-xl">2 Personers Telt</h4>
                   <p className="text-xs font-normal text-gray-300">299kr</p>
                 </div>
-                <CounterInput
-                  name="twoPeople"
-                  count={twoPersonCount}
-                  setCount={updateTwoPersonTentCount}
-                />
+                <CounterInput name="twoPeople" count={twoPersonCount} setCount={updateTwoPersonTentCount} />
               </li>
               <li className="flex flex-row text-white gap-12  bg-gradient-to-tl border border-gray-900 from-customBlack_2 to-customBlack p-4 rounded-md">
                 <div>
                   <h4 className="font-bold text-xl">3 Personers Telt</h4>
                   <p className="text-xs font-normal text-gray-300">399kr</p>
                 </div>
-                <CounterInput
-                  name="threePeople"
-                  max={10}
-                  count={threePersonCount}
-                  setCount={updateThreePersonTentCount}
-                />
+                <CounterInput name="threePeople" max={10} count={threePersonCount} setCount={updateThreePersonTentCount} />
               </li>
             </ul>
             {countError && (
@@ -225,11 +187,7 @@ export default function Campsite({
             )}
           </section>
           <section>
-            <h3
-              className={`${ceasarDressing.className} text-3xl text-white mb-4`}
-            >
-              SUPPLEMENT
-            </h3>
+            <h3 className={`${ceasarDressing.className} text-3xl text-white mb-4`}>SUPPLEMENT</h3>
 
             <div className="flex items-center p-4 rounded-md bg-gradient-to-tl border border-green-800 from-black to-green-900">
               <div className="flex h-5">
@@ -244,22 +202,13 @@ export default function Campsite({
                 />
               </div>
               <div className="ms-2 text-sm">
-                <label
-                  htmlFor="helper-checkbox"
-                  className="font-bold inline-flex gap-2 items-baseline text-xl text-white"
-                >
+                <label htmlFor="helper-checkbox" className="font-bold inline-flex gap-2 items-baseline text-xl text-white">
                   Grøn Camping <FaLeaf className="text-green-400" />
                 </label>
-                <p
-                  id="helper-checkbox-text"
-                  className="text-xs font-normal text-gray-300"
-                >
+                <p id="helper-checkbox-text" className="text-xs font-normal text-gray-300">
                   249kr
                 </p>
-                <p className="font-light text-sm text-gray-100 w-64">
-                  Perfekt til dig, der ønsker en mere miljøvenlig
-                  festivaloplevelse.
-                </p>
+                <p className="font-light text-sm text-gray-100 w-64">Perfekt til dig, der ønsker en mere miljøvenlig festivaloplevelse.</p>
               </div>
             </div>
           </section>
@@ -272,6 +221,7 @@ export default function Campsite({
             </p>
           )}
           <button
+            onClick={() => setStartTimer((prev) => prev + 1)}
             className={`${
               selectedCampsite
                 ? "font-semibold py-2 rounded-sm px-8 my-8 ml-auto text-xl bg-gradient-to-bl from-customPink text-white to-customOrange text-transparent w-full sm:w-auto"

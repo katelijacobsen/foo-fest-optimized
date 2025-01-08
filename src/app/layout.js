@@ -1,4 +1,4 @@
-import PopupContainer from "@/components/global/PopupContainer";
+import PopupContainer from "@/components/global/popupFolder/Container";
 import Header from "@/components/global/Header";
 import "./globals.css";
 

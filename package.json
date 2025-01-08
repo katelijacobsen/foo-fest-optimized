@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@emailjs/nodejs": "^5.0.2",
     "@react-icons/all-files": "^4.1.0",
     "framer-motion": "^11.13.5",
     "motion": "^11.13.5",

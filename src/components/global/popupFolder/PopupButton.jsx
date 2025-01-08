@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { TbMailPlus } from "react-icons/tb";
 
-import PopupNewsletter from "@/components/global/PopupNewslettter";
+import PopupNewsletter from "./PopupBox";
 const PopButton = () => {
   const [modalOpen, setModalOpen] = useState(true);
   // her er den lukket

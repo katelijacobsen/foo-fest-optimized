@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "motion/react";
 
-import NewsletterCopy from "./NewsletterCopy";
+import NewsletterCopy from "../newsletterFolder/NewsletterCopy";
 import { IoClose } from "react-icons/io5";
 
 const PopupNewsletter = ({ modalOpen, setModalOpen }) => {
@@ -39,6 +39,7 @@ const PopupNewsletter = ({ modalOpen, setModalOpen }) => {
         "
         // giver de forskellige varianter af din animation
         variants={dropIn}
+        drag
         // Her siger du hvilke her giver du de forskllige animation state deres opgave
         initial="visible"
         animate="visible"
