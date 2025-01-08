@@ -8,6 +8,7 @@ import { IoIosAlert } from "react-icons/io";
 import { Caesar_Dressing } from "next/font/google";
 import Image from "next/image";
 import CampingMap from "@/img/svg/camping_map.svg";
+import { RxCross2 } from "react-icons/rx";
 
 const ceasarDressing = Caesar_Dressing({
   subsets: ["latin"],
@@ -189,7 +190,9 @@ export default function Campsite({
         {popupOpen && (
           <motion.div initial={{ opacity:0}} animate={{opacity:1}} exit={{opacity:0}} className="fixed inset-0 bg-opacity-[25%] bg-black flex justify-center items-center z-100">
             <div className="relative max-w-lg w-full border border-gray-500 bg-customBlack_5 p-4 my-4 rounded-md m-8">
-            <button onClick={() => setPopupOpen(false)} className="absolute top-2 right-4 text-slate-600 hover:underline" aria-label="Luk Kortet">Luk</button>
+            <button onClick={() => setPopupOpen(false)} className="absolute top-2 right-4 text-slate-600 hover:underline" aria-label="Luk Kortet">
+              <RxCross2 className="bg-customBlack_5 text-customOrange h-10 w-10 md:ml-0 md:mb-8 border-solid border-[1px] border-customOrange rounded-full p-2"/>
+            </button>
 
             <h3 className="text-xl font-bold">Festivals Kort</h3>
             <Image
