@@ -12,53 +12,8 @@ const ceasarDressing = Caesar_Dressing({
   display: "swap",
 });
 
-function html(state) {
-  let tableRows = "";
-
-  state.guests.single.forEach((guest) => {
-    tableRows += `
-    
-     <tr>
-        <td>${guest.firstName}</td>
-        <td>${guest.lastName}</td>
-        <td>Enkel billet</td>
-        <td>799 DKK</td>
-      </tr>
-    
-    `;
-  });
-  state.guests.vip.forEach((guest) => {
-    tableRows += `
-    
-     <tr>
-        <td>${guest.firstName}</td>
-        <td>${guest.lastName}</td>
-        <td>Enkel billet</td>
-        <td>799 DKK</td>
-      </tr>
-    
-    `;
-    return `
-    <table style="width: 100%; border-collapse: collapse; text-align: left;">
-      <thead style="background: #f7a400; color: white;">
-        <tr>
-          <th style="padding: 8px; border: 1px solid #ddd;">Fornavn</th>
-          <th style="padding: 8px; border: 1px solid #ddd;">Efternavn</th>
-          <th style="padding: 8px; border: 1px solid #ddd;">Billettype</th>
-          <th style="padding: 8px; border: 1px solid #ddd; text-align: right;">Pris</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${tableRows}
-      </tbody>
-    </table>
-  `;
-  });
-}
-
 // Link til syntax: https://www.emailjs.com/docs/sdk/send/
 export async function sendOrderConfirmation(recepient, state) {
-  const table = html(state);
 
   const response = await emailjs.send(
     "service_hht5308",
@@ -67,7 +22,6 @@ export async function sendOrderConfirmation(recepient, state) {
       email: recepient.email,
       orderID: "100000",
       customerName: recepient.firstName,
-      tableOrder: table,
     },
     //publicKey
     "Z76vT5PvRI9HWFbB1"
