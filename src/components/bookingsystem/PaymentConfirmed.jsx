@@ -32,6 +32,9 @@ export default function PaymentConfirmed({ state }) {
   // sætter vores svg til false så den er skjult i starten.
   const [startDraw, setStartDraw] = useState(false);
 
+  //Her viser jeg ud fra UI at brugeren har fået kvittering på den mail de har tidliger udfyldt med useState hook
+  const [email, setEmail] = useState()
+
   // sætter vores false til true ( fra hidden til visible)
   useEffect(() => {
     setStartDraw(true);
@@ -48,6 +51,8 @@ export default function PaymentConfirmed({ state }) {
         state.guests.single.length > 0
           ? state.guests.single[0]
           : state.guests.vip[0];
+          //tilføjer mail her 
+          setEmail(recepient.email)
       sendOrderConfirmation(recepient, state);
     }
     send();
@@ -90,6 +95,7 @@ export default function PaymentConfirmed({ state }) {
       >
         ORDRE BEKRÆFTELSE
       </h2>
+      <h3>Vi har sendt dig en mail til {email}</h3>
       <div className="flex justify-center items-center w-full mb-6">
         <motion.svg
           className="w-36 h-auto"
