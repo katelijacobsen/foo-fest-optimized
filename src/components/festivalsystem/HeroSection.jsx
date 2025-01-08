@@ -36,7 +36,7 @@ const HeroSection = ({ text }) => {
           {/* https://ui.indie-starter.dev/docs/text-animation */}
           {splittedText.map((current, index) => (
             <motion.div aria-label="FooFest" key={index} ref={ref} variants={pullupVariant} initial="initial" animate={isInView ? "animate" : ""} custom={index} className={`${ceasarDressing.className} text-[26vw] md:text-[18vw] leading-tight`}>
-              {current === " " ? <span aria-label="hidden"></span> : current}
+              {current === " " ? <span aria-hidden="true"></span> : current}
             </motion.div>
           ))}
         </div>
