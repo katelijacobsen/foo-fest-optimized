@@ -15,7 +15,7 @@ const TestSection = () => {
   const translateXC = useTransform(scrollYProgress, [0, 1], [0, 200]); // Linje Context bevæger sig 200px mod højre
 
   return (
-    <section className="relative pt-[28vw] pb-[30vw] md:pt-[20vw] md:pb-[25vw] overflow-hidden">
+    <section className="relative pt-[28vw] pb-[30vw] md:pt-[17vw] md:pb-[20vw] overflow-hidden">
       <div className="leading-none uppercase text-[13vw] md:text-[12vw] flex items-end flex-col">
         <motion.span
           className="pr-[70vw] md:pr-[30vw] bg-gradient-to-r from-customPink via-customRed to-customOrange bg-clip-text text-transparent"

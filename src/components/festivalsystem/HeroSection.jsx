@@ -42,7 +42,7 @@ const HeroSection = ({ text }) => {
         </div>
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1, delay: 0.8 }} animate={{ y: 10 }}>
           <div className="px-4">
-            <h2 className={`${ceasarDressing.className} text-center leading-tight bg-gradient-to-bl from-customPink to-customOrange bg-clip-text text-transparent text-[16vw] md:text-[10vw]`}>FESTIVAL</h2>
+            <h2 className={`${ceasarDressing.className} text-center leading-tight bg-gradient-to-r from-customPink to-customOrange bg-clip-text text-transparent text-[16vw] md:text-[10vw]`}>FESTIVAL</h2>
           </div>
         </motion.div>
         {/* <div className="grid place-content-center mt-16">
