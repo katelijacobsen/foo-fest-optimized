@@ -68,10 +68,10 @@ const LineUpList = ({ mergedData }) => {
             .map((letter) => (
               // https://mattclaffey.medium.com/adding-react-refs-to-an-array-of-items-96e9a12ab40c
               <div key={letter} ref={(element) => (sectionRefs.current[letter] = element)}>
-                <h2 className="py-4 font-bold md:text-2xl text-customOrange">{letter}</h2>
-                <ul className="flex flex-wrap gap-8 justify-center md:justify-start items-center">
+                <h2 className="p-4 lg:px-0 font-bold text-2xl md:text-3xl text-customOrange">{letter}</h2>
+                <ul className="flex flex-wrap gap-8 justify-center lg:justify-start items-center pb-8">
                   {groupedBands[letter].map((band) => (
-                    <li key={`${letter}-${band.slug}`} onClick={() => openModal(band)}>
+                    <li className="pb-8" key={`${letter}-${band.slug}`} onClick={() => openModal(band)}>
                       <LineUpCard key={band.slug} members={band.members} bio={band.bio} slug={band.slug} logo={band.logo} name={band.name} day={band.day} start={band.eventInfo.start} end={band.eventInfo.end} scene={band.scene} />
                     </li>
                   ))}
