@@ -24,12 +24,12 @@ const Footer = () => {
         <Container />
       </div>
       <div className="flex gap-5 flex-row-reverse p-4 md:pt-0 ">
-        <a href="#" aria-label="Facebook">
+        <Link href="#" aria-label="Facebook">
           <Image src={Facebook} alt={"Facebook logo, a circle with a f inside"} width={25} height={25} priority></Image>
-        </a>
-        <a href="#" aria-label="Instagram">
+        </Link>
+        <Link href="#" aria-label="Instagram">
           <Image src={Instagram} alt={"Instagram a square that looks like a camera"} width={25} height={25} priority></Image>
-        </a>
+        </Link>
       </div>
     </footer>
   );

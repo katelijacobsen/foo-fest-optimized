@@ -17,7 +17,7 @@ const Camping = ({ text }) => {
           <p className="pt-6 text-base md:text-lg">{text}</p>
           <div className="inline-block pt-6 pb-3">
             <Link href="/camping">
-              <PrimaryButton aria_label_text="Læs mere" color="bg-gradient-to-r from-[#ec2783] from-12% via-[#d82023] via-46% to-[#ec4d08] to-87%" buttonContent="Læs mere" />
+              <PrimaryButton type="text" aria_label_text="Læs mere" color="bg-gradient-to-r from-[#ec2783] from-12% via-[#d82023] via-46% to-[#ec4d08] to-87%" buttonContent="Læs mere" />
             </Link>
           </div>
         </div>

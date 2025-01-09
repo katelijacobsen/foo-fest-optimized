@@ -29,7 +29,7 @@ const LineupListReadMore = ({ initialLineup }) => {
           ))}
         </ul>
         {/* Brug af onClick event til "View more"-funktion */}
-        <button className="font-bold text-xl bg-gradient-to-r from-customPink via-customRed to-customOrange bg-clip-text text-transparent pt-4" onClick={() => setIsExpanded(!isExpanded)}>
+        <button type="text" className="font-bold text-xl bg-gradient-to-r from-customPink via-customRed to-customOrange bg-clip-text text-transparent pt-4" onClick={() => setIsExpanded(!isExpanded)}>
           {isExpanded ? "" : "Vis flere..."}
         </button>
         {isExpanded && (
@@ -52,7 +52,7 @@ const LineupListReadMore = ({ initialLineup }) => {
 
         <div className="grid place-content-center pt-8">
           <Link href="/lineup">
-            <PrimaryButton aria_label_text="View more artists" color="bg-gradient-to-r from-[#ec2783] from-12% via-[#d82023] via-46% to-[#ec4d08] to-87%" buttonContent="Se det fulde lineup" />
+            <PrimaryButton type="text" aria_label_text="View the full lineup" color="bg-gradient-to-r from-[#ec2783] from-12% via-[#d82023] via-46% to-[#ec4d08] to-87%" buttonContent="Se det fulde lineup" />
           </Link>
         </div>
       </section>

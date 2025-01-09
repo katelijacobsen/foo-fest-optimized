@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 
-function LineUpCard({ name, logo, scene, day, start, end }) {
+function LineUpCard({ name, logo }) {
   const imageUrl = logo && (logo.startsWith("https://") || logo.startsWith("http://")) ? logo : `https://spring-awesome-stream.glitch.me/logos/${logo}`;
 
   return (

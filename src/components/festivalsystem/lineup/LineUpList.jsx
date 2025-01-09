@@ -86,6 +86,7 @@ const LineUpList = ({ mergedData }) => {
             .sort()
             .map((letter) => (
               <button
+                type="text"
                 aria-label={letter}
                 onClick={() => scrollToSection(letter)}
                 key={letter}
@@ -109,7 +110,7 @@ const LineUpList = ({ mergedData }) => {
           <div className="fixed top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center overflow-y-auto mx-4">
             <div className="bg-customBlack max-w-lg w-full rounded-md shadow-lg overflow-y-auto max-h-[90vh]">
               <div className="relative">
-                <button className="absolute top-1 right-1 m-2" alt="exit modal" onClick={closeModal}>
+                <button className="absolute top-1 right-1 m-2" type="text" alt="close modal" onClick={closeModal}>
                   <RxCross2 className="bg-customBlack_5 text-customOrange h-10 w-10 md:ml-0 md:mb-8 border-solid border-[1px] border-customOrange rounded-full p-2" />
                 </button>
                 <Image width={100} height={100} src={selectedBand.logo.startsWith("http") ? selectedBand.logo : `https://spring-awesome-stream.glitch.me/logos/${selectedBand.logo}`} alt={`${selectedBand.name} logo`} className="w-full h-auto object-contain mx-auto" />{" "}
@@ -137,7 +138,7 @@ const LineUpList = ({ mergedData }) => {
                   <p className="text-white">{selectedBand.bio}</p>
                 </div>
 
-                <button aria-label="close modal" onClick={closeModal} className="mt-4 bg-customOrange text-white py-2 px-4 ">
+                <button type="text" aria-label="close modal" onClick={closeModal} className="mt-4 bg-customOrange text-white py-2 px-4 ">
                   Luk
                 </button>
               </div>
