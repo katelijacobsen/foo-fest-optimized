@@ -5,6 +5,7 @@ import Headline from "@/components/global/Headline";
 import LineUpRune from "@/img/svg/lineup_rune.svg";
 import Image from "next/image";
 import { RxCross2 } from "react-icons/rx";
+import { IoSearchOutline } from "react-icons/io5";
 
 const LineUpList = ({ mergedData }) => {
   //statevariabel med væriden mergedData (fra props) - setBands bruges til at opdatere state
@@ -52,11 +53,12 @@ const LineUpList = ({ mergedData }) => {
           <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"></label>
           <div className="relative">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-              <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+              {/* <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-              </svg>
+              </svg> */}
+              <IoSearchOutline className="w-4 h-4 lg:w-5 lg:h-5" />
             </div>
-            <input type="search" id="default-search" className="block w-full p-4 ps-10 text-sm text-white border border-solid border-customOrange rounded-sm bg-customBlack focus:ring-customOrange focus:border-customOrange" placeholder="Søg efter bandnavn..." value={searchBand} onChange={(e) => setSearchBand(e.target.value)} />
+            <input type="search" id="default-search" className="block w-full p-4 ps-10  border border-solid border-customOrange rounded-sm bg-customBlack focus:ring-customOrange focus:border-customOrange" placeholder="Søg efter bandnavn..." value={searchBand} onChange={(e) => setSearchBand(e.target.value)} />
           </div>
         </form>
       </div>
@@ -68,8 +70,8 @@ const LineUpList = ({ mergedData }) => {
             .map((letter) => (
               // https://mattclaffey.medium.com/adding-react-refs-to-an-array-of-items-96e9a12ab40c
               <div key={letter} ref={(element) => (sectionRefs.current[letter] = element)}>
-                <h2 className="p-4 lg:px-0 font-bold text-2xl md:text-3xl text-customOrange">{letter}</h2>
-                <ul className="flex flex-wrap gap-8 justify-center lg:justify-start items-center pb-8">
+                <h2 className="py-2 px-2 lg:px-0 font-bold text-2xl md:text-3xl text-customOrange">{letter}</h2>
+                <ul className="flex flex-wrap gap-8 pb-8 justify-center md:justify-start items-center">
                   {groupedBands[letter].map((band) => (
                     <li className="pb-8" key={`${letter}-${band.slug}`} onClick={() => openModal(band)}>
                       <LineUpCard key={band.slug} members={band.members} bio={band.bio} slug={band.slug} logo={band.logo} name={band.name} day={band.day} start={band.eventInfo.start} end={band.eventInfo.end} scene={band.scene} />
@@ -86,7 +88,6 @@ const LineUpList = ({ mergedData }) => {
             .sort()
             .map((letter) => (
               <button
-                type="text"
                 aria-label={letter}
                 onClick={() => scrollToSection(letter)}
                 key={letter}
@@ -110,7 +111,7 @@ const LineUpList = ({ mergedData }) => {
           <div className="fixed top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center overflow-y-auto mx-4">
             <div className="bg-customBlack max-w-lg w-full rounded-md shadow-lg overflow-y-auto max-h-[90vh]">
               <div className="relative">
-                <button className="absolute top-1 right-1 m-2" type="text" alt="close modal" onClick={closeModal}>
+                <button className="absolute top-1 right-1 m-2" alt="exit modal" onClick={closeModal}>
                   <RxCross2 className="bg-customBlack_5 text-customOrange h-10 w-10 md:ml-0 md:mb-8 border-solid border-[1px] border-customOrange rounded-full p-2" />
                 </button>
                 <Image width={100} height={100} src={selectedBand.logo.startsWith("http") ? selectedBand.logo : `https://spring-awesome-stream.glitch.me/logos/${selectedBand.logo}`} alt={`${selectedBand.name} logo`} className="w-full h-auto object-contain mx-auto" />{" "}
@@ -138,7 +139,7 @@ const LineUpList = ({ mergedData }) => {
                   <p className="text-white">{selectedBand.bio}</p>
                 </div>
 
-                <button type="text" aria-label="close modal" onClick={closeModal} className="mt-4 bg-customOrange text-white py-2 px-4 ">
+                <button aria-label="close modal" onClick={closeModal} className="mt-4 bg-customOrange text-white py-2 px-4 ">
                   Luk
                 </button>
               </div>
