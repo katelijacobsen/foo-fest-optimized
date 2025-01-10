@@ -79,6 +79,10 @@ const PaymentForm = ({ formAction, reservedId, setTimeOut }) => {
     setState((prev) => ({ ...prev, focus: evt.target.name }));
   };
 
+
+
+
+
   useEffect(() => {
     if (paymentConfirmed === 0) return;
 

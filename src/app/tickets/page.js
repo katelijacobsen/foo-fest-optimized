@@ -1,14 +1,16 @@
 "use client";
+import MyMarquee from "@/components/festivalsystem/marquee/MyMarquee";
 import ChooseTicket from "@/components/bookingsystem/ChooseTicket";
 import Campsite from "@/components/bookingsystem/Campsite";
 import ContactInfo from "@/components/bookingsystem/ContactInfo";
 import PaymentFlow from "@/components/bookingsystem/PaymentFlow";
 import PaymentComfirmed from "@/components/bookingsystem/PaymentConfirmed";
 import Cart from "@/components/bookingsystem/Cart";
-import { createContext, useActionState } from "react";
+import { createContext, useActionState, useState, useEffect } from "react";
 import { Caesar_Dressing } from "next/font/google";
-import { useState, useEffect } from "react";
-import MyMarquee from "@/components/festivalsystem/marquee/MyMarquee";
+
+//hook fra react der deler & opdatere vores state
+export const CartContext = createContext(null);
 
 const ceasarDressing = Caesar_Dressing({
   subsets: ["latin"],
@@ -44,7 +46,6 @@ const defaultState = {
   },
 };
 
-export const CartContext = createContext(null);
 
 export default function Page() {
   const [data, setData] = useState([]);
@@ -53,75 +54,70 @@ export default function Page() {
 
   const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impna3Ntb3VoYWxzeGV6aXl0eWdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQyOTU1NjEsImV4cCI6MjA0OTg3MTU2MX0.WPZoRN3URqEILGHGLXl1kdWFJCj40mQWEdPfULA1Gto";
   const url = "https://jgksmouhalsxeziytygd.supabase.co/rest/v1/personer";
+  
+  
   const handleStep = (prev, formData) => {
-    if (formData === null) {
-      return defaultState;
-    }
-    if (prev.step === 0) {
-      return {
-        ...prev,
-        step: prev.step + 1,
-        tickets: {
-          single: +formData.get("singleTickets"),
-          vip: +formData.get("vipTickets"),
-        },
-      };
-    }
-    if (prev.step === 1) {
-      return {
-        ...prev,
-        step: prev.step + 1,
-        tents: {
-          twoPeople: +formData.get("twoPeople"),
-          threePeople: +formData.get("threePeople"),
-          greenCamping: formData.get("greenCamping"),
-        },
-        campsite: formData.get("campsite"),
-      };
-    }
+    if (!formData) return defaultState;
+    
+    //Forenkler koden med en const hvor jeg fortæller, at gå vider til det næste step: 
+    // Her undgå jeg at hardcode.
+    const newState = { ...prev, step: prev.step + 1 };
+  // Link til switch statement : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch
+  // if bliver erstattet med switch-statement fordi vi kun arbejder med en enkel variabel/parameter (prev.step). 
+  // Vi behøver så ikke at skrive gentagende gange vores if, der kontrollere vores steps.
 
-    if (prev.step === 2) {
-      const singleGuests = Array.from({ length: prev.tickets.single }, (_, i) => ({
-        firstName: formData.get(`single_firstName_${i}`),
-        lastName: formData.get(`single_lastName_${i}`),
-        email: formData.get(`single_email_${i}`),
-        phonenumber: formData.get(`single_phonenumber_${i}`),
-      }));
-      const vipGuests = Array.from({ length: prev.tickets.vip }, (_, i) => ({
-        firstName: formData.get(`vip_firstName_${i}`),
-        lastName: formData.get(`vip_lastName_${i}`),
-        email: formData.get(`vip_email_${i}`),
-        phonenumber: formData.get(`vip_phonenumber_${i}`),
-      }));
 
-      const combined = [...singleGuests, ...vipGuests];
-
-      setData(combined);
-
-      return {
-        ...prev,
-        step: prev.step + 1,
-        guests: { single: singleGuests, vip: vipGuests },
-      };
-    }
-
-    if (prev.step === 3) {
-      return {
-        ...prev,
-        step: prev.step + 1,
-        payment: {
-          number: formData.get("number"),
-          name: formData.get("name"),
-          expiry: formData.get("expiry"),
-          cvc: formData.get("cvc"),
-        },
-      };
-    }
-    if (prev.step === 4) {
-      return {
-        ...prev,
-        step: prev.step + 1,
-      };
+  // Hver trin er nu også mere læseligt pga vi med switch statement bruger case (tror man kan oversætte det til situation).
+    switch (prev.step) {
+      case 0:
+        return {
+          ...newState,
+          tickets: {
+            single: +formData.get("singleTickets"),
+            vip: +formData.get("vipTickets"),
+          },
+        };
+      case 1:
+        return {
+          ...newState,
+          tents: {
+            twoPeople: +formData.get("twoPeople"),
+            threePeople: +formData.get("threePeople"),
+            greenCamping: formData.get("greenCamping"),
+          },
+          campsite: formData.get("campsite"),
+        };
+      case 2: {
+        const singleGuests = Array.from({ length: prev.tickets.single }, (_, i) => ({
+          firstName: formData.get(`single_firstName_${i}`),
+          lastName: formData.get(`single_lastName_${i}`),
+          email: formData.get(`single_email_${i}`),
+          phonenumber: formData.get(`single_phonenumber_${i}`),
+        }));
+        const vipGuests = Array.from({ length: prev.tickets.vip }, (_, i) => ({
+          firstName: formData.get(`vip_firstName_${i}`),
+          lastName: formData.get(`vip_lastName_${i}`),
+          email: formData.get(`vip_email_${i}`),
+          phonenumber: formData.get(`vip_phonenumber_${i}`),
+        }));
+  
+        setData([...singleGuests, ...vipGuests]);
+  
+        return { ...newState, guests: { single: singleGuests, vip: vipGuests } };
+      }
+      case 3:
+        return {
+          ...newState,
+          payment: {
+            number: formData.get("number"),
+            name: formData.get("name"),
+            expiry: formData.get("expiry"),
+            cvc: formData.get("cvc"),
+          },
+        };
+        //Hvis der så ikke er flere cases så matcher den værdiens udsagn.
+      default:
+        return newState;
     }
   };
   useEffect(() => {
