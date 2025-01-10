@@ -202,29 +202,6 @@ export default function Campsite({
               LEJE AF TELTE
             </h3>
             <ul className="my-4 inline-flex flex-col gap-6">
-              {/* <li className=" flex-row text-white flex gap-12 bg-gradient-to-tl border border-gray-900 from-customBlack_2 to-customBlack p-4 rounded-md">
-                <div>
-                  <h4 className="font-bold text-xl">2 Personers Telt</h4>
-                  <p className="text-xs font-normal text-gray-300">299kr</p>
-                </div>
-                <CounterInput
-                  name="twoPeople"
-                  count={twoPersonCount}
-                  setCount={updateTwoPersonTentCount}
-                />
-              </li> */}
-                {/* <li className="flex flex-row text-white gap-12  bg-gradient-to-tl border border-gray-900 from-customBlack_2 to-customBlack p-4 rounded-md">
-                  <div>
-                    <h4 className="font-bold text-xl">3 Personers Telt</h4>
-                    <p className="text-xs font-normal text-gray-300">399kr</p>
-                  </div>
-                  <CounterInput
-                    name="threePeople"
-                    max={10}
-                    count={threePersonCount}
-                    setCount={updateThreePersonTentCount}
-                  />
-                </li> */}
               <TentChoice
                 title="2 Personers Telt"
                 price="299 DKK"
