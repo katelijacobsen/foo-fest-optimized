@@ -4,7 +4,7 @@ import { FiMinus } from "react-icons/fi";
 const Accordionitem = ({ DesktoptextSize, MobileTextSize, isOpen, setIsOpen, questionOne, questionTwo, questionThree, questionFour, item, answerOne, answerTwo, answerThree, answerFour }) => {
   return (
     <li className="w-full my-3">
-      <button type="text"
+      <button type="button"
         onClick={() => {
           isOpen == item ? setIsOpen(0) : setIsOpen(item);
         }}
