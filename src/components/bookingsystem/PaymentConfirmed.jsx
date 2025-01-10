@@ -11,8 +11,10 @@ const ceasarDressing = Caesar_Dressing({
   weight: "400",
   display: "swap",
 });
+
 // Link til syntax: https://www.emailjs.com/docs/sdk/send/
 export async function sendOrderConfirmation(recepient, state) {
+
   const response = await emailjs.send(
     "service_hht5308",
     "template_8o2l2mj",
@@ -33,7 +35,7 @@ export default function PaymentConfirmed({ state }) {
   const [startDraw, setStartDraw] = useState(false);
 
   //Her viser jeg ud fra UI at brugeren har fået kvittering på den mail de har tidliger udfyldt med useState hook
-  const [email, setEmail] = useState()
+  const [email, setEmail] = useState();
 
   // sætter vores false til true ( fra hidden til visible)
   useEffect(() => {
@@ -51,8 +53,8 @@ export default function PaymentConfirmed({ state }) {
         state.guests.single.length > 0
           ? state.guests.single[0]
           : state.guests.vip[0];
-          //tilføjer mail her 
-          setEmail(recepient.email)
+      //tilføjer mail her
+      setEmail(recepient.email);
       sendOrderConfirmation(recepient, state);
     }
     send();
