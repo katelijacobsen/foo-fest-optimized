@@ -184,12 +184,16 @@ export default function Campsite({
             </li>
           ))}
         </ul>
+        <div>
         <button type="button" onClick={() => setPopupOpen(true)} className=" cursor-pointer text-xs text-gray-400 hover:underline ">Se de forskellige Campingområder</button>
+        </div>
         
         {popupOpen && (
-          <div>
-            <h3>Festivals Kort</h3>
+          <div className="p-4">
+            <h3 className="text-2xl font-bold ">Festivals Kort</h3>
+            
             <Image
+            className="bg-black"
              src={CampingMap}
              width={500}
              height={500}
