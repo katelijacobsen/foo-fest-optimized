@@ -56,7 +56,7 @@ function ProgramList({ mergedData, days }) {
           </div>
           <div className="flex justify-center flex-wrap my-4 gap-5">
             {days.map((day) => (
-              <button type="text" aria-label="weekday" key={day} className={`${selectedDay === day ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-white w-32 h-10 rounded-sm" : "  w-32 h-10 bg-gradient-to-r from-customPink via-customRed to-customOrange text-white p-[1.5px] rounded-sm"} `} onClick={() => filterBandsByDay(day)}>
+              <button type="button" aria-label="weekday" key={day} className={`${selectedDay === day ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-white w-32 h-10 rounded-sm" : "  w-32 h-10 bg-gradient-to-r from-customPink via-customRed to-customOrange text-white p-[1.5px] rounded-sm"} `} onClick={() => filterBandsByDay(day)}>
                 <span className={`${selectedDay === day ? "bg-transparent" : "bg-customBlack h-full w-full block "} flex justify-center items-center `}>{day.charAt(0).toUpperCase() + day.slice(1)}</span>
               </button>
             ))}
