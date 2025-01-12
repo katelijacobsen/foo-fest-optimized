@@ -80,6 +80,14 @@ const PaymentForm = ({ formAction, reservedId, setTimeOut }) => {
   };
 
 
+  // const dog = {
+  //   type: 'mammal',
+  //   legs: 4,
+  //   name: "carsten"
+  // };
+
+  // const name = "type";
+  // const x = {...dog, [name]: 2};
 
 
 
