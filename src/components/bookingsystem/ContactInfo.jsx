@@ -39,21 +39,37 @@ export default function ContactInfo({ tickets, formAction }) {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.3 }}
-      className="text-white rounded-lg bg-gradient-to-tl border border-gray-500 from-customBlack_2 to-customBlack p-4 relative z-0"
+      className=" text-white rounded-lg bg-gradient-to-tl border border-gray-500 from-customBlack_2 to-customBlack p-4 relative z-0"
       onChange={handleInputChange}
     >
-      <fieldset className="grid gap-6 mb-6 md:grid-cols-2 grid-cols-1">
-        <legend className={`${ceasarDressing.className} block mb-2 text-3xl`}>PERSONLIG INFORMATION</legend>
-        {tickets.single > 0 && Array.from({ length: tickets.single }, (_, i) => (
-          <ContactForm key={i} i={i} ticketType="single" />
-        ))}
-        <div className="relative z-10 group rounded-xl grid md:col-span-2 p-[2px] overflow-hidden">
-          {tickets.vip > 0 && <span className="absolute inset-[-1000%] animate-[spin_7s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#EC2783_0%,#141415_50%,#EC2783_100%)]" />}
-          <div className="relative bg-gradient-to-tl from-customBlack_2 to-customBlack z-0 rounded-xl ">
-            <div className="overflow-hidden rounded-xl grid md:grid-cols-2 grid-col-1">
-              {Array.from({ length: tickets.vip }, (_, i) => (
-                <ContactForm key={i} i={i} ticketType="vip" />
-              ))}
+      <fieldset className="grid gap-6 mb-6 md:grid-cols-[auto] grid-cols-1">
+        <legend className={`${ceasarDressing.className} block mb-2 text-3xl`}>
+          PERSONLIG INFORMATION
+        </legend>
+        <div className="flex flex-wrap items-end justify-start">
+          {Array.from({ length: tickets.single }, (_, i) => (
+            <ContactForm
+              key={i}
+              i={i}
+              ticketType="single"
+              className="flex-grow flexbasis-[200px] min-w-[150px] "
+            />
+          ))}
+        </div>
+        <div className="flex flex-wrap items-end">
+          <div className="relative z-10 group rounded-xl p-[2px] overflow-hidden ">
+            {tickets.vip > 0 && <span className="border-gradient" />}
+            <div className="bg-gradient-black rounded-lg">
+              <div className="overflow-hidden rounded-xl flex flex-wrap items-end">
+                {Array.from({ length: tickets.vip }, (_, i) => (
+                  <ContactForm
+                    key={i}
+                    i={i}
+                    ticketType="vip"
+                    className="flex-grow flexbasis-[200px] min-w-[150px] "
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -61,7 +77,9 @@ export default function ContactInfo({ tickets, formAction }) {
       <div className="flex">
         <button
           className={`${
-            isFormValid ? "font-bold px-8 py-2 my-8 ml-auto text-xl bg-gradient-to-bl from-customPink text-white to-customOrange text-transparent" : "bg-gray-500 px-8 py-2 my-8 ml-auto text-xl font-bold text-gray-300 cursor-not-allowed"
+            isFormValid
+              ? "font-bold px-8 py-2 my-8 ml-auto text-xl bg-gradient-to-bl from-customPink text-white to-customOrange text-transparent"
+              : "bg-gray-500 px-8 py-2 my-8 ml-auto text-xl font-bold text-gray-300 cursor-not-allowed"
           }`}
           formAction={formAction}
           type="submit"
@@ -98,7 +116,12 @@ function ContactForm({ i, ticketType }) {
   };
 
   return (
-    <motion.div initial="hidden" animate="visible" variants={staggerInputs} className="p-2">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={staggerInputs}
+      className="p-2"
+    >
       {/* ticketType kigger om det en single/vip og laver en conditionel rendering. Vi gav den property tidligere til Cards i ChooseTickets-komponenten. */}
       {ticketType === "single" && (
         <motion.h2 className="font-bold text-xl" variants={inputSpring}>
@@ -106,13 +129,22 @@ function ContactForm({ i, ticketType }) {
         </motion.h2>
       )}
       {ticketType === "vip" && (
-        <motion.h2 variants={inputSpring} className="font-bold text-xl bg-gradient-to-r from-customPink via-customRed to-customOrange bg-clip-text text-transparent">
+        <motion.h2
+          variants={inputSpring}
+          className="font-bold text-xl bg-gradient-to-r from-customPink via-customRed to-customOrange bg-clip-text text-transparent"
+        >
           VIP Billet
         </motion.h2>
-        )}
-        { ticketType === "single" && i === 0 && (<p className="text-gray-400 text-xs">Modtager af kvittering</p>)}
+      )}
+      {ticketType === "single" && i === 0 && (
+        <p className="text-gray-400 text-xs">Modtager af kvittering</p>
+      )}
       <motion.div className="mb-2.5" variants={inputSpring}>
-        <label htmlFor={`${ticketType}_firstName_${i}`} className="block text-sm font-medium text-white" id="fornavn-felt">
+        <label
+          htmlFor={`${ticketType}_firstName_${i}`}
+          className="block text-sm font-medium text-white"
+          id="fornavn-felt"
+        >
           Fornavn
         </label>
         <input
@@ -129,7 +161,11 @@ function ContactForm({ i, ticketType }) {
       </motion.div>
 
       <motion.div className="mb-2.5" variants={inputSpring}>
-        <label htmlFor={`${ticketType}_lastName_${i}`} className="block text-sm font-medium text-white" id="efternavn-felt">
+        <label
+          htmlFor={`${ticketType}_lastName_${i}`}
+          className="block text-sm font-medium text-white"
+          id="efternavn-felt"
+        >
           Efternavn
         </label>
         <input
@@ -164,7 +200,10 @@ function ContactForm({ i, ticketType }) {
       </motion.div>
 
       <motion.div className="mb-2.5" variants={inputSpring}>
-        <label htmlFor={`${ticketType}_phonenumber_${i}`} id="telefonnummer-felt">
+        <label
+          htmlFor={`${ticketType}_phonenumber_${i}`}
+          id="telefonnummer-felt"
+        >
           Mobilnummer
         </label>
         <input

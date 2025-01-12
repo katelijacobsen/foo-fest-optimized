@@ -40,7 +40,7 @@ export default function ChooseTicket({ cart, formAction }) {
           onlyVip="Meet-and-greet med artister"
           price="1299"
           valuta="DKK"
-          border={`absolute inset-[-1000%] animate-[spin_3s_linear_infinite] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#141415_0%,#A82023_50%,#141415_100%)] bg-[conic-gradient(from_90deg_at_50%_50%,#52525B_0%,#D4D4DA_50%,#52525B_100%)]`}
+          border={`border-gradient`}
         />
       </motion.div>
       <div className="col-span-1 sm:col-span-2 flex justify-end">

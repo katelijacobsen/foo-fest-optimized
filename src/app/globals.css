@@ -8,17 +8,11 @@
 }
 
 /* Bliver brugt til at fjerne number-input pilene (source: stackoverflow) */
-@layer base {
+@layer components {
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
-  }
-  .animate-shine {
-    background: linear-gradient(90deg, #eaeaea, #7c7c7c, #eaeaea);
-    background-size: 200% 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
   }
   .loader-animation {
     width: 50px;
@@ -27,11 +21,73 @@
     border-radius: 50%;
     padding: 1px;
     background: conic-gradient(#0000 10%, #d3d3d3) content-box;
-    mask: repeating-conic-gradient(#0000 0deg, #000 1deg 20deg, #0000 21deg 36deg), radial-gradient(farthest-side, #0000 calc(100% - var(--b) - 1px), #000 calc(100% - var(--b)));
-    -webkit-mask: repeating-conic-gradient(#0000 0deg, #000 1deg 20deg, #0000 21deg 36deg), radial-gradient(farthest-side, #0000 calc(100% - var(--b) - 1px), #000 calc(100% - var(--b)));
+    mask: repeating-conic-gradient(
+        #0000 0deg,
+        #000 1deg 20deg,
+        #0000 21deg 36deg
+      ),
+      radial-gradient(
+        farthest-side,
+        #0000 calc(100% - var(--b) - 1px),
+        #000 calc(100% - var(--b))
+      );
+    -webkit-mask: repeating-conic-gradient(
+        #0000 0deg,
+        #000 1deg 20deg,
+        #0000 21deg 36deg
+      ),
+      radial-gradient(
+        farthest-side,
+        #0000 calc(100% - var(--b) - 1px),
+        #000 calc(100% - var(--b))
+      );
     -webkit-mask-composite: destination-in;
     mask-composite: intersect;
     animation: l4 1s infinite steps(10);
+  }
+
+  .border-gradient {
+    position: absolute;
+    animation: spin 3s linear infinite;
+    background: conic-gradient(
+      from 90deg at 50% 50%,
+      #141415 0%,
+      #a82023 50%,
+      #141415 100%
+    );
+    background: -webkit-conic-gradient(
+      from 90deg at 50% 50%,
+      #141415 0%,
+      #a82023 50%,
+      #141415 100%
+    );
+    background: -moz-conic-gradient(
+      from 90deg at 50% 50%,
+      #141415 0%,
+      #a82023 50%,
+      #141415 100%
+    );
+    inset: -1000%;
+  }
+
+  .bg-gradient-black {
+    position: relative;
+    background: linear-gradient(
+      to top left,
+      #141414,
+      #3B3B3E
+    );
+    z-index: 0;
+    border-radius: 1rem;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 
   @keyframes l4 {

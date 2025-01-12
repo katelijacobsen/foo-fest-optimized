@@ -35,8 +35,8 @@ export default function Card({
 
   return (
     <div className="relative z-10 group rounded-xl inline-block p-[2px] overflow-hidden w-60 sm:w-64 md:w-72 m-4 transition-transform hover:scale-105 shadow-lg">
-      <span className={`${border} absolute  inset-[-1000%] animate-[spin_7s_linear_infinite]`} />
-      <div className="relative h-80 bg-gradient-to-tl from-customBlack to-customBlack_2 z-0 rounded-xl flex items-center justify-center">
+      <span className={`${border} absolute inset-[-1000%] animate-[spin_7s_linear_infinite]`} />
+      <div className="h-80 bg-gradient-black flex items-center justify-center">
         <div className={`${className} flex flex-col items-center rounded-xl p-4 text-center`} aria-live="polite" role="region">
           <h2
             id="card-header"
