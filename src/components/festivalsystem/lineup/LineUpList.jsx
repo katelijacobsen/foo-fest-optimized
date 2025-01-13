@@ -22,6 +22,7 @@ const LineUpList = ({ mergedData }) => {
     setSelectedLetter(letter);
   };
 
+  //callback funktion til søgefiltrering
   useEffect(() => {
     const filteredBands = mergedData.sort().filter((band) => band.name.toLowerCase().includes(searchBand.toLowerCase())); // Filtrering
     setBands(filteredBands);

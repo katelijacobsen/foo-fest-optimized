@@ -61,7 +61,10 @@ const Header = () => {
             <Link href="/">
               <Image quality={75} src={Logo} width={70} height={70} alt="foofest logo" priority={false} loading="lazy" />
             </Link>
-            <p className="">12/7-19/7 2025</p>
+            <div className="grid">
+              <p className="font-bold">Lejre</p>
+              <p>12/7-19/7 2025</p>
+            </div>
           </div>
 
           <ul className="hidden md:flex md:gap-6 justify-between items-center">
