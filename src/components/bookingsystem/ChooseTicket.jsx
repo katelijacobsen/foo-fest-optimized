@@ -48,6 +48,7 @@ export default function ChooseTicket({ cart, formAction }) {
           type="submit"
           formAction={formAction}
           disabled={totalTickets === 0}
+          aria-label="Næste knap"
           className={`text-lg font-bold py-2 px-6 rounded-sm m-8 sm:text-xl sm:px-8 w-full sm:w-auto ${totalTickets === 0 ? "bg-gray-400 cursor-not-allowed" : "bg-gradient-to-bl from-customPink to-customOrange text-white"}`}
         >
           Næste
