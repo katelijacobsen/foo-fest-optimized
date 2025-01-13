@@ -147,8 +147,8 @@ function ContactForm({ i, ticketType }) {
 
       <motion.div className="mb-2.5 flex flex-col" variants={inputSpring}>
         <label htmlFor={`${ticketType}_email_${i}`}>Email</label>
-        <span id="email-felt" className="text-xs text-gray-400">
-          Dette felt kræver mindst et @-tegn.
+        <span id="email-felt" className="text-xs text-gray-200">
+          Dette felt kræver mindst et @-tegn
         </span>
         <input
           className="bg-gray-100 border border-gray-200 text-gray-900 text-sm rounded-md w-full p-2.5 focus:outline-none focus:ring-2 valid:[&:not(:placeholder-shown):not(:focus)]:bg-green-50 valid:[&:not(:placeholder-shown):not(:focus)]:border-green-500 valid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-green-500 invalid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red-50 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-400"
@@ -163,10 +163,13 @@ function ContactForm({ i, ticketType }) {
         />
       </motion.div>
 
-      <motion.div className="mb-2.5" variants={inputSpring}>
+      <motion.div className="mb-2.5 flex flex-col" variants={inputSpring}>
         <label htmlFor={`${ticketType}_phonenumber_${i}`} id="telefonnummer-felt">
           Mobilnummer
         </label>
+        <span id="telefonnummer-felt" className="text-xs text-gray-200">
+          Dette felt kræver 6-8 cifre
+        </span>
         <input
           aria-describedby="telefonnummer-felt"
           id={`${ticketType}_phonenumber_${i}`}
