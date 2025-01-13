@@ -17,6 +17,7 @@ const PopButton = () => {
           type="button"
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
+          aria-label="Luk nyhedsbrev knap"
           className=" border-2 border-customWhite p-5 rounded-full left-[83%]  md:left-[97%] absolute bottom-[-6.5rem]  z-20"
         >
           <TbMailPlus />
