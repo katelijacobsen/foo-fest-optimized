@@ -2,7 +2,7 @@
 import ChooseTicket from "@/components/bookingsystem/ChooseTicket";
 import Campsite from "@/components/bookingsystem/Campsite";
 import ContactInfo from "@/components/bookingsystem/ContactInfo";
-import PaymentFlow from "@/components/bookingsystem/PaymentFlow";
+import PaymentFlow from "@/components/bookingsystem/PaymentForm";
 import PaymentComfirmed from "@/components/bookingsystem/PaymentConfirmed";
 import Cart from "@/components/bookingsystem/Cart";
 import { createContext, useActionState } from "react";
