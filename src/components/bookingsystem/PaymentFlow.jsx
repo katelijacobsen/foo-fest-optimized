@@ -104,10 +104,11 @@ const PaymentForm = ({ formAction, reservedId, setTimeOut }) => {
             <Cards number={state.number} expiry={state.expiry} cvc={state.cvc} name={state.name} focused={state.focus} />
           </div>
           <form action="kortOplysninger" className="flex flex-col items-center sm:items-start gap-4 w-full sm:w-auto">
-            <div className="flex flex-col gap-2 w-full">
+            <div className="flex flex-col gap-[.1rem] w-full">
               <label htmlFor="kortnummer" className="font-bold text-md">
                 Kortnummer
               </label>
+              <span className="text-gray-200 text-xs" >Indtast venligst dine 16 cifre </span>
               <input
                 id="kortnummer"
                 aria-label="kortnummer"
@@ -119,10 +120,11 @@ const PaymentForm = ({ formAction, reservedId, setTimeOut }) => {
                 required
                 placeholder="1234 1234 1234 1234"
                 type="number"
-              />
+                />
               <label htmlFor="kortHolder" className="font-bold text-md">
                 Kortholder
               </label>
+              <span className="text-gray-200 text-xs">Fulde navn på egeren af Kortet </span>
               <input
                 id="kortHolder"
                 aria-label="kortHolder navn"
@@ -134,13 +136,14 @@ const PaymentForm = ({ formAction, reservedId, setTimeOut }) => {
                 required
                 placeholder="Kortholder Navn"
                 type="text"
-              />
+                />
             </div>
             <div className="flex flex-col gap-2 w-full sm:flex-row sm:gap-4">
               <div className="flex flex-col w-full">
                 <label htmlFor="udløbsdato-mm/åå" className="font-bold text-md">
                   Udløbsdato
                 </label>
+                <span className="text-gray-200 text-xs"> Indtast venligst måned og år </span>
                 <input
                   id="udløbsdato-mm/åå"
                   aria-label="udløbsdato-mm/åå"
@@ -152,12 +155,13 @@ const PaymentForm = ({ formAction, reservedId, setTimeOut }) => {
                   required
                   placeholder="MM/ÅÅ"
                   type="text"
-                />
+                  />
               </div>
               <div className="flex flex-col w-full">
                 <label htmlFor="kontrolcifre" className="font-bold text-md">
                   CVC
                 </label>
+                <span className="text-gray-200 text-xs"> Indtast venligst de 3 cifre </span>
                 <input
                   id="kontrolcifre"
                   aria-label="kontrolcifre"
