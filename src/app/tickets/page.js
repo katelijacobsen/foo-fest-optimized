@@ -119,6 +119,7 @@ export default function Page() {
       default:
         return newState;
     }
+
   };
   useEffect(() => {
     fetch(url, {
