@@ -35,18 +35,10 @@ export default function ContactInfo({ tickets, formAction }) {
   //     );
 
   return (
-    <motion.form
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.3 }}
-      className="text-white rounded-lg bg-gradient-to-tl border border-gray-500 from-customBlack_2 to-customBlack p-4 relative z-0"
-      onChange={handleInputChange}
-    >
+    <motion.form initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }} className="text-white rounded-lg bg-gradient-to-tl border border-gray-500 from-customBlack_2 to-customBlack p-4 relative z-0" onChange={handleInputChange}>
       <fieldset className="grid gap-6 mb-6 md:grid-cols-2 grid-cols-1">
         <legend className={`${ceasarDressing.className} block mb-2 text-3xl`}>PERSONLIG INFORMATION</legend>
-        {tickets.single > 0 && Array.from({ length: tickets.single }, (_, i) => (
-          <ContactForm key={i} i={i} ticketType="single" />
-        ))}
+        {tickets.single > 0 && Array.from({ length: tickets.single }, (_, i) => <ContactForm key={i} i={i} ticketType="single" />)}
         <div className="relative z-10 group rounded-xl grid md:col-span-2 p-[2px] overflow-hidden">
           {tickets.vip > 0 && <span className="absolute inset-[-1000%] animate-[spin_7s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#EC2783_0%,#141415_50%,#EC2783_100%)]" />}
           <div className="relative bg-gradient-to-tl from-customBlack_2 to-customBlack z-0 rounded-xl ">
@@ -59,14 +51,7 @@ export default function ContactInfo({ tickets, formAction }) {
         </div>
       </fieldset>
       <div className="flex">
-        <button
-          className={`${
-            isFormValid ? "font-bold px-8 py-2 my-8 ml-auto text-xl bg-gradient-to-bl from-customPink text-white to-customOrange text-transparent" : "bg-gray-500 px-8 py-2 my-8 ml-auto text-xl font-bold text-gray-300 cursor-not-allowed"
-          }`}
-          formAction={formAction}
-          type="submit"
-          disabled={!isFormValid}
-        >
+        <button className={`${isFormValid ? "font-bold px-8 py-2 my-8 ml-auto text-xl bg-gradient-to-bl from-customPink text-white to-customOrange text-transparent" : "bg-gray-500 px-8 py-2 my-8 ml-auto text-xl font-bold text-gray-300 cursor-not-allowed"}`} formAction={formAction} type="submit" disabled={!isFormValid}>
           Næste
         </button>
       </div>
@@ -109,40 +94,20 @@ function ContactForm({ i, ticketType }) {
         <motion.h2 variants={inputSpring} className="font-bold text-xl bg-gradient-to-r from-customPink via-customRed to-customOrange bg-clip-text text-transparent">
           VIP Billet
         </motion.h2>
-        )}
-        { ticketType === "single" && i === 0 && (<p className="text-gray-400 text-xs">Modtager af kvittering</p>)}
+      )}
+      {ticketType === "single" && i === 0 && <p className="text-gray-400 text-xs">Modtager af kvittering</p>}
       <motion.div className="mb-2.5" variants={inputSpring}>
         <label htmlFor={`${ticketType}_firstName_${i}`} className="block text-sm font-medium text-white" id="fornavn-felt">
           Fornavn
         </label>
-        <input
-          aria-describedby="fornavn-felt"
-          minLength="2"
-          id={`${ticketType}_firstName_${i}`}
-          name={`${ticketType}_firstName_${i}`}
-          type="text"
-          placeholder="Joe"
-          autoComplete="given-name"
-          required
-          className="bg-gray-100 border border-gray-200 text-gray-900 text-sm rounded-md w-full p-2.5 focus:outline-none focus:ring-2 valid:[&:not(:placeholder-shown):not(:focus)]:bg-green-50 valid:[&:not(:placeholder-shown):not(:focus)]:border-green-500 valid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-green-500 invalid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red-50 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-400"
-        />
+        <input aria-describedby="fornavn-felt" minLength="2" id={`${ticketType}_firstName_${i}`} name={`${ticketType}_firstName_${i}`} type="text" placeholder="Joe" autoComplete="given-name" required className="bg-gray-100 border border-gray-200 text-gray-900 text-sm rounded-md w-full p-2.5 focus:outline-none focus:ring-2 valid:[&:not(:placeholder-shown):not(:focus)]:bg-green-50 valid:[&:not(:placeholder-shown):not(:focus)]:border-green-500 valid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-green-500 invalid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red-50 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-400" />
       </motion.div>
 
       <motion.div className="mb-2.5" variants={inputSpring}>
         <label htmlFor={`${ticketType}_lastName_${i}`} className="block text-sm font-medium text-white" id="efternavn-felt">
           Efternavn
         </label>
-        <input
-          aria-describedby="efternavn-felt"
-          minLength="2"
-          id={`${ticketType}_lastName_${i}`}
-          name={`${ticketType}_lastName_${i}`}
-          type="text"
-          placeholder="Doe"
-          autoComplete="family-name"
-          required
-          className="bg-gray-100 border border-gray-200 text-gray-900 text-sm rounded-md w-full p-2.5 focus:outline-none focus:ring-2 valid:[&:not(:placeholder-shown):not(:focus)]:bg-green-50 valid:[&:not(:placeholder-shown):not(:focus)]:border-green-500 valid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-green-500 invalid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red-50 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-400"
-        />
+        <input aria-describedby="efternavn-felt" minLength="2" id={`${ticketType}_lastName_${i}`} name={`${ticketType}_lastName_${i}`} type="text" placeholder="Doe" autoComplete="family-name" required className="bg-gray-100 border border-gray-200 text-gray-900 text-sm rounded-md w-full p-2.5 focus:outline-none focus:ring-2 valid:[&:not(:placeholder-shown):not(:focus)]:bg-green-50 valid:[&:not(:placeholder-shown):not(:focus)]:border-green-500 valid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-green-500 invalid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red-50 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-400" />
       </motion.div>
 
       <motion.div className="mb-2.5 flex flex-col" variants={inputSpring}>

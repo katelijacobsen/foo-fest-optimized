@@ -45,7 +45,7 @@ const PopupNewsletter = ({ modalOpen, setModalOpen }) => {
         animate="visible"
         exit="exit"
       >
-        <button className="z-40 relative left-[95%] hover:bg-customBlack_4 rounded-sm" onClick={() => (modalOpen ? close() : open())}>
+        <button className="z-40 relative left-[95%] hover:bg-customBlack_4 rounded-sm" aria-label="Luk nyhedsbrev knap" onClick={() => (modalOpen ? close() : open())}>
           <IoClose />
         </button>
         <h2 className=" text-2xl pb-2 text-center">Meld dig til nyhedsbrevet</h2>

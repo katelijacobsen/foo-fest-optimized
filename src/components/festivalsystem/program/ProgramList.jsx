@@ -56,7 +56,15 @@ function ProgramList({ mergedData, days }) {
           </div>
           <div className="flex justify-center flex-wrap my-4 gap-5">
             {days.map((day) => (
-              <button type="button" aria-label="weekday" key={day} className={`${selectedDay === day ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-white w-32 h-10 rounded-sm" : "  w-32 h-10 bg-gradient-to-r from-customPink via-customRed to-customOrange text-white p-[1.5px] rounded-sm"} `} onClick={() => filterBandsByDay(day)}>
+              <button
+                type="button"
+                aria-label="weekday"
+                key={day}
+                className={`${
+                  selectedDay === day ? "bg-gradient-to-r from-customPink via-customRed to-customOrange text-white w-32 h-10 rounded-sm" : "  w-32 h-10 bg-gradient-to-r from-customPink via-customRed to-customOrange text-white p-[1.5px] rounded-sm"
+                } `}
+                onClick={() => filterBandsByDay(day)}
+              >
                 <span className={`${selectedDay === day ? "bg-transparent" : "bg-customBlack h-full w-full block "} flex justify-center items-center `}>{day.charAt(0).toUpperCase() + day.slice(1)}</span>
               </button>
             ))}
@@ -64,8 +72,8 @@ function ProgramList({ mergedData, days }) {
           <section className="p-2 md:px-6 md:py-12 z-0">
             <div className="grid md:grid-cols-[.5fr_1fr] mb-20">
               <div className="sticky top-[112px] md:top-28 self-start z-10 bg-gradient-to-bl from-customBlack to-transparent w-fit px-2 py-2">
-                <h3 className=" text-lg md:text-2xl text-customWhite_4">Scene</h3>
-                <h2 className="text-3xl md:text-4xl">Midgard</h2>
+                <h2 className=" text-lg md:text-2xl text-customWhite_4">Scene</h2>
+                <h3 className="text-3xl md:text-4xl">Midgard</h3>
               </div>
               <div className="grid grid-cols-2 gap-4 ">
                 {/* Vi mapper med sortedByTime istedet for mergedData (filtreringen sker i sortedByTime istedet for her) */}
@@ -76,8 +84,8 @@ function ProgramList({ mergedData, days }) {
             </div>
             <div className="grid md:grid-cols-[.5fr_1fr] mb-20">
               <div className="sticky top-[112px] md:top-28 self-start z-10 bg-gradient-to-bl from-customBlack to-transparent w-fit px-2 py-2">
-                <h3 className=" text-lg md:text-2xl text-customWhite_4">Scene</h3>
-                <h2 className="text-3xl md:text-4xl">Vanaheim</h2>
+                <h2 className=" text-lg md:text-2xl text-customWhite_4">Scene</h2>
+                <h3 className="text-3xl md:text-4xl">Vanaheim</h3>
               </div>
               <div className="grid grid-cols-2 gap-4 ">
                 {sortedByTime("Vanaheim").map((band) => (
@@ -87,8 +95,8 @@ function ProgramList({ mergedData, days }) {
             </div>
             <div className="grid md:grid-cols-[.5fr_1fr] mb-20">
               <div className="sticky top-[112px] md:top-28 self-start z-10 bg-gradient-to-bl from-customBlack to-transparent w-fit px-2 py-2">
-                <h3 className=" text-lg md:text-2xl text-customWhite_4">Scene</h3>
-                <h2 className="text-3xl md:text-4xl">Jotunheim</h2>
+                <h2 className=" text-lg md:text-2xl text-customWhite_4">Scene</h2>
+                <h3 className="text-3xl md:text-4xl">Jotunheim</h3>
               </div>
               <div className="grid grid-cols-2 gap-4 ">
                 {sortedByTime("Jotunheim").map((band) => (

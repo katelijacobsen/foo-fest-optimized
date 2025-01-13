@@ -13,7 +13,7 @@ const ceasarDressing = Caesar_Dressing({
 const TicketsSection = () => {
   return (
     <section className="py-[10vh] grid place-content-center max-w-screen-xl mx-auto px-4">
-      <h2 className={`${ceasarDressing.className} text-center uppercase text-[8vw] md:text-[4vw] pb-5`}>Billetsalget er i gang.</h2>
+      <h2 className={`${ceasarDressing.className} text-center uppercase text-[8vw] md:text-[4vw] pb-5`}>Billetsalget er i gang</h2>
       <div className="grid gap-4 ">
         {/* https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images */}
         <Image className="justify-self-center" srcSet={`${Tickets} 320w, ${Tickets} 680w, ${Tickets} 960w, ${Tickets} 1980w`} src={Tickets} alt="billetter" />
