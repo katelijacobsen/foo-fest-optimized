@@ -117,12 +117,12 @@ export default function Page() {
         },
       };
     }
-    if (prev.step === 4) {
-      return {
-        ...prev,
-        step: prev.step + 1,
-      };
-    }
+    // if (prev.step === 4) {
+    //   return {
+    //     ...prev,
+    //     step: prev.step + 1,
+    //   };
+    // }
   };
   useEffect(() => {
     fetch(url, {
