@@ -138,12 +138,12 @@ const PaymentForm = ({ formAction, reservedId, setTimeOut }) => {
                 type="text"
                 />
             </div>
-            <div className="flex flex-col gap-2 w-full sm:flex-row sm:gap-4">
+            <div className="flex flex-col items-end gap-2 w-full sm:flex-row sm:gap-4">
               <div className="flex flex-col w-full">
                 <label htmlFor="udløbsdato-mm/åå" className="font-bold text-md">
                   Udløbsdato
                 </label>
-                <span className="text-gray-200 text-xs"> Indtast venligst måned og år </span>
+                <span className="text-gray-200 text-xs w-38"> Indtast venligst måned og år </span>
                 <input
                   id="udløbsdato-mm/åå"
                   aria-label="udløbsdato-mm/åå"
@@ -161,11 +161,11 @@ const PaymentForm = ({ formAction, reservedId, setTimeOut }) => {
                 <label htmlFor="kontrolcifre" className="font-bold text-md">
                   CVC
                 </label>
-                <span className="text-gray-200 text-xs"> Indtast venligst de 3 cifre </span>
+                <span className="text-gray-200 text-xs sm:w-24"> Indtast venligst de 3 cifre </span>
                 <input
                   id="kontrolcifre"
                   aria-label="kontrolcifre"
-                  className="p-2 rounded-md w-full text-black border-2 focus:ring focus:ring-customRed"
+                  className="p-2 rounded-md sm:w-16 text-black border-2 focus:ring focus:ring-customRed"
                   name="cvc"
                   value={state.cvc}
                   onChange={handleInputChange}
