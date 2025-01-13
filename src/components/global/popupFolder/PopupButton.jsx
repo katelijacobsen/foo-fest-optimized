@@ -12,7 +12,13 @@ const PopButton = () => {
   return (
     <>
       {!modalOpen && (
-        <motion.button onClick={() => (modalOpen ? close() : open())} whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }} className=" border-2 border-customWhite p-5 rounded-full left-[83%]  md:left-[97%] absolute bottom-[-6.5rem]  z-20">
+        <motion.button
+          onClick={() => (modalOpen ? close() : open())}
+          type="button"
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.9 }}
+          className=" border-2 border-customWhite p-5 rounded-full left-[83%]  md:left-[97%] absolute bottom-[-6.5rem]  z-20"
+        >
           <TbMailPlus />
         </motion.button>
       )}

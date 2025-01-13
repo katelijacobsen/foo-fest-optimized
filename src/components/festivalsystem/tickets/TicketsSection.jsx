@@ -22,7 +22,7 @@ const TicketsSection = () => {
         </div>
         <div className="justify-self-center pt-4">
           <Link href="/tickets">
-            <PrimaryButton type="text" aria_label_text="Buy tickets" color="bg-gradient-to-r from-[#ec2783] from-12% via-[#d82023] via-46% to-[#ec4d08] to-87%" buttonContent="Køb billetter" />
+            <PrimaryButton type="button" aria_label_text="Buy tickets" color="bg-gradient-to-r from-[#ec2783] from-12% via-[#d82023] via-46% to-[#ec4d08] to-87%" buttonContent="Køb billetter" />
           </Link>
         </div>
       </div>

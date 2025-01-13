@@ -82,14 +82,14 @@ const Header = () => {
             </li>
             <li>
               <Link href="/tickets">
-                <PrimaryButton type="text" color="bg-gradient-to-r from-[#ec2783] from-12% via-[#d82023] via-46% to-[#ec4d08] to-87%" buttonContent="Køb billetter" />
+                <PrimaryButton type="button" color="bg-gradient-to-r from-[#ec2783] from-12% via-[#d82023] via-46% to-[#ec4d08] to-87%" buttonContent="Køb billetter" />
               </Link>
             </li>
           </ul>
         </div>
 
         {/* Burger-menu for små skærme */}
-        <button type="text" aria-label="open menu" onClick={handleClick} className={`md:hidden absolute text-2xl top-4 right-4 p-2 ${ceasarDressing.className} bg-gradient-to-bl from-customPink to-customOrange bg-clip-text text-transparent`}>
+        <button type="button" aria-label="open menu" onClick={handleClick} className={`md:hidden absolute text-2xl top-4 right-4 p-2 ${ceasarDressing.className} bg-gradient-to-bl from-customPink to-customOrange bg-clip-text text-transparent`}>
           Menu
         </button>
 
