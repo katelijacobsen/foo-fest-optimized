@@ -2,13 +2,14 @@
 import ChooseTicket from "@/components/bookingsystem/ChooseTicket";
 import Campsite from "@/components/bookingsystem/Campsite";
 import ContactInfo from "@/components/bookingsystem/ContactInfo";
-import PaymentFlow from "@/components/bookingsystem/PaymentForm";
+import PaymentForm from "@/components/bookingsystem/PaymentForm";
 import PaymentComfirmed from "@/components/bookingsystem/PaymentConfirmed";
 import Cart from "@/components/bookingsystem/Cart";
 import { createContext, useActionState } from "react";
 import { Caesar_Dressing } from "next/font/google";
 import { useState, useEffect } from "react";
 import MyMarquee from "@/components/festivalsystem/marquee/MyMarquee";
+import PaymentForm from "@/components/bookingsystem/PaymentForm";
 
 const ceasarDressing = Caesar_Dressing({
   subsets: ["latin"],
@@ -216,7 +217,7 @@ export default function Page() {
               {state.step === 0 && <ChooseTicket cart={cart} formAction={formAction} />}
               {state.step === 1 && <Campsite setTimeOut={setTimeOut} setReservedId={setReservedId} state={state} formAction={formAction} />}
               {state.step === 2 && <ContactInfo state={state} tickets={state.tickets} formAction={formAction} />}
-              {state.step === 3 && <PaymentFlow setTimeOut={setTimeOut} reservedId={reservedId} formAction={formAction} />}
+              {state.step === 3 && <PaymentForm setTimeOut={setTimeOut} reservedId={reservedId} formAction={formAction} />}
               {state.step === 4 && <PaymentComfirmed state={state} startDraw={true} />}
             </section>
             {state.step !== 4 && <Cart cart={cart} />}
