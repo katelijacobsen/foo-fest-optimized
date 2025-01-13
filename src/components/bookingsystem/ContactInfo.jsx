@@ -100,34 +100,14 @@ function ContactForm({ i, ticketType }) {
         <label htmlFor={`${ticketType}_firstName_${i}`} className="block text-sm font-medium text-white" id="fornavn-felt">
           Fornavn
         </label>
-        <input
-          aria-describedby="fornavn-felt"
-          minLength="2"
-          id={`${ticketType}_firstName_${i}`}
-          name={`${ticketType}_firstName_${i}`}
-          type="text"
-          // placeholder="Joe"
-          autoComplete="given-name"
-          required
-          className="bg-gray-100 border border-gray-200 text-gray-900 text-sm rounded-md w-full p-2.5 focus:outline-none focus:ring-2 valid:[&:not(:placeholder-shown):not(:focus)]:bg-green-50 valid:[&:not(:placeholder-shown):not(:focus)]:border-green-500 valid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-green-500 invalid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red-50 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-400"
-        />
+        <input aria-describedby="fornavn-felt" minLength="2" id={`${ticketType}_firstName_${i}`} name={`${ticketType}_firstName_${i}`} type="text" placeholder="Joe" autoComplete="given-name" required className="bg-gray-100 border border-gray-200 text-gray-900 text-sm rounded-md w-full p-2.5 focus:outline-none focus:ring-2 valid:[&:not(:placeholder-shown):not(:focus)]:bg-green-50 valid:[&:not(:placeholder-shown):not(:focus)]:border-green-500 valid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-green-500 invalid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red-50 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-400" />
       </motion.div>
 
       <motion.div className="mb-2.5" variants={inputSpring}>
         <label htmlFor={`${ticketType}_lastName_${i}`} className="block text-sm font-medium text-white" id="efternavn-felt">
           Efternavn
         </label>
-        <input
-          aria-describedby="efternavn-felt"
-          minLength="2"
-          id={`${ticketType}_lastName_${i}`}
-          name={`${ticketType}_lastName_${i}`}
-          type="text"
-          // placeholder="Doe"
-          autoComplete="family-name"
-          required
-          className="bg-gray-100 border border-gray-200 text-gray-900 text-sm rounded-md w-full p-2.5 focus:outline-none focus:ring-2 valid:[&:not(:placeholder-shown):not(:focus)]:bg-green-50 valid:[&:not(:placeholder-shown):not(:focus)]:border-green-500 valid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-green-500 invalid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red-50 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-400"
-        />
+        <input aria-describedby="efternavn-felt" minLength="2" id={`${ticketType}_lastName_${i}`} name={`${ticketType}_lastName_${i}`} type="text" placeholder="Doe" autoComplete="family-name" required className="bg-gray-100 border border-gray-200 text-gray-900 text-sm rounded-md w-full p-2.5 focus:outline-none focus:ring-2 valid:[&:not(:placeholder-shown):not(:focus)]:bg-green-50 valid:[&:not(:placeholder-shown):not(:focus)]:border-green-500 valid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-green-500 invalid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red-50 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-400" />
       </motion.div>
 
       <motion.div className="mb-2.5 flex flex-col" variants={inputSpring}>
@@ -140,7 +120,7 @@ function ContactForm({ i, ticketType }) {
           id={`${ticketType}_email_${i}`}
           name={`${ticketType}_email_${i}`}
           type="email"
-          // placeholder="joedoe@example.com"
+          placeholder="joedoe@example.com"
           pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;"
           autoComplete="email"
           aria-describedby="email-felt"
@@ -152,16 +132,7 @@ function ContactForm({ i, ticketType }) {
         <label htmlFor={`${ticketType}_phonenumber_${i}`} id="telefonnummer-felt">
           Mobilnummer
         </label>
-        <input
-          aria-describedby="telefonnummer-felt"
-          id={`${ticketType}_phonenumber_${i}`}
-          name={`${ticketType}_phonenumber_${i}`}
-          type="tel"
-          // placeholder="12 34 56 78"
-          autoComplete="tel"
-          required
-          className="bg-gray-100 border border-gray-200 text-gray-900 text-sm rounded-md w-full p-2.5 focus:outline-none focus:ring-2 valid:[&:not(:placeholder-shown):not(:focus)]:bg-green-50 valid:[&:not(:placeholder-shown):not(:focus)]:border-green-500 valid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-green-500 invalid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red-50 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-400"
-        />
+        <input aria-describedby="telefonnummer-felt" id={`${ticketType}_phonenumber_${i}`} name={`${ticketType}_phonenumber_${i}`} type="tel" placeholder="12 34 56 78" autoComplete="tel" required className="bg-gray-100 border border-gray-200 text-gray-900 text-sm rounded-md w-full p-2.5 focus:outline-none focus:ring-2 valid:[&:not(:placeholder-shown):not(:focus)]:bg-green-50 valid:[&:not(:placeholder-shown):not(:focus)]:border-green-500 valid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-green-500 invalid:[&:not(:placeholder-shown):not(:focus)]:focus:ring-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:bg-red-50 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-400" />
       </motion.div>
     </motion.div>
   );
