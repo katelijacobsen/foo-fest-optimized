@@ -9,6 +9,8 @@ const ceasarDressing = Caesar_Dressing({
   display: "swap",
 });
 
+
+
 export default function ContactInfo({ tickets, formAction }) {
   const [isFormValid, setIsFormValid] = useState(false);
 
@@ -52,9 +54,10 @@ export default function ContactInfo({ tickets, formAction }) {
               key={i}
               i={i}
               ticketType="single"
+              isRecepient={i===0}
               className="flex-grow flexbasis-[200px] min-w-[150px] "
-            />
-          ))}
+              />
+            ))}
         </div>
         <div className="flex flex-wrap items-end">
           <div className="relative z-10 group rounded-xl p-[2px] overflow-hidden ">
@@ -63,9 +66,10 @@ export default function ContactInfo({ tickets, formAction }) {
               <div className="overflow-hidden rounded-xl flex flex-wrap items-end">
                 {Array.from({ length: tickets.vip }, (_, i) => (
                   <ContactForm
-                    key={i}
-                    i={i}
-                    ticketType="vip"
+                  key={i}
+                  i={i}
+                  ticketType="vip"
+                  isRecepient={ i === 0 && tickets.single === 0}
                     className="flex-grow flexbasis-[200px] min-w-[150px] "
                   />
                 ))}
@@ -92,7 +96,7 @@ export default function ContactInfo({ tickets, formAction }) {
   );
 }
 
-function ContactForm({ i, ticketType }) {
+function ContactForm({ i, ticketType, isRecepient }) {
   //Her bruger jeg staggerChildren så jeg giver hver children en lille delay-animation
   // Tilføjer i parent komponenten en variant/tilstand på children komponenterne kan arve det vider.
   // Derefter giver jeg hver children inputSpring, hvordan de skal animeres ind (har gjort det som konstant)
@@ -136,7 +140,7 @@ function ContactForm({ i, ticketType }) {
           VIP Billet
         </motion.h2>
       )}
-      {ticketType === "single" && i === 0 && (
+      {isRecepient && (
         <p className="text-gray-400 text-xs">Modtager af kvittering</p>
       )}
       <motion.div className="mb-2.5" variants={inputSpring}>
