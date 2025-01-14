@@ -294,11 +294,11 @@ export default function Campsite({
                 </label>
                 <p
                   id="helper-checkbox-text"
-                  className="text-xs font-normal text-gray-300"
+                  className="text-xs font-normal customGrey"
                 >
                   249kr
                 </p>
-                <p className="font-light text-sm text-gray-100 w-64">
+                <p className="font-light text-sm customGrey w-64">
                   Perfekt til dig, der ønsker en mere miljøvenlig
                   festivaloplevelse.
                 </p>
