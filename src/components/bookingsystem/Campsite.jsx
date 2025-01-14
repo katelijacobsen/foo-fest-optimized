@@ -190,7 +190,7 @@ export default function Campsite({
           <button
             type="button"
             onClick={() => setPopupOpen(true)}
-            className="flex items-center gap-[.4em] cursor-pointer text-xs text-gray-400 hover:underline "
+            className="flex items-center gap-[.4em] cursor-pointer text-xs customGrey hover:underline "
           >
             {" "}
             <BsFillQuestionCircleFill className="text-lg" /> Se de forskellige
@@ -236,7 +236,7 @@ export default function Campsite({
               <li className=" flex-row text-white flex gap-12 bg-gradient-to-tl border border-gray-900 from-customBlack_2 to-customBlack p-4 rounded-md">
                 <div>
                   <h4 className="font-bold text-xl">2 Personers Telt</h4>
-                  <p className="text-xs font-normal text-gray-300">299kr</p>
+                  <p className="text-xs font-normal customGrey">299kr</p>
                 </div>
                 <CounterInput
                   name="twoPeople"
@@ -247,7 +247,7 @@ export default function Campsite({
               <li className="flex flex-row text-white gap-12  bg-gradient-to-tl border border-gray-900 from-customBlack_2 to-customBlack p-4 rounded-md">
                 <div>
                   <h4 className="font-bold text-xl">3 Personers Telt</h4>
-                  <p className="text-xs font-normal text-gray-300">399kr</p>
+                  <p className="text-xs font-normal customGrey">399kr</p>
                 </div>
                 <CounterInput
                   name="threePeople"

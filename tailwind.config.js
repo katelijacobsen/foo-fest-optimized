@@ -19,6 +19,7 @@ module.exports = {
         customBlack_4: "#5A5B60",
         customBlack_5: "#262628",
         customBlack_6: "#383838",
+        customGrey: "#d0d3d9",
       },
     },
   },
