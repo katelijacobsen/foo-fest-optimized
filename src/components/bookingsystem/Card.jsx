@@ -55,7 +55,7 @@ export default function Card({
                 </div>
               </div>
             </div>
-            <ul className="text-xs text-left mt-2 mb-6 list-disc text-gray-400">
+            <ul className="text-xs text-left mt-2 mb-6 list-disc text-gray-300">
               <li>
                 <p>Adgang til festivalsområdet</p>
               </li>
