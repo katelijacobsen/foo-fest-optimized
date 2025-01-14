@@ -1,15 +1,13 @@
 "use client";
 import { useState, useEffect, useContext } from "react";
-import CounterInput from "./CounterInput";
 import { CartContext } from "@/app/tickets/page";
 import { motion } from "framer-motion";
 import { FaLeaf } from "react-icons/fa6";
 import { IoIosAlert } from "react-icons/io";
 import { Caesar_Dressing } from "next/font/google";
-import Image from "next/image";
-import CampingMap from "@/img/svg/camping_map.svg";
-import { RxCross2 } from "react-icons/rx";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
+import TentChoice from "./TentChoice";
+import PopupMap from "./PopupMap";
 
 const ceasarDressing = Caesar_Dressing({
   subsets: ["latin"],
@@ -22,6 +20,7 @@ export default function Campsite({
   formAction,
   setReservedId,
   setTimeOut,
+  
 }) {
   const [cart, setCart] = useContext(CartContext);
   const [twoPersonCount, setTwoPersonCount] = useState(0);
@@ -84,7 +83,7 @@ export default function Campsite({
     setThreePersonCount(count);
   };
 
-  const updateCampsite = (campsite, availableSpots) => {
+  const updateCampsite = (campsite) => {
     setCart((prev) => {
       return {
         ...prev,
@@ -198,6 +197,7 @@ export default function Campsite({
           </button>
         </div>
         {popupOpen && (
+<<<<<<< HEAD
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -223,6 +223,11 @@ export default function Campsite({
               />
             </div>
           </motion.div>
+=======
+          //Laver en arrow funktion/fat arrow function til vores PopupMap komponent
+          // arrow function er en forkortede syntax til at definere vores boolean.
+         <PopupMap setPopupOpen={setPopupOpen}/>
+>>>>>>> oprydning-kode-tickets
         )}
 
         <div className="flex flex-col justify-evenly gap-4">
@@ -233,6 +238,7 @@ export default function Campsite({
               LEJE AF TELTE
             </h3>
             <ul className="my-4 inline-flex flex-col gap-6">
+<<<<<<< HEAD
               <li className=" flex-row text-white flex gap-12 bg-gradient-to-tl border border-gray-900 from-customBlack_2 to-customBlack p-4 rounded-md">
                 <div>
                   <h4 className="font-bold text-xl">2 Personers Telt</h4>
@@ -256,6 +262,20 @@ export default function Campsite({
                   setCount={updateThreePersonTentCount}
                 />
               </li>
+=======
+              <TentChoice
+                title="2 Personers Telt"
+                price="299 DKK"
+                count={twoPersonCount}
+                setCount={updateTwoPersonTentCount}
+              />
+              <TentChoice
+                title="3 Personers Telt"
+                price="399 DKK"
+                count={threePersonCount}
+                setCount={updateThreePersonTentCount}
+              />
+>>>>>>> oprydning-kode-tickets
             </ul>
             {countError && (
               <p

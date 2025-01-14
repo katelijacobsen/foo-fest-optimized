@@ -79,6 +79,18 @@ const PaymentForm = ({ formAction, reservedId, setTimeOut }) => {
     setState((prev) => ({ ...prev, focus: evt.target.name }));
   };
 
+
+  // const dog = {
+  //   type: 'mammal',
+  //   legs: 4,
+  //   name: "carsten"
+  // };
+
+  // const name = "type";
+  // const x = {...dog, [name]: 2};
+
+
+
   useEffect(() => {
     if (paymentConfirmed === 0) return;
 
