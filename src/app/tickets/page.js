@@ -120,52 +120,6 @@ export default function Page() {
         return newState;
     }
 
-<<<<<<< HEAD
-    if (prev.step === 2) {
-      const singleGuests = Array.from({ length: prev.tickets.single }, (_, i) => ({
-        firstName: formData.get(`single_firstName_${i}`),
-        lastName: formData.get(`single_lastName_${i}`),
-        email: formData.get(`single_email_${i}`),
-        phonenumber: formData.get(`single_phonenumber_${i}`),
-      }));
-      const vipGuests = Array.from({ length: prev.tickets.vip }, (_, i) => ({
-        firstName: formData.get(`vip_firstName_${i}`),
-        lastName: formData.get(`vip_lastName_${i}`),
-        email: formData.get(`vip_email_${i}`),
-        phonenumber: formData.get(`vip_phonenumber_${i}`),
-      }));
-
-      const combined = [...singleGuests, ...vipGuests];
-
-      setData(combined);
-
-      return {
-        ...prev,
-        step: prev.step + 1,
-        guests: { single: singleGuests, vip: vipGuests },
-      };
-    }
-
-    if (prev.step === 3) {
-      return {
-        ...prev,
-        step: prev.step + 1,
-        payment: {
-          number: formData.get("number"),
-          name: formData.get("name"),
-          expiry: formData.get("expiry"),
-          cvc: formData.get("cvc"),
-        },
-      };
-    }
-    // if (prev.step === 4) {
-    //   return {
-    //     ...prev,
-    //     step: prev.step + 1,
-    //   };
-    // }
-=======
->>>>>>> oprydning-kode-tickets
   };
   useEffect(() => {
     fetch(url, {
