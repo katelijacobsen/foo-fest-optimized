@@ -161,7 +161,7 @@ const PaymentForm = ({ formAction, reservedId, setTimeOut }) => {
                 <label htmlFor="kontrolcifre" className="font-bold text-md">
                   CVC
                 </label>
-                <span className="text-gray-200 text-xs sm:w-24"> Indtast venligst de 3 cifre </span>
+                <span className="text-gray-200 text-xs sm:w-30"> Indtast venligst de 3 cifre </span>
                 <input
                   id="kontrolcifre"
                   aria-label="kontrolcifre"
