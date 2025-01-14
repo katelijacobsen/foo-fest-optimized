@@ -197,37 +197,9 @@ export default function Campsite({
           </button>
         </div>
         {popupOpen && (
-<<<<<<< HEAD
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-opacity-50 bg-black flex justify-center items-center z-100"
-          >
-            <div className="relative max-w-lg w-full border border-gray-500 bg-customBlack_5 p-4 my-4 rounded-md m-8">
-              <button
-                onClick={() => setPopupOpen(false)}
-                className="absolute top-2 right-4 text-slate-600 hover:underline"
-                aria-label="Luk Kortet"
-              >
-                <RxCross2 className="bg-customBlack_5 text-customOrange h-10 w-10 md:ml-0 md:mb-8 border-solid border-[1px] border-customOrange rounded-full p-2" />
-              </button>
-
-              <h3 className="text-xl font-bold">Festivals Kort</h3>
-              <Image
-                src={CampingMap}
-                width={500}
-                height={500}
-                alt="Foo Fest Festivals Kort med overblik over de forskellige campingområder"
-                className="bg-black w-full h-auto"
-              />
-            </div>
-          </motion.div>
-=======
           //Laver en arrow funktion/fat arrow function til vores PopupMap komponent
           // arrow function er en forkortede syntax til at definere vores boolean.
          <PopupMap setPopupOpen={setPopupOpen}/>
->>>>>>> oprydning-kode-tickets
         )}
 
         <div className="flex flex-col justify-evenly gap-4">
@@ -238,31 +210,6 @@ export default function Campsite({
               LEJE AF TELTE
             </h3>
             <ul className="my-4 inline-flex flex-col gap-6">
-<<<<<<< HEAD
-              <li className=" flex-row text-white flex gap-12 bg-gradient-to-tl border border-gray-900 from-customBlack_2 to-customBlack p-4 rounded-md">
-                <div>
-                  <h4 className="font-bold text-xl">2 Personers Telt</h4>
-                  <p className="text-xs font-normal customGrey">299kr</p>
-                </div>
-                <CounterInput
-                  name="twoPeople"
-                  count={twoPersonCount}
-                  setCount={updateTwoPersonTentCount}
-                />
-              </li>
-              <li className="flex flex-row text-white gap-12  bg-gradient-to-tl border border-gray-900 from-customBlack_2 to-customBlack p-4 rounded-md">
-                <div>
-                  <h4 className="font-bold text-xl">3 Personers Telt</h4>
-                  <p className="text-xs font-normal customGrey">399kr</p>
-                </div>
-                <CounterInput
-                  name="threePeople"
-                  max={10}
-                  count={threePersonCount}
-                  setCount={updateThreePersonTentCount}
-                />
-              </li>
-=======
               <TentChoice
                 title="2 Personers Telt"
                 price="299 DKK"
@@ -275,7 +222,6 @@ export default function Campsite({
                 count={threePersonCount}
                 setCount={updateThreePersonTentCount}
               />
->>>>>>> oprydning-kode-tickets
             </ul>
             {countError && (
               <p

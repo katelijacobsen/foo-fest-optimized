@@ -37,19 +37,6 @@ export default function ContactInfo({ tickets, formAction }) {
   //     );
 
   return (
-<<<<<<< HEAD
-    <motion.form initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }} className="text-white rounded-lg bg-gradient-to-tl border border-gray-500 from-customBlack_2 to-customBlack p-4 relative z-0" onChange={handleInputChange}>
-      <fieldset className="grid gap-6 mb-6 md:grid-cols-2 grid-cols-1">
-        <legend className={`${ceasarDressing.className} block mb-2 text-3xl`}>PERSONLIG INFORMATION</legend>
-        {tickets.single > 0 && Array.from({ length: tickets.single }, (_, i) => <ContactForm key={i} i={i} ticketType="single" />)}
-        <div className="relative z-10 group rounded-xl grid md:col-span-2 p-[2px] overflow-hidden">
-          {tickets.vip > 0 && <span className="absolute inset-[-1000%] animate-[spin_7s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#EC2783_0%,#141415_50%,#EC2783_100%)]" />}
-          <div className="relative bg-gradient-to-tl from-customBlack_2 to-customBlack z-0 rounded-xl ">
-            <div className="overflow-hidden rounded-xl grid md:grid-cols-2 grid-col-1">
-              {Array.from({ length: tickets.vip }, (_, i) => (
-                <ContactForm key={i} i={i} ticketType="vip" />
-              ))}
-=======
     <motion.form
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
@@ -87,15 +74,11 @@ export default function ContactInfo({ tickets, formAction }) {
                   />
                 ))}
               </div>
->>>>>>> oprydning-kode-tickets
             </div>
           </div>
         </div>
       </fieldset>
       <div className="flex">
-<<<<<<< HEAD
-        <button className={`${isFormValid ? "font-bold px-8 py-2 my-8 ml-auto text-xl bg-gradient-to-bl from-customPink text-white to-customOrange text-transparent" : "bg-gray-500 px-8 py-2 my-8 ml-auto text-xl font-bold text-gray-300 cursor-not-allowed"}`} formAction={formAction} type="submit" disabled={!isFormValid}>
-=======
         <button
           className={`${
             isFormValid
@@ -106,7 +89,6 @@ export default function ContactInfo({ tickets, formAction }) {
           type="submit"
           disabled={!isFormValid}
         >
->>>>>>> oprydning-kode-tickets
           Næste
         </button>
       </div>
@@ -158,13 +140,9 @@ function ContactForm({ i, ticketType, isRecepient }) {
           VIP Billet
         </motion.h2>
       )}
-<<<<<<< HEAD
-      {ticketType === "single" && i === 0 && <p className="text-gray-400 text-xs">Modtager af kvittering</p>}
-=======
       {isRecepient && (
         <p className="text-gray-400 text-xs">Modtager af kvittering</p>
       )}
->>>>>>> oprydning-kode-tickets
       <motion.div className="mb-2.5" variants={inputSpring}>
         <label
           htmlFor={`${ticketType}_firstName_${i}`}
@@ -205,16 +183,11 @@ function ContactForm({ i, ticketType, isRecepient }) {
         />
       </motion.div>
 
-<<<<<<< HEAD
-      <motion.div className="mb-2.5 flex flex-col" variants={inputSpring}>
-        <label htmlFor={`${ticketType}_phonenumber_${i}`} id="telefonnummer-felt">
-=======
       <motion.div className="mb-2.5" variants={inputSpring}>
         <label
           htmlFor={`${ticketType}_phonenumber_${i}`}
           id="telefonnummer-felt"
         >
->>>>>>> oprydning-kode-tickets
           Mobilnummer
         </label>
         <span id="telefonnummer-felt" className="text-xs text-gray-200">
